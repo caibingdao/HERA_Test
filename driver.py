@@ -8,6 +8,7 @@ import numpy as np
 import random
 
 from model import PolicyNet, QNet
+from replay_buffer import TrajectoryReplayBuffer
 from runner import RLRunner
 from parameter import *
 
@@ -109,6 +110,7 @@ def main():
     experience_buffer = []
     for i in range(15):
         experience_buffer.append([])
+    trajectory_replay_buffer = TrajectoryReplayBuffer(REPLAY_SIZE)
 
     # collect data from worker and do training
     try:
@@ -120,9 +122,11 @@ def main():
 
             # save experience and metric
             for job in done_jobs:
-                job_results, metrics, info = job
+                job_results, metrics, trajectory, info = job
                 for i in range(len(experience_buffer)):
                     experience_buffer[i] += job_results[i]
+                if trajectory is not None:
+                    trajectory_replay_buffer.add_episode(trajectory)
                 for n in metric_name:
                     perf_metrics[n].append(metrics[n])
 

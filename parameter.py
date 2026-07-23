@@ -36,6 +36,12 @@ LR = 1e-5
 GAMMA = 1
 NUM_META_AGENT = 16  # how many threads does your CPU have
 
+# temporal sequence data collection
+COLLECT_TRAJECTORY = True
+TEMPORAL_SEQUENCE_LENGTH = 8
+TEMPORAL_TOKEN_DIM = 128
+ACTION_EMBEDDING_DIM = 16
+
 # network parameters
 NODE_INPUT_DIM = 4
 EMBEDDING_DIM = 128

@@ -26,18 +26,19 @@ class Runner(object):
 
         job_results = worker.episode_buffer
         perf_metrics = worker.perf_metrics
-        return job_results, perf_metrics
+        trajectory = worker.trajectory
+        return job_results, perf_metrics, trajectory
 
     def job(self, weights_set, episode_number):
         print("starting episode {} on metaAgent {}".format(episode_number, self.meta_agent_id))
         # set the local weights to the global weight values from the master network
         self.set_policy_net_weights(weights_set[0])
 
-        job_results, metrics = self.do_job(episode_number)
+        job_results, metrics, trajectory = self.do_job(episode_number)
 
         info = {"id": self.meta_agent_id, "episode_number": episode_number}
 
-        return job_results, metrics, info
+        return job_results, metrics, trajectory, info
 
 
 @ray.remote(num_cpus=1, num_gpus=NUM_GPU / NUM_META_AGENT)

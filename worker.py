@@ -4,6 +4,11 @@ from env import Env
 from agent import Agent
 from utils import *
 from model import PolicyNet
+from replay_buffer import (
+    EpisodeTrajectory,
+    TrajectoryStep,
+    detach_observation,
+)
 
 if not os.path.exists(gifs_path):
     os.makedirs(gifs_path)
@@ -24,6 +29,13 @@ class Worker:
         for i in range(15):
             self.episode_buffer.append([])
 
+        self.trajectory = (
+            EpisodeTrajectory(episode_id=global_step)
+            if COLLECT_TRAJECTORY
+            else None
+        )
+        self.robot_heading = 0.0
+
     def run_episode(self):
         done = False
         self.robot.update_planning_state(self.env.belief_info, self.env.robot_location)
@@ -35,7 +47,19 @@ class Worker:
 
         for i in range(MAX_EPISODE_STEP):
 
-            self.save_observation(observation)
+            current_observation = observation
+            self.save_observation(current_observation)
+
+            coverage_before = self.env.get_exploration_rate()
+            frontier_before = len(get_frontier_in_map(self.env.belief_info))
+            robot_pose = torch.tensor(
+                [
+                    self.env.robot_location[0],
+                    self.env.robot_location[1],
+                    self.robot_heading,
+                ],
+                dtype=torch.float32,
+            )
 
             next_location, action_index = self.robot.select_next_waypoint(observation)
             self.save_action(action_index)
@@ -45,6 +69,8 @@ class Worker:
             assert next_location[0] + next_location[1] * 1j in check[:, 0] + check[:, 1] * 1j, print(next_location, self.robot.location, node.data.neighbor_set)
             assert next_location[0] != self.robot.location[0] or next_location[1] != self.robot.location[1]
 
+            movement = next_location - self.env.robot_location
+            next_heading = np.arctan2(movement[1], movement[0])
             reward = self.env.step(next_location)
 
             self.robot.update_planning_state(self.env.belief_info, self.env.robot_location)
@@ -55,6 +81,27 @@ class Worker:
 
             observation = self.robot.get_observation()
             self.save_next_observations(observation)
+            delta_coverage = self.env.explored_rate - coverage_before
+            frontier_after = len(get_frontier_in_map(self.env.belief_info))
+            delta_frontier = frontier_after - frontier_before
+
+            if self.trajectory is not None:
+                self.trajectory.append(
+                    TrajectoryStep(
+                        observation=detach_observation(
+                            current_observation
+                        ),
+                        action=int(action_index.item()),
+                        reward=float(reward),
+                        next_observation=detach_observation(observation),
+                        robot_pose=robot_pose,
+                        delta_coverage=float(delta_coverage),
+                        delta_frontier=int(delta_frontier),
+                        done=bool(done),
+                        step_index=i,
+                    )
+                )
+            self.robot_heading = float(next_heading)
 
             if self.save_image:
                 self.robot.plot_env()

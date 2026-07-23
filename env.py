@@ -86,7 +86,10 @@ class Env:
         return reward
 
     def evaluate_exploration_rate(self):
-        self.explored_rate = np.sum(self.robot_belief == 255) / np.sum(self.ground_truth == 255)
+        self.explored_rate = self.get_exploration_rate()
+
+    def get_exploration_rate(self):
+        return np.sum(self.robot_belief == 255) / np.sum(self.ground_truth == 255)
 
     def step(self, next_waypoint):
         dist = np.linalg.norm(self.robot_location - next_waypoint)
