@@ -10,9 +10,8 @@ gifs_path = f'gifs/{RUN_FOLDER_NAME}'
 
 # save training data
 SUMMARY_WINDOW = 32  # how many training steps before writing data to tensorboard
-LOAD_MODEL = False  # do you want to load the model trained before
+LOAD_MODEL =True  # do you want to load the model trained before
 SAVE_IMG_GAP = 100  # how many episodes before saving a gif
-
 # map and planning resolution
 CELL_SIZE = 0.4  # meter, your map resolution
 NODE_RESOLUTION = 4.0  # meter, your node resolution
@@ -38,7 +37,7 @@ MINIMUM_BUFFER_SIZE = 2000
 BATCH_SIZE = 8
 LR = 1e-5
 GAMMA = 1
-NUM_META_AGENT = 2  # configurable Ray rollout worker count
+NUM_META_AGENT = 4  # configurable Ray rollout worker count
 RUNNER_GPU_FRACTION = 0.25  # fixed reservation per CUDA rollout worker
 RAY_OBJECT_STORE_MEMORY = 3 * 1024 ** 3
 
@@ -49,7 +48,7 @@ TEMPORAL_TOKEN_DIM = 128
 ACTION_EMBEDDING_DIM = 16
 
 # reversible phase-two history optimizations
-USE_ROLLOUT_HISTORY_CACHE = False
+USE_ROLLOUT_HISTORY_CACHE = True
 USE_LEARNER_HISTORY_DEDUP = False
 
 # network parameters
