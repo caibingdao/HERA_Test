@@ -38,7 +38,8 @@ MINIMUM_BUFFER_SIZE = 2000
 BATCH_SIZE = 8
 LR = 1e-5
 GAMMA = 1
-NUM_META_AGENT = 4  # safe parallelism for this 32 GiB RAM / 8 GiB GPU laptop
+NUM_META_AGENT = 2  # configurable Ray rollout worker count
+RUNNER_GPU_FRACTION = 0.25  # fixed reservation per CUDA rollout worker
 RAY_OBJECT_STORE_MEMORY = 3 * 1024 ** 3
 
 # temporal sequence data collection
@@ -66,4 +67,4 @@ NODE_PADDING_SIZE = 360  # the number of nodes will be padded to this value, nee
 # GPU usage
 USE_GPU = False  # do you want to collect training data using GPUs (better not)
 USE_GPU_GLOBAL = True  # do you want to train the network using GPUs
-NUM_GPU = 0  # baseline rollout GPUs; Mamba reserves one shared GPU automatically
+ENABLE_MULTI_GPU_DATA_PARALLEL = False

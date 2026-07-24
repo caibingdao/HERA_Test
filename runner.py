@@ -5,6 +5,50 @@ from worker import Worker
 from parameter import *
 
 
+def validate_runner_resource_config(
+    num_meta_agents=NUM_META_AGENT,
+    runner_gpu_fraction=RUNNER_GPU_FRACTION,
+):
+    if isinstance(num_meta_agents, bool) or not isinstance(
+        num_meta_agents,
+        int,
+    ):
+        raise ValueError(
+            "NUM_META_AGENT must be a positive integer, "
+            f"got {num_meta_agents!r}"
+        )
+    if num_meta_agents <= 0:
+        raise ValueError(
+            f"NUM_META_AGENT must be > 0, got {num_meta_agents}"
+        )
+    if isinstance(runner_gpu_fraction, bool) or not isinstance(
+        runner_gpu_fraction,
+        (int, float),
+    ):
+        raise ValueError(
+            "RUNNER_GPU_FRACTION must be a positive number, "
+            f"got {runner_gpu_fraction!r}"
+        )
+    if runner_gpu_fraction <= 0:
+        raise ValueError(
+            "RUNNER_GPU_FRACTION must be > 0, "
+            f"got {runner_gpu_fraction}"
+        )
+
+    total_runner_gpu = num_meta_agents * runner_gpu_fraction
+    if total_runner_gpu > 1.0:
+        raise ValueError(
+            "Invalid Ray GPU allocation: NUM_META_AGENT "
+            f"({num_meta_agents}) * RUNNER_GPU_FRACTION "
+            f"({runner_gpu_fraction}) = {total_runner_gpu}, "
+            "which must be <= 1.0"
+        )
+    return total_runner_gpu
+
+
+validate_runner_resource_config()
+
+
 class Runner(object):
     def __init__(self, meta_agent_id, use_mamba=None):
         self.meta_agent_id = meta_agent_id
@@ -34,6 +78,12 @@ class Runner(object):
     def get_weights(self):
         return self.local_network.state_dict()
 
+    def get_runtime_resources(self):
+        return {
+            "device_type": self.device.type,
+            "ray_gpu_ids": ray.get_gpu_ids(),
+        }
+
     def set_policy_net_weights(self, weights):
         self.local_network.load_state_dict(weights)
 
@@ -60,12 +110,12 @@ class Runner(object):
         return job_results, metrics, trajectory, info
 
 
-RUNNER_GPU_FRACTION = (
-    1 / NUM_META_AGENT if USE_MAMBA else NUM_GPU / NUM_META_AGENT
+ACTIVE_RUNNER_GPU_FRACTION = (
+    RUNNER_GPU_FRACTION if USE_GPU or USE_MAMBA else 0.0
 )
 
 
-@ray.remote(num_cpus=1, num_gpus=RUNNER_GPU_FRACTION)
+@ray.remote(num_cpus=1, num_gpus=ACTIVE_RUNNER_GPU_FRACTION)
 class RLRunner(Runner):
     def __init__(self, meta_agent_id, use_mamba=None):
         super().__init__(meta_agent_id, use_mamba=use_mamba)

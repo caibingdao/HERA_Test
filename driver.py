@@ -8,7 +8,7 @@ import random
 
 from model import PolicyNet, QNet
 from replay_buffer import TrajectoryReplayBuffer
-from runner import RLRunner
+from runner import RLRunner, validate_runner_resource_config
 from parameter import *
 
 
@@ -80,17 +80,86 @@ def validate_checkpoint_mode(checkpoint):
             )
 
 
-def policy_weights_for_workers(policy_net, device, local_device):
-    if USE_MAMBA:
-        return {
-            name: value.detach().cpu()
-            for name, value in policy_net.state_dict().items()
-        }
-    if device != local_device:
-        policy_weights = policy_net.to(local_device).state_dict()
-        policy_net.to(device)
-        return policy_weights
-    return policy_net.to(local_device).state_dict()
+def unwrap_model(model):
+    return model.module if isinstance(model, nn.DataParallel) else model
+
+
+def standard_model_state_dict(model):
+    return unwrap_model(model).state_dict()
+
+
+def normalize_checkpoint_state_dict(state_dict):
+    keys = list(state_dict.keys())
+    if not keys:
+        return state_dict
+
+    prefixed = [key.startswith("module.") for key in keys]
+    if any(prefixed) and not all(prefixed):
+        raise RuntimeError(
+            "Checkpoint state_dict mixes 'module.'-prefixed and standard keys"
+        )
+    if not all(prefixed):
+        return state_dict
+
+    normalized = state_dict.__class__()
+    for key, value in state_dict.items():
+        normalized_key = key[len("module."):]
+        if normalized_key in normalized:
+            raise RuntimeError(
+                "Checkpoint contains duplicate key after removing "
+                f"'module.' prefix: {normalized_key}"
+            )
+        normalized[normalized_key] = value
+    return normalized
+
+
+def load_model_state_dict(model, state_dict, model_name):
+    model = unwrap_model(model)
+    normalized_state = normalize_checkpoint_state_dict(state_dict)
+    expected_keys = set(model.state_dict().keys())
+    checkpoint_keys = set(normalized_state.keys())
+    missing_keys = sorted(expected_keys - checkpoint_keys)
+    unexpected_keys = sorted(checkpoint_keys - expected_keys)
+    if missing_keys or unexpected_keys:
+        raise RuntimeError(
+            f"{model_name} checkpoint state mismatch: "
+            f"missing_keys={missing_keys}, "
+            f"unexpected_keys={unexpected_keys}"
+        )
+    model.load_state_dict(normalized_state, strict=True)
+
+
+def policy_weights_for_workers(policy_net):
+    return {
+        name: value.detach().cpu()
+        for name, value in standard_model_state_dict(policy_net).items()
+    }
+
+
+def prepare_training_networks(
+    networks,
+    device,
+    enable_data_parallel=ENABLE_MULTI_GPU_DATA_PARALLEL,
+):
+    use_data_parallel = (
+        enable_data_parallel
+        and device.type == "cuda"
+        and torch.cuda.device_count() > 1
+    )
+    if use_data_parallel:
+        return tuple(nn.DataParallel(network) for network in networks)
+    return tuple(networks)
+
+
+def create_meta_agents(
+    num_meta_agents,
+    use_mamba,
+    runner_class=RLRunner,
+):
+    return [
+        runner_class.remote(i, use_mamba=use_mamba)
+        for i in range(num_meta_agents)
+    ]
 
 
 def build_checkpoint(
@@ -108,11 +177,11 @@ def build_checkpoint(
     target_q_update_counter,
 ):
     return {
-        "policy_model": policy_net.state_dict(),
-        "q_net1_model": q_net1.state_dict(),
-        "q_net2_model": q_net2.state_dict(),
-        "target_q_net1_model": target_q_net1.state_dict(),
-        "target_q_net2_model": target_q_net2.state_dict(),
+        "policy_model": standard_model_state_dict(policy_net),
+        "q_net1_model": standard_model_state_dict(q_net1),
+        "q_net2_model": standard_model_state_dict(q_net2),
+        "target_q_net1_model": standard_model_state_dict(target_q_net1),
+        "target_q_net2_model": standard_model_state_dict(target_q_net2),
         "log_alpha": log_alpha,
         "policy_optimizer": policy_optimizer.state_dict(),
         "q_net1_optimizer": q_net1_optimizer.state_dict(),
@@ -272,6 +341,10 @@ def sac_update(
 def main():
     from torch.utils.tensorboard import SummaryWriter
 
+    validate_runner_resource_config(
+        NUM_META_AGENT,
+        RUNNER_GPU_FRACTION,
+    )
     if USE_MAMBA and not torch.cuda.is_available():
         raise RuntimeError(
             "USE_MAMBA=True requires an available NVIDIA CUDA GPU"
@@ -295,12 +368,6 @@ def main():
 
     # use GPU/CPU for driver/worker
     device = torch.device('cuda') if USE_GPU_GLOBAL else torch.device('cpu')
-    local_device = (
-        torch.device('cuda')
-        if USE_GPU or USE_MAMBA
-        else torch.device('cpu')
-    )
-
     # initialize neural networks
     global_policy_net = build_policy_network(device)
     global_q_net1 = build_q_network(device)
@@ -329,18 +396,34 @@ def main():
         print('Loading Model...')
         checkpoint = torch.load(model_path + '/checkpoint.pth', map_location=device)
         validate_checkpoint_mode(checkpoint)
-        global_policy_net.load_state_dict(checkpoint['policy_model'])
-        global_q_net1.load_state_dict(checkpoint['q_net1_model'])
-        global_q_net2.load_state_dict(checkpoint['q_net2_model'])
+        load_model_state_dict(
+            global_policy_net,
+            checkpoint['policy_model'],
+            "policy",
+        )
+        load_model_state_dict(
+            global_q_net1,
+            checkpoint['q_net1_model'],
+            "q_net1",
+        )
+        load_model_state_dict(
+            global_q_net2,
+            checkpoint['q_net2_model'],
+            "q_net2",
+        )
         if (
             'target_q_net1_model' in checkpoint
             and 'target_q_net2_model' in checkpoint
         ):
-            global_target_q_net1.load_state_dict(
-                checkpoint['target_q_net1_model']
+            load_model_state_dict(
+                global_target_q_net1,
+                checkpoint['target_q_net1_model'],
+                "target_q_net1",
             )
-            global_target_q_net2.load_state_dict(
-                checkpoint['target_q_net2_model']
+            load_model_state_dict(
+                global_target_q_net2,
+                checkpoint['target_q_net2_model'],
+                "target_q_net2",
             )
             target_networks_loaded = True
         log_alpha = (
@@ -372,26 +455,33 @@ def main():
     global_target_q_net2.eval()
 
     # launch meta agents
-    meta_agents = [
-        RLRunner.remote(i, use_mamba=USE_MAMBA)
-        for i in range(NUM_META_AGENT)
-    ]
+    meta_agents = create_meta_agents(
+        num_meta_agents=NUM_META_AGENT,
+        use_mamba=USE_MAMBA,
+    )
 
     # get global networks weights
     weights_set = []
-    policy_weights = policy_weights_for_workers(
-        global_policy_net,
-        device,
-        local_device,
-    )
+    policy_weights = policy_weights_for_workers(global_policy_net)
     weights_set.append(policy_weights)
 
-    # distributed training if multiple GPUs are available
-    dp_policy = nn.DataParallel(global_policy_net)
-    dp_q_net1 = nn.DataParallel(global_q_net1)
-    dp_q_net2 = nn.DataParallel(global_q_net2)
-    dp_target_q_net1 = nn.DataParallel(global_target_q_net1)
-    dp_target_q_net2 = nn.DataParallel(global_target_q_net2)
+    # DataParallel is opt-in and only useful when multiple GPUs are present.
+    (
+        dp_policy,
+        dp_q_net1,
+        dp_q_net2,
+        dp_target_q_net1,
+        dp_target_q_net2,
+    ) = prepare_training_networks(
+        (
+            global_policy_net,
+            global_q_net1,
+            global_q_net2,
+            global_target_q_net1,
+            global_target_q_net2,
+        ),
+        device=device,
+    )
 
     # launch the first job on each runner
     job_list = []
@@ -550,11 +640,7 @@ def main():
 
             # get the updated global weights
             weights_set = []
-            policy_weights = policy_weights_for_workers(
-                global_policy_net,
-                device,
-                local_device,
-            )
+            policy_weights = policy_weights_for_workers(global_policy_net)
             weights_set.append(policy_weights)
 
             # update the target q net

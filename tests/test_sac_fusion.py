@@ -165,18 +165,25 @@ def run_one_update(testcase, use_mamba, device):
         "q1": parameter_snapshot(q1),
         "q2": parameter_snapshot(q2),
     }
-    if device.type == "cuda":
-        update_policy = torch.nn.DataParallel(policy)
-        update_q1 = torch.nn.DataParallel(q1)
-        update_q2 = torch.nn.DataParallel(q2)
-        update_target_q1 = torch.nn.DataParallel(target_q1)
-        update_target_q2 = torch.nn.DataParallel(target_q2)
-    else:
-        update_policy = policy
-        update_q1 = q1
-        update_q2 = q2
-        update_target_q1 = target_q1
-        update_target_q2 = target_q2
+    (
+        update_policy,
+        update_q1,
+        update_q2,
+        update_target_q1,
+        update_target_q2,
+    ) = driver.prepare_training_networks(
+        (policy, q1, q2, target_q1, target_q2),
+        device=device,
+    )
+    if device.type != "cuda" or torch.cuda.device_count() == 1:
+        for network in (
+            update_policy,
+            update_q1,
+            update_q2,
+            update_target_q1,
+            update_target_q2,
+        ):
+            testcase.assertNotIsInstance(network, torch.nn.DataParallel)
     current_history = batch.current_history if use_mamba else None
     next_history = batch.next_history if use_mamba else None
     result = driver.sac_update(
