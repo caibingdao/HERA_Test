@@ -207,6 +207,43 @@ class Agent:
 
         return next_position, action_index
 
+    def select_next_waypoint_cached(
+        self,
+        observation,
+        history_cache,
+        episode_id,
+        policy_version,
+        decision_step,
+    ):
+        if history_cache is None:
+            raise ValueError("history_cache is required for the cached path")
+
+        _, _, _, _, current_edge, _ = observation
+        parameter = next(self.policy_net.parameters())
+        cached_history = history_cache.get_sequence(
+            episode_id=episode_id,
+            policy_version=policy_version,
+            decision_step=decision_step,
+            device=parameter.device,
+            dtype=parameter.dtype,
+            use_mamba=self.policy_net.use_mamba,
+        )
+        with torch.no_grad():
+            logp, rollout_context = self.policy_net(
+                *observation,
+                cached_history=cached_history,
+                return_rollout_context=True,
+            )
+
+        action_index = torch.multinomial(
+            logp.exp(),
+            1,
+        ).long().squeeze(1)
+        next_node_index = current_edge[0, action_index.item(), 0].item()
+        next_position = self.node_coords[next_node_index]
+
+        return next_position, action_index, rollout_context
+
     def plot_env(self):
         plt.switch_backend('agg')
 

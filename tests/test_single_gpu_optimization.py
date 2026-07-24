@@ -20,9 +20,24 @@ class FakeRunnerClass:
     calls = []
 
     @classmethod
-    def remote(cls, meta_agent_id, use_mamba):
-        cls.calls.append((meta_agent_id, use_mamba))
-        return (meta_agent_id, use_mamba)
+    def remote(
+        cls,
+        meta_agent_id,
+        use_mamba,
+        use_rollout_history_cache,
+    ):
+        cls.calls.append(
+            (
+                meta_agent_id,
+                use_mamba,
+                use_rollout_history_cache,
+            )
+        )
+        return (
+            meta_agent_id,
+            use_mamba,
+            use_rollout_history_cache,
+        )
 
 
 class RunnerConfigurationTest(unittest.TestCase):
@@ -56,7 +71,10 @@ class RunnerConfigurationTest(unittest.TestCase):
                 self.assertEqual(len(actors), count)
                 self.assertEqual(
                     FakeRunnerClass.calls,
-                    [(index, True) for index in range(count)],
+                    [
+                        (index, True, False)
+                        for index in range(count)
+                    ],
                 )
 
     def test_invalid_runner_gpu_total_is_explicit(self):

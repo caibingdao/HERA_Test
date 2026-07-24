@@ -5,6 +5,7 @@ import math
 from models.fusion import GraphMambaFusion
 from models.history_encoder import HistoryStateEncoder
 from models.mamba_encoder import MambaTemporalEncoder
+from models.rollout_history_cache import RolloutGraphContext
 
 
 # a pointer network layer for policy output
@@ -255,9 +256,40 @@ class TemporalFusionNetwork(nn.Module):
         batch_size,
         device,
         dtype,
+        cached_history=None,
     ):
         if not self.use_mamba:
             raise RuntimeError("Temporal encoding requires use_mamba=True")
+        if history_batch is not None and cached_history is not None:
+            raise ValueError(
+                "Use either history_batch or cached_history, not both"
+            )
+        if cached_history is not None:
+            if cached_history.batch_size != batch_size:
+                raise ValueError(
+                    "Cached history and observation batch sizes must match"
+                )
+            if cached_history.sequence_length != self.mamba_seq_len:
+                raise ValueError(
+                    f"Expected cached history length {self.mamba_seq_len}, "
+                    f"got {cached_history.sequence_length}"
+                )
+            if cached_history.tokens.size(-1) != self.mamba_d_model:
+                raise ValueError(
+                    f"Expected cached token dim {self.mamba_d_model}, "
+                    f"got {cached_history.tokens.size(-1)}"
+                )
+            if (
+                cached_history.tokens.device != device
+                or cached_history.tokens.dtype != dtype
+            ):
+                raise ValueError(
+                    "Cached history device/dtype must match graph features"
+                )
+            return self.mamba_encoder(
+                cached_history.tokens,
+                padding_mask=cached_history.padding_mask,
+            )
         if history_batch is None:
             return torch.zeros(
                 batch_size,
@@ -284,7 +316,12 @@ class TemporalFusionNetwork(nn.Module):
             padding_mask=history_batch.padding_mask,
         )
 
-    def fuse_state_feature(self, graph_state_feature, history_batch):
+    def fuse_state_feature(
+        self,
+        graph_state_feature,
+        history_batch,
+        cached_history=None,
+    ):
         if not self.use_mamba:
             return graph_state_feature
         if graph_state_feature.dim() != 3 or graph_state_feature.size(1) != 1:
@@ -297,6 +334,7 @@ class TemporalFusionNetwork(nn.Module):
             batch_size=graph_state_feature.size(0),
             device=graph_state_feature.device,
             dtype=graph_state_feature.dtype,
+            cached_history=cached_history,
         )
         fused_feature = self.graph_mamba_fusion(
             graph_state_feature.squeeze(1),
@@ -370,6 +408,7 @@ class PolicyNet(TemporalFusionNetwork):
         current_edge,
         edge_padding_mask,
         history_batch=None,
+        cached_history=None,
     ):
         embedding_dim = enhanced_node_feature.size()[2]
         # current_state_feature = current_node_feature
@@ -378,6 +417,7 @@ class PolicyNet(TemporalFusionNetwork):
         current_state_feature = self.fuse_state_feature(
             current_state_feature,
             history_batch,
+            cached_history=cached_history,
         )
 
         neighboring_feature = torch.gather(enhanced_node_feature, 1,
@@ -397,15 +437,98 @@ class PolicyNet(TemporalFusionNetwork):
         current_edge,
         edge_padding_mask,
         history_batch=None,
+        cached_history=None,
+        return_rollout_context=False,
     ):
         enhanced_node_feature = self.encode_graph(node_inputs, node_padding_mask, edge_mask)
         current_node_feature, enhanced_current_node_feature = self.decode_state(
             enhanced_node_feature, current_index, node_padding_mask)
         logp = self.output_policy(current_node_feature, enhanced_current_node_feature,
                                   enhanced_node_feature, current_edge, edge_padding_mask,
-                                  history_batch)
+                                  history_batch, cached_history=cached_history)
 
-        return logp
+        if not return_rollout_context:
+            return logp
+        if not self.use_mamba:
+            raise RuntimeError(
+                "Rollout graph context requires use_mamba=True"
+            )
+        embedding_dim = enhanced_node_feature.size(-1)
+        graph_embedding = HistoryStateEncoder.pool_graph(
+            enhanced_node_feature,
+            node_padding_mask,
+        )
+        candidate_features = torch.gather(
+            enhanced_node_feature,
+            1,
+            current_edge.repeat(1, 1, embedding_dim),
+        )
+        rollout_context = RolloutGraphContext(
+            graph_embedding=graph_embedding.detach(),
+            candidate_features=candidate_features.detach(),
+        )
+        return logp, rollout_context
+
+    @torch.no_grad()
+    def finalize_rollout_history_token(
+        self,
+        rollout_context,
+        action_index,
+        robot_pose,
+        reward,
+        delta_coverage,
+        delta_frontier,
+    ):
+        if not self.use_mamba:
+            raise RuntimeError(
+                "Rollout history token requires use_mamba=True"
+            )
+        if not isinstance(rollout_context, RolloutGraphContext):
+            raise TypeError(
+                "rollout_context must be a RolloutGraphContext"
+            )
+
+        graph_embedding = rollout_context.graph_embedding
+        if graph_embedding.size(0) != 1:
+            raise ValueError("Rollout token finalization requires batch size 1")
+        action_feature = rollout_context.selected_action_feature(
+            int(action_index)
+        )
+        device = graph_embedding.device
+        dtype = graph_embedding.dtype
+        robot_pose = torch.as_tensor(
+            robot_pose,
+            device=device,
+            dtype=dtype,
+        ).reshape(1, 3)
+        reward = torch.as_tensor(
+            reward,
+            device=device,
+            dtype=dtype,
+        ).reshape(1, 1)
+        delta_coverage = torch.as_tensor(
+            delta_coverage,
+            device=device,
+            dtype=dtype,
+        ).reshape(1, 1)
+        delta_frontier = torch.as_tensor(
+            delta_frontier,
+            device=device,
+            dtype=dtype,
+        ).reshape(1, 1)
+        token = self.history_encoder(
+            graph_embedding=graph_embedding,
+            robot_pose=robot_pose,
+            action_feature=action_feature,
+            reward=reward,
+            delta_coverage=delta_coverage,
+            delta_frontier=delta_frontier,
+        )
+        return (
+            graph_embedding.detach(),
+            action_feature.detach(),
+            token.detach(),
+        )
 
 
 class QNet(TemporalFusionNetwork):

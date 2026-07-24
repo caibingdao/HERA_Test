@@ -16,11 +16,22 @@ if not os.path.exists(gifs_path):
 
 
 class Worker:
-    def __init__(self, meta_agent_id, policy_net, global_step, device='cpu', save_image=False):
+    def __init__(
+        self,
+        meta_agent_id,
+        policy_net,
+        global_step,
+        device='cpu',
+        save_image=False,
+        rollout_history_cache=None,
+        policy_version=0,
+    ):
         self.meta_agent_id = meta_agent_id
         self.global_step = global_step
         self.save_image = save_image
         self.device = device
+        self.rollout_history_cache = rollout_history_cache
+        self.policy_version = policy_version
 
         self.env = Env(global_step, plot=self.save_image)
         self.robot = Agent(policy_net, self.device, self.save_image)
@@ -36,9 +47,42 @@ class Worker:
             if COLLECT_TRAJECTORY or self.use_mamba
             else None
         )
+        if self.rollout_history_cache is not None and not self.use_mamba:
+            raise ValueError(
+                "Rollout history cache requires a Mamba policy"
+            )
         self.robot_heading = 0.0
 
     def run_episode(self):
+        if self.rollout_history_cache is not None:
+            parameter = next(self.robot.policy_net.parameters())
+            self.rollout_history_cache.start_episode(
+                episode_id=self.global_step,
+                policy_version=self.policy_version,
+                device=parameter.device,
+                dtype=parameter.dtype,
+                use_mamba=self.use_mamba,
+                sequence_length=self.robot.policy_net.mamba_seq_len,
+                graph_embedding_dim=(
+                    self.robot.policy_net
+                    .history_encoder
+                    .graph_embedding_dim
+                ),
+                token_dim=self.robot.policy_net.mamba_d_model,
+            )
+
+        try:
+            return self._run_episode()
+        finally:
+            if (
+                self.rollout_history_cache is not None
+                and self.rollout_history_cache.active
+            ):
+                self.rollout_history_cache.end_episode(
+                    self.global_step
+                )
+
+    def _run_episode(self):
         done = False
         self.robot.update_planning_state(self.env.belief_info, self.env.robot_location)
         observation = self.robot.get_observation()
@@ -64,19 +108,33 @@ class Worker:
                 dtype=torch.float32,
             )
 
-            history_batch = None
-            if self.use_mamba:
-                history_batch = build_history_sequence(
-                    self.trajectory,
-                    sequence_length=MAMBA_SEQ_LEN,
+            rollout_context = None
+            if self.rollout_history_cache is not None:
+                (
+                    next_location,
+                    action_index,
+                    rollout_context,
+                ) = self.robot.select_next_waypoint_cached(
+                    observation,
+                    history_cache=self.rollout_history_cache,
+                    episode_id=self.global_step,
+                    policy_version=self.policy_version,
+                    decision_step=i,
                 )
-                if history_batch is not None:
-                    history_batch = history_batch.to(self.device)
+            else:
+                history_batch = None
+                if self.use_mamba:
+                    history_batch = build_history_sequence(
+                        self.trajectory,
+                        sequence_length=MAMBA_SEQ_LEN,
+                    )
+                    if history_batch is not None:
+                        history_batch = history_batch.to(self.device)
 
-            next_location, action_index = self.robot.select_next_waypoint(
-                observation,
-                history_batch=history_batch,
-            )
+                next_location, action_index = self.robot.select_next_waypoint(
+                    observation,
+                    history_batch=history_batch,
+                )
             if not self.use_mamba:
                 self.save_action(action_index)
 
@@ -118,6 +176,27 @@ class Worker:
                         done=bool(done),
                         step_index=i,
                     )
+                )
+            if self.rollout_history_cache is not None:
+                (
+                    graph_embedding,
+                    action_feature,
+                    history_token,
+                ) = self.robot.policy_net.finalize_rollout_history_token(
+                    rollout_context=rollout_context,
+                    action_index=int(action_index.item()),
+                    robot_pose=robot_pose,
+                    reward=reward,
+                    delta_coverage=delta_coverage,
+                    delta_frontier=delta_frontier,
+                )
+                self.rollout_history_cache.append(
+                    episode_id=self.global_step,
+                    policy_version=self.policy_version,
+                    transition_id=i,
+                    graph_embedding=graph_embedding,
+                    action_feature=action_feature,
+                    token=history_token,
                 )
             self.robot_heading = float(next_heading)
 

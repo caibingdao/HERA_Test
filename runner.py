@@ -1,6 +1,7 @@
 import torch
 import ray
 from model import PolicyNet
+from models.rollout_history_cache import RolloutHistoryCache
 from worker import Worker
 from parameter import *
 
@@ -50,9 +51,23 @@ validate_runner_resource_config()
 
 
 class Runner(object):
-    def __init__(self, meta_agent_id, use_mamba=None):
+    def __init__(
+        self,
+        meta_agent_id,
+        use_mamba=None,
+        use_rollout_history_cache=None,
+    ):
         self.meta_agent_id = meta_agent_id
         self.use_mamba = USE_MAMBA if use_mamba is None else use_mamba
+        self.use_rollout_history_cache = (
+            USE_ROLLOUT_HISTORY_CACHE
+            if use_rollout_history_cache is None
+            else use_rollout_history_cache
+        )
+        if self.use_rollout_history_cache and not self.use_mamba:
+            raise ValueError(
+                "USE_ROLLOUT_HISTORY_CACHE=True requires USE_MAMBA=True"
+            )
         requires_cuda = USE_GPU or self.use_mamba
         if requires_cuda and not torch.cuda.is_available():
             raise RuntimeError(
@@ -74,6 +89,18 @@ class Runner(object):
             action_embedding_dim=ACTION_EMBEDDING_DIM,
         )
         self.local_network.to(self.device)
+        self.policy_version = 0
+        self.rollout_history_cache = None
+        if self.use_rollout_history_cache:
+            self.rollout_history_cache = RolloutHistoryCache(
+                sequence_length=self.local_network.mamba_seq_len,
+                graph_embedding_dim=(
+                    self.local_network
+                    .history_encoder
+                    .graph_embedding_dim
+                ),
+                token_dim=self.local_network.mamba_d_model,
+            )
 
     def get_weights(self):
         return self.local_network.state_dict()
@@ -82,15 +109,29 @@ class Runner(object):
         return {
             "device_type": self.device.type,
             "ray_gpu_ids": ray.get_gpu_ids(),
+            "use_rollout_history_cache": self.use_rollout_history_cache,
         }
 
     def set_policy_net_weights(self, weights):
         self.local_network.load_state_dict(weights)
+        self.policy_version += 1
+        if self.rollout_history_cache is not None:
+            self.rollout_history_cache.on_policy_update(
+                self.policy_version
+            )
 
     def do_job(self, episode_number):
         save_img = True if episode_number % SAVE_IMG_GAP == 0 else False
         # save_img = True
-        worker = Worker(self.meta_agent_id, self.local_network, episode_number, device=self.device, save_image=save_img)
+        worker = Worker(
+            self.meta_agent_id,
+            self.local_network,
+            episode_number,
+            device=self.device,
+            save_image=save_img,
+            rollout_history_cache=self.rollout_history_cache,
+            policy_version=self.policy_version,
+        )
         worker.run_episode()
 
         job_results = worker.episode_buffer
@@ -117,8 +158,17 @@ ACTIVE_RUNNER_GPU_FRACTION = (
 
 @ray.remote(num_cpus=1, num_gpus=ACTIVE_RUNNER_GPU_FRACTION)
 class RLRunner(Runner):
-    def __init__(self, meta_agent_id, use_mamba=None):
-        super().__init__(meta_agent_id, use_mamba=use_mamba)
+    def __init__(
+        self,
+        meta_agent_id,
+        use_mamba=None,
+        use_rollout_history_cache=None,
+    ):
+        super().__init__(
+            meta_agent_id,
+            use_mamba=use_mamba,
+            use_rollout_history_cache=use_rollout_history_cache,
+        )
 
 
 if __name__ == '__main__':

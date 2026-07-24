@@ -154,12 +154,41 @@ def prepare_training_networks(
 def create_meta_agents(
     num_meta_agents,
     use_mamba,
+    use_rollout_history_cache=USE_ROLLOUT_HISTORY_CACHE,
     runner_class=RLRunner,
 ):
     return [
-        runner_class.remote(i, use_mamba=use_mamba)
+        runner_class.remote(
+            i,
+            use_mamba=use_mamba,
+            use_rollout_history_cache=use_rollout_history_cache,
+        )
         for i in range(num_meta_agents)
     ]
+
+
+def validate_history_optimization_config(
+    use_mamba=USE_MAMBA,
+    use_rollout_history_cache=USE_ROLLOUT_HISTORY_CACHE,
+    use_learner_history_dedup=USE_LEARNER_HISTORY_DEDUP,
+):
+    for name, value in (
+        ("USE_MAMBA", use_mamba),
+        ("USE_ROLLOUT_HISTORY_CACHE", use_rollout_history_cache),
+        ("USE_LEARNER_HISTORY_DEDUP", use_learner_history_dedup),
+    ):
+        if not isinstance(value, bool):
+            raise ValueError(f"{name} must be True or False")
+    if use_rollout_history_cache and not use_mamba:
+        raise ValueError(
+            "USE_ROLLOUT_HISTORY_CACHE=True requires USE_MAMBA=True"
+        )
+    if use_learner_history_dedup:
+        raise RuntimeError(
+            "USE_LEARNER_HISTORY_DEDUP=True is unavailable: the current "
+            "SAC update does not encode current and next history with the "
+            "same network parameters in one computation graph"
+        )
 
 
 def build_checkpoint(
@@ -341,6 +370,7 @@ def sac_update(
 def main():
     from torch.utils.tensorboard import SummaryWriter
 
+    validate_history_optimization_config()
     validate_runner_resource_config(
         NUM_META_AGENT,
         RUNNER_GPU_FRACTION,
@@ -359,6 +389,11 @@ def main():
         object_store_memory=RAY_OBJECT_STORE_MEMORY,
     )
     print("Welcome to RL autonomous exploration!")
+    print(
+        "History optimizations: "
+        f"rollout_cache={USE_ROLLOUT_HISTORY_CACHE}, "
+        f"learner_dedup={USE_LEARNER_HISTORY_DEDUP}"
+    )
 
     writer = SummaryWriter(train_path)
     if not os.path.exists(model_path):
@@ -458,6 +493,7 @@ def main():
     meta_agents = create_meta_agents(
         num_meta_agents=NUM_META_AGENT,
         use_mamba=USE_MAMBA,
+        use_rollout_history_cache=USE_ROLLOUT_HISTORY_CACHE,
     )
 
     # get global networks weights
