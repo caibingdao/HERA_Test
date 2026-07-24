@@ -2,6 +2,10 @@ import torch
 import torch.nn as nn
 import math
 
+from models.fusion import GraphMambaFusion
+from models.history_encoder import HistoryStateEncoder
+from models.mamba_encoder import MambaTemporalEncoder
+
 
 # a pointer network layer for policy output
 class SingleHeadAttention(nn.Module):
@@ -204,8 +208,117 @@ class Decoder(nn.Module):
         return tgt, w
 
 
-class PolicyNet(nn.Module):
-    def __init__(self, node_dim, embedding_dim):
+class TemporalFusionNetwork(nn.Module):
+    """Shared temporal-branch plumbing for otherwise independent networks."""
+
+    def _initialize_temporal_branch(
+        self,
+        embedding_dim,
+        use_mamba,
+        mamba_seq_len,
+        mamba_d_model,
+        mamba_d_state,
+        mamba_d_conv,
+        mamba_expand,
+        fusion_hidden_dim,
+        action_embedding_dim,
+    ):
+        self.use_mamba = bool(use_mamba)
+        self.mamba_seq_len = mamba_seq_len
+        self.mamba_d_model = mamba_d_model
+        if not self.use_mamba:
+            return
+        if mamba_seq_len <= 0:
+            raise ValueError("mamba_seq_len must be positive")
+
+        self.history_encoder = HistoryStateEncoder(
+            graph_embedding_dim=embedding_dim,
+            action_embedding_dim=action_embedding_dim,
+            token_dim=mamba_d_model,
+        )
+        self.mamba_encoder = MambaTemporalEncoder(
+            d_model=mamba_d_model,
+            d_state=mamba_d_state,
+            d_conv=mamba_d_conv,
+            expand=mamba_expand,
+        )
+        self.graph_mamba_fusion = GraphMambaFusion(
+            graph_dim=embedding_dim,
+            temporal_dim=mamba_d_model,
+            hidden_dim=fusion_hidden_dim,
+            output_dim=embedding_dim,
+        )
+
+    def encode_temporal_history(
+        self,
+        history_batch,
+        batch_size,
+        device,
+        dtype,
+    ):
+        if not self.use_mamba:
+            raise RuntimeError("Temporal encoding requires use_mamba=True")
+        if history_batch is None:
+            return torch.zeros(
+                batch_size,
+                self.mamba_d_model,
+                device=device,
+                dtype=dtype,
+            )
+        if history_batch.batch_size != batch_size:
+            raise ValueError(
+                "History and current observation batch sizes must match"
+            )
+        if history_batch.sequence_length != self.mamba_seq_len:
+            raise ValueError(
+                f"Expected history length {self.mamba_seq_len}, "
+                f"got {history_batch.sequence_length}"
+            )
+
+        temporal_tokens = self.history_encoder.encode_sequence(
+            self,
+            history_batch,
+        )
+        return self.mamba_encoder(
+            temporal_tokens,
+            padding_mask=history_batch.padding_mask,
+        )
+
+    def fuse_state_feature(self, graph_state_feature, history_batch):
+        if not self.use_mamba:
+            return graph_state_feature
+        if graph_state_feature.dim() != 3 or graph_state_feature.size(1) != 1:
+            raise ValueError(
+                "Graph state feature must have shape [batch, 1, dim]"
+            )
+
+        temporal_feature = self.encode_temporal_history(
+            history_batch=history_batch,
+            batch_size=graph_state_feature.size(0),
+            device=graph_state_feature.device,
+            dtype=graph_state_feature.dtype,
+        )
+        fused_feature = self.graph_mamba_fusion(
+            graph_state_feature.squeeze(1),
+            temporal_feature,
+        )
+        return fused_feature.unsqueeze(1)
+
+
+class PolicyNet(TemporalFusionNetwork):
+    def __init__(
+        self,
+        node_dim,
+        embedding_dim,
+        use_mamba=False,
+        mamba_seq_len=8,
+        mamba_d_model=128,
+        mamba_d_state=16,
+        mamba_d_conv=4,
+        mamba_expand=2,
+        fusion_hidden_dim=128,
+        action_embedding_dim=16,
+    ):
         super(PolicyNet, self).__init__()
 
         # local graph encoder
@@ -219,6 +332,18 @@ class PolicyNet(nn.Module):
         # pointer
         self.pointer = SingleHeadAttention(embedding_dim)
 
+        self._initialize_temporal_branch(
+            embedding_dim=embedding_dim,
+            use_mamba=use_mamba,
+            mamba_seq_len=mamba_seq_len,
+            mamba_d_model=mamba_d_model,
+            mamba_d_state=mamba_d_state,
+            mamba_d_conv=mamba_d_conv,
+            mamba_expand=mamba_expand,
+            fusion_hidden_dim=fusion_hidden_dim,
+            action_embedding_dim=action_embedding_dim,
+        )
+
     def encode_graph(self, node_inputs, node_padding_mask, edge_mask):
         node_feature = self.initial_embedding(node_inputs)
         enhanced_node_feature = self.encoder(src=node_feature,
@@ -237,12 +362,23 @@ class PolicyNet(nn.Module):
 
         return current_node_feature, enhanced_current_node_feature
 
-    def output_policy(self, current_node_feature, enhanced_current_node_feature,
-                      enhanced_node_feature, current_edge, edge_padding_mask):
+    def output_policy(
+        self,
+        current_node_feature,
+        enhanced_current_node_feature,
+        enhanced_node_feature,
+        current_edge,
+        edge_padding_mask,
+        history_batch=None,
+    ):
         embedding_dim = enhanced_node_feature.size()[2]
         # current_state_feature = current_node_feature
         current_state_feature = self.current_embedding(torch.cat((enhanced_current_node_feature,
                                                                 current_node_feature), dim=-1))
+        current_state_feature = self.fuse_state_feature(
+            current_state_feature,
+            history_batch,
+        )
 
         neighboring_feature = torch.gather(enhanced_node_feature, 1,
                                            current_edge.repeat(1, 1, embedding_dim))
@@ -252,19 +388,40 @@ class PolicyNet(nn.Module):
 
         return logp
 
-    def forward(self, node_inputs, node_padding_mask, edge_mask, current_index,
-                current_edge, edge_padding_mask):
+    def forward(
+        self,
+        node_inputs,
+        node_padding_mask,
+        edge_mask,
+        current_index,
+        current_edge,
+        edge_padding_mask,
+        history_batch=None,
+    ):
         enhanced_node_feature = self.encode_graph(node_inputs, node_padding_mask, edge_mask)
         current_node_feature, enhanced_current_node_feature = self.decode_state(
             enhanced_node_feature, current_index, node_padding_mask)
         logp = self.output_policy(current_node_feature, enhanced_current_node_feature,
-                                  enhanced_node_feature, current_edge, edge_padding_mask)
+                                  enhanced_node_feature, current_edge, edge_padding_mask,
+                                  history_batch)
 
         return logp
 
 
-class QNet(nn.Module):
-    def __init__(self, node_dim, embedding_dim):
+class QNet(TemporalFusionNetwork):
+    def __init__(
+        self,
+        node_dim,
+        embedding_dim,
+        use_mamba=False,
+        mamba_seq_len=8,
+        mamba_d_model=128,
+        mamba_d_state=16,
+        mamba_d_conv=4,
+        mamba_expand=2,
+        fusion_hidden_dim=128,
+        action_embedding_dim=16,
+    ):
         super(QNet, self).__init__()
 
         # local graph encoder
@@ -277,6 +434,18 @@ class QNet(nn.Module):
 
         self.q_values_layer = nn.Linear(embedding_dim * 2, 1)
 
+        self._initialize_temporal_branch(
+            embedding_dim=embedding_dim,
+            use_mamba=use_mamba,
+            mamba_seq_len=mamba_seq_len,
+            mamba_d_model=mamba_d_model,
+            mamba_d_state=mamba_d_state,
+            mamba_d_conv=mamba_d_conv,
+            mamba_expand=mamba_expand,
+            fusion_hidden_dim=fusion_hidden_dim,
+            action_embedding_dim=action_embedding_dim,
+        )
+
     def encode_graph(self, node_inputs, node_padding_mask, edge_mask):
         node_feature = self.initial_embedding(node_inputs)
         enhanced_node_feature = self.encoder(src=node_feature,
@@ -295,13 +464,24 @@ class QNet(nn.Module):
 
         return current_node_feature, enhanced_current_node_feature
 
-    def output_q(self, current_node_feature, enhanced_current_node_feature, enhanced_node_feature,
-                 current_edge, edge_padding_mask):
+    def output_q(
+        self,
+        current_node_feature,
+        enhanced_current_node_feature,
+        enhanced_node_feature,
+        current_edge,
+        edge_padding_mask,
+        history_batch=None,
+    ):
         embedding_dim = enhanced_node_feature.size()[2]
         k_size = current_edge.size()[1]
         # current_state_feature = current_node_feature
         current_state_feature = self.current_embedding(torch.cat((enhanced_current_node_feature,
                                                                  current_node_feature), dim=-1))
+        current_state_feature = self.fuse_state_feature(
+            current_state_feature,
+            history_batch,
+        )
 
         neighboring_feature = torch.gather(enhanced_node_feature, 1,
                                            current_edge.repeat(1, 1, embedding_dim))
@@ -310,11 +490,20 @@ class QNet(nn.Module):
         q_values = self.q_values_layer(action_features)
         return q_values
 
-    def forward(self, node_inputs, node_padding_mask, edge_mask, current_index,
-                current_edge, edge_padding_mask):
+    def forward(
+        self,
+        node_inputs,
+        node_padding_mask,
+        edge_mask,
+        current_index,
+        current_edge,
+        edge_padding_mask,
+        history_batch=None,
+    ):
         enhanced_node_feature = self.encode_graph(node_inputs, node_padding_mask, edge_mask)
         current_node_feature, enhanced_current_node_feature = self.decode_state(enhanced_node_feature, current_index, node_padding_mask)
         q_values = self.output_q(current_node_feature, enhanced_current_node_feature,
-                                 enhanced_node_feature, current_edge, edge_padding_mask)
+                                 enhanced_node_feature, current_edge, edge_padding_mask,
+                                 history_batch)
 
         return q_values

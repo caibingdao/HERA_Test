@@ -1,7 +1,6 @@
 import torch
 import torch.optim as optim
 import torch.nn as nn
-from torch.utils.tensorboard import SummaryWriter
 import ray
 import os
 import numpy as np
@@ -12,30 +11,305 @@ from replay_buffer import TrajectoryReplayBuffer
 from runner import RLRunner
 from parameter import *
 
-ray.init()
-print("Welcome to RL autonomous exploration!")
 
-writer = SummaryWriter(train_path)
-if not os.path.exists(model_path):
-    os.makedirs(model_path)
-if not os.path.exists(gifs_path):
-    os.makedirs(gifs_path)
+def network_kwargs():
+    return {
+        "use_mamba": USE_MAMBA,
+        "mamba_seq_len": MAMBA_SEQ_LEN,
+        "mamba_d_model": MAMBA_D_MODEL,
+        "mamba_d_state": MAMBA_D_STATE,
+        "mamba_d_conv": MAMBA_D_CONV,
+        "mamba_expand": MAMBA_EXPAND,
+        "fusion_hidden_dim": FUSION_HIDDEN_DIM,
+        "action_embedding_dim": ACTION_EMBEDDING_DIM,
+    }
+
+
+def build_policy_network(device):
+    return PolicyNet(
+        NODE_INPUT_DIM,
+        EMBEDDING_DIM,
+        **network_kwargs(),
+    ).to(device)
+
+
+def build_q_network(device):
+    return QNet(
+        NODE_INPUT_DIM,
+        EMBEDDING_DIM,
+        **network_kwargs(),
+    ).to(device)
+
+
+def validate_checkpoint_mode(checkpoint):
+    checkpoint_uses_mamba = bool(checkpoint.get("use_mamba", False))
+    if checkpoint_uses_mamba != USE_MAMBA:
+        raise RuntimeError(
+            "Checkpoint/model mode mismatch: checkpoint USE_MAMBA="
+            f"{checkpoint_uses_mamba}, current USE_MAMBA={USE_MAMBA}. "
+            "Use a checkpoint created by the same model variant."
+        )
+    if USE_MAMBA:
+        missing_target_keys = [
+            key
+            for key in (
+                "target_q_net1_model",
+                "target_q_net2_model",
+            )
+            if key not in checkpoint
+        ]
+        if missing_target_keys:
+            raise RuntimeError(
+                "Mamba checkpoint is missing target critic state: "
+                f"{missing_target_keys}"
+            )
+        expected_config = {
+            "sequence_length": MAMBA_SEQ_LEN,
+            "d_model": MAMBA_D_MODEL,
+            "d_state": MAMBA_D_STATE,
+            "d_conv": MAMBA_D_CONV,
+            "expand": MAMBA_EXPAND,
+            "fusion_hidden_dim": FUSION_HIDDEN_DIM,
+            "action_embedding_dim": ACTION_EMBEDDING_DIM,
+        }
+        checkpoint_config = checkpoint.get("mamba_config")
+        if checkpoint_config != expected_config:
+            raise RuntimeError(
+                "Mamba checkpoint configuration mismatch: "
+                f"checkpoint={checkpoint_config}, expected={expected_config}"
+            )
+
+
+def policy_weights_for_workers(policy_net, device, local_device):
+    if USE_MAMBA:
+        return {
+            name: value.detach().cpu()
+            for name, value in policy_net.state_dict().items()
+        }
+    if device != local_device:
+        policy_weights = policy_net.to(local_device).state_dict()
+        policy_net.to(device)
+        return policy_weights
+    return policy_net.to(local_device).state_dict()
+
+
+def build_checkpoint(
+    policy_net,
+    q_net1,
+    q_net2,
+    target_q_net1,
+    target_q_net2,
+    log_alpha,
+    policy_optimizer,
+    q_net1_optimizer,
+    q_net2_optimizer,
+    log_alpha_optimizer,
+    episode,
+    target_q_update_counter,
+):
+    return {
+        "policy_model": policy_net.state_dict(),
+        "q_net1_model": q_net1.state_dict(),
+        "q_net2_model": q_net2.state_dict(),
+        "target_q_net1_model": target_q_net1.state_dict(),
+        "target_q_net2_model": target_q_net2.state_dict(),
+        "log_alpha": log_alpha,
+        "policy_optimizer": policy_optimizer.state_dict(),
+        "q_net1_optimizer": q_net1_optimizer.state_dict(),
+        "q_net2_optimizer": q_net2_optimizer.state_dict(),
+        "log_alpha_optimizer": log_alpha_optimizer.state_dict(),
+        "episode": episode,
+        "target_q_update_counter": target_q_update_counter,
+        "use_mamba": USE_MAMBA,
+        "mamba_config": {
+            "sequence_length": MAMBA_SEQ_LEN,
+            "d_model": MAMBA_D_MODEL,
+            "d_state": MAMBA_D_STATE,
+            "d_conv": MAMBA_D_CONV,
+            "expand": MAMBA_EXPAND,
+            "fusion_hidden_dim": FUSION_HIDDEN_DIM,
+            "action_embedding_dim": ACTION_EMBEDDING_DIM,
+        },
+    }
+
+
+def sac_update(
+    policy_net,
+    q_net1,
+    q_net2,
+    target_q_net1,
+    target_q_net2,
+    policy_optimizer,
+    q_net1_optimizer,
+    q_net2_optimizer,
+    log_alpha,
+    log_alpha_optimizer,
+    entropy_target,
+    observation,
+    action,
+    reward,
+    done,
+    next_observation,
+    current_history=None,
+    next_history=None,
+):
+    """Run the original discrete SAC losses for exactly one sampled batch."""
+    with torch.no_grad():
+        q_values1 = q_net1(
+            *observation,
+            history_batch=current_history,
+        )
+        q_values2 = q_net2(
+            *observation,
+            history_batch=current_history,
+        )
+        q_values = torch.min(q_values1, q_values2)
+
+    logp = policy_net(
+        *observation,
+        history_batch=current_history,
+    )
+    policy_loss = torch.sum(
+        (
+            logp.exp().unsqueeze(2)
+            * (
+                log_alpha.exp().detach() * logp.unsqueeze(2)
+                - q_values.detach()
+            )
+        ),
+        dim=1,
+    ).mean()
+
+    policy_optimizer.zero_grad()
+    policy_loss.backward()
+    policy_grad_norm = torch.nn.utils.clip_grad_norm_(
+        policy_net.parameters(),
+        max_norm=100,
+        norm_type=2,
+    )
+    policy_optimizer.step()
+
+    with torch.no_grad():
+        next_logp = policy_net(
+            *next_observation,
+            history_batch=next_history,
+        )
+        next_q_values1 = target_q_net1(
+            *next_observation,
+            history_batch=next_history,
+        )
+        next_q_values2 = target_q_net2(
+            *next_observation,
+            history_batch=next_history,
+        )
+        next_q_values = torch.min(next_q_values1, next_q_values2)
+        value_prime = torch.sum(
+            next_logp.unsqueeze(2).exp()
+            * (
+                next_q_values
+                - log_alpha.exp() * next_logp.unsqueeze(2)
+            ),
+            dim=1,
+        ).unsqueeze(1)
+        target_q_batch = reward + GAMMA * (1 - done) * value_prime
+
+    mse_loss = nn.MSELoss()
+
+    q_values1 = q_net1(
+        *observation,
+        history_batch=current_history,
+    )
+    q1 = torch.gather(q_values1, 1, action)
+    q1_loss = mse_loss(q1, target_q_batch.detach()).mean()
+
+    q_net1_optimizer.zero_grad()
+    q1_loss.backward()
+    q1_grad_norm = torch.nn.utils.clip_grad_norm_(
+        q_net1.parameters(),
+        max_norm=20000,
+        norm_type=2,
+    )
+    q_net1_optimizer.step()
+
+    q_values2 = q_net2(
+        *observation,
+        history_batch=current_history,
+    )
+    q2 = torch.gather(q_values2, 1, action)
+    q2_loss = mse_loss(q2, target_q_batch.detach()).mean()
+
+    q_net2_optimizer.zero_grad()
+    q2_loss.backward()
+    q2_grad_norm = torch.nn.utils.clip_grad_norm_(
+        q_net2.parameters(),
+        max_norm=20000,
+        norm_type=2,
+    )
+    q_net2_optimizer.step()
+
+    entropy = (logp * logp.exp()).sum(dim=-1)
+    alpha_loss = -(
+        log_alpha * (entropy.detach() + entropy_target)
+    ).mean()
+
+    log_alpha_optimizer.zero_grad()
+    alpha_loss.backward()
+    log_alpha_optimizer.step()
+
+    return {
+        "policy_loss": policy_loss,
+        "q1_loss": q1_loss,
+        "q2_loss": q2_loss,
+        "alpha_loss": alpha_loss,
+        "entropy": entropy,
+        "value_prime": value_prime,
+        "policy_grad_norm": policy_grad_norm,
+        "q1_grad_norm": q1_grad_norm,
+        "q2_grad_norm": q2_grad_norm,
+    }
 
 
 def main():
+    from torch.utils.tensorboard import SummaryWriter
+
+    if USE_MAMBA and not torch.cuda.is_available():
+        raise RuntimeError(
+            "USE_MAMBA=True requires an available NVIDIA CUDA GPU"
+        )
+    if USE_MAMBA and not USE_GPU_GLOBAL:
+        raise RuntimeError(
+            "USE_MAMBA=True requires USE_GPU_GLOBAL=True"
+        )
+
+    ray.init(
+        num_cpus=NUM_META_AGENT,
+        object_store_memory=RAY_OBJECT_STORE_MEMORY,
+    )
+    print("Welcome to RL autonomous exploration!")
+
+    writer = SummaryWriter(train_path)
+    if not os.path.exists(model_path):
+        os.makedirs(model_path)
+    if not os.path.exists(gifs_path):
+        os.makedirs(gifs_path)
+
     # use GPU/CPU for driver/worker
     device = torch.device('cuda') if USE_GPU_GLOBAL else torch.device('cpu')
-    local_device = torch.device('cuda') if USE_GPU else torch.device('cpu')
+    local_device = (
+        torch.device('cuda')
+        if USE_GPU or USE_MAMBA
+        else torch.device('cpu')
+    )
 
     # initialize neural networks
-    global_policy_net = PolicyNet(NODE_INPUT_DIM, EMBEDDING_DIM).to(device)
-    global_q_net1 = QNet(NODE_INPUT_DIM, EMBEDDING_DIM).to(device)
-    global_q_net2 = QNet(NODE_INPUT_DIM, EMBEDDING_DIM).to(device)
+    global_policy_net = build_policy_network(device)
+    global_q_net1 = build_q_network(device)
+    global_q_net2 = build_q_network(device)
     log_alpha = torch.FloatTensor([-2]).to(device)
     log_alpha.requires_grad = True
 
-    global_target_q_net1 = QNet(NODE_INPUT_DIM, EMBEDDING_DIM).to(device)
-    global_target_q_net2 = QNet(NODE_INPUT_DIM, EMBEDDING_DIM).to(device)
+    global_target_q_net1 = build_q_network(device)
+    global_target_q_net2 = build_q_network(device)
 
     # initialize optimizers
     global_policy_optimizer = optim.Adam(global_policy_net.parameters(), lr=LR)
@@ -48,15 +322,33 @@ def main():
 
     curr_episode = 0
     target_q_update_counter = 1
+    target_networks_loaded = False
 
     # load model and optimizer trained before
     if LOAD_MODEL:
         print('Loading Model...')
         checkpoint = torch.load(model_path + '/checkpoint.pth', map_location=device)
+        validate_checkpoint_mode(checkpoint)
         global_policy_net.load_state_dict(checkpoint['policy_model'])
         global_q_net1.load_state_dict(checkpoint['q_net1_model'])
         global_q_net2.load_state_dict(checkpoint['q_net2_model'])
-        log_alpha = checkpoint['log_alpha'] 
+        if (
+            'target_q_net1_model' in checkpoint
+            and 'target_q_net2_model' in checkpoint
+        ):
+            global_target_q_net1.load_state_dict(
+                checkpoint['target_q_net1_model']
+            )
+            global_target_q_net2.load_state_dict(
+                checkpoint['target_q_net2_model']
+            )
+            target_networks_loaded = True
+        log_alpha = (
+            checkpoint['log_alpha']
+            .to(device)
+            .detach()
+            .requires_grad_(True)
+        )
         log_alpha_optimizer = optim.Adam([log_alpha], lr=1e-4)
         
         global_policy_optimizer.load_state_dict(checkpoint['policy_optimizer'])
@@ -64,26 +356,34 @@ def main():
         global_q_net2_optimizer.load_state_dict(checkpoint['q_net2_optimizer'])
         log_alpha_optimizer.load_state_dict(checkpoint['log_alpha_optimizer'])
         curr_episode = checkpoint['episode']
+        target_q_update_counter = checkpoint.get(
+            'target_q_update_counter',
+            1,
+        )
 
         print("curr_episode set to ", curr_episode)
         print(log_alpha, log_alpha.requires_grad)
         print(global_policy_optimizer.state_dict()['param_groups'][0]['lr'])
 
-    global_target_q_net1.load_state_dict(global_q_net1.state_dict())
-    global_target_q_net2.load_state_dict(global_q_net2.state_dict())
+    if not target_networks_loaded:
+        global_target_q_net1.load_state_dict(global_q_net1.state_dict())
+        global_target_q_net2.load_state_dict(global_q_net2.state_dict())
     global_target_q_net1.eval()
     global_target_q_net2.eval()
 
     # launch meta agents
-    meta_agents = [RLRunner.remote(i) for i in range(NUM_META_AGENT)]
+    meta_agents = [
+        RLRunner.remote(i, use_mamba=USE_MAMBA)
+        for i in range(NUM_META_AGENT)
+    ]
 
     # get global networks weights
     weights_set = []
-    if device != local_device:
-        policy_weights = global_policy_net.to(local_device).state_dict()
-        global_policy_net.to(device)
-    else:
-        policy_weights = global_policy_net.to(local_device).state_dict()
+    policy_weights = policy_weights_for_workers(
+        global_policy_net,
+        device,
+        local_device,
+    )
     weights_set.append(policy_weights)
 
     # distributed training if multiple GPUs are available
@@ -135,11 +435,16 @@ def main():
             job_list.append(meta_agents[info['id']].job.remote(weights_set, curr_episode))
 
             # start training
-            if curr_episode % 1 == 0 and len(experience_buffer[0]) >= MINIMUM_BUFFER_SIZE:
+            replay_steps = (
+                trajectory_replay_buffer.available_transitions
+                if USE_MAMBA
+                else len(experience_buffer[0])
+            )
+            if curr_episode % 1 == 0 and replay_steps >= MINIMUM_BUFFER_SIZE:
                 print("training")
 
                 # keep the replay buffer size
-                if len(experience_buffer[0]) >= REPLAY_SIZE:
+                if not USE_MAMBA and len(experience_buffer[0]) >= REPLAY_SIZE:
                     for i in range(len(experience_buffer)):
                         experience_buffer[i] = experience_buffer[i][-REPLAY_SIZE:]
 
@@ -147,89 +452,81 @@ def main():
 
                 # training for n times each step
                 for j in range(8):
-                    # randomly sample a batch data
-                    sample_indices = random.sample(indices, BATCH_SIZE)
-                    rollouts = []
-                    for i in range(len(experience_buffer)):
-                        rollouts.append([experience_buffer[i][index] for index in sample_indices])
+                    if USE_MAMBA:
+                        aligned_batch = (
+                            trajectory_replay_buffer
+                            .sample_aligned_transitions(
+                                batch_size=BATCH_SIZE,
+                                sequence_length=MAMBA_SEQ_LEN,
+                                seed=random.randrange(2 ** 63),
+                            )
+                            .to(device)
+                        )
+                        observation = list(aligned_batch.observations)
+                        action = aligned_batch.actions
+                        reward = aligned_batch.rewards
+                        done = aligned_batch.dones
+                        next_observation = list(
+                            aligned_batch.next_observations
+                        )
+                        current_history = aligned_batch.current_history
+                        next_history = aligned_batch.next_history
+                    else:
+                        # Original single-transition replay path.
+                        sample_indices = random.sample(
+                            indices,
+                            BATCH_SIZE,
+                        )
+                        rollouts = []
+                        for i in range(len(experience_buffer)):
+                            rollouts.append(
+                                [
+                                    experience_buffer[i][index]
+                                    for index in sample_indices
+                                ]
+                            )
 
-                    # stack batch data to tensors
-                    node_inputs = torch.stack(rollouts[0]).to(device)
-                    node_padding_mask = torch.stack(rollouts[1]).to(device)
-                    edge_mask = torch.stack(rollouts[2]).to(device)
-                    current_index = torch.stack(rollouts[3]).to(device)
-                    current_edge = torch.stack(rollouts[4]).to(device)
-                    edge_padding_mask = torch.stack(rollouts[5]).to(device)
-                    action = torch.stack(rollouts[6]).to(device)
-                    reward = torch.stack(rollouts[7]).to(device)
-                    done = torch.stack(rollouts[8]).to(device)
-                    next_node_inputs = torch.stack(rollouts[9]).to(device)
-                    next_node_padding_mask = torch.stack(rollouts[10]).to(device)
-                    next_edge_mask = torch.stack(rollouts[11]).to(device)
-                    next_current_index = torch.stack(rollouts[12]).to(device)
-                    next_current_edge = torch.stack(rollouts[13]).to(device)
-                    next_edge_padding_mask = torch.stack(rollouts[14]).to(device)
+                        stacked = [
+                            torch.stack(rollout).to(device)
+                            for rollout in rollouts
+                        ]
+                        observation = stacked[0:6]
+                        action, reward, done = stacked[6:9]
+                        next_observation = stacked[9:15]
+                        current_history = None
+                        next_history = None
 
-                    observation = [node_inputs, node_padding_mask, edge_mask, current_index,
-                                   current_edge, edge_padding_mask]
-                    next_observation = [next_node_inputs, next_node_padding_mask, next_edge_mask,
-                                        next_current_index, next_current_edge, next_edge_padding_mask]
+                    update_result = sac_update(
+                        policy_net=dp_policy,
+                        q_net1=dp_q_net1,
+                        q_net2=dp_q_net2,
+                        target_q_net1=dp_target_q_net1,
+                        target_q_net2=dp_target_q_net2,
+                        policy_optimizer=global_policy_optimizer,
+                        q_net1_optimizer=global_q_net1_optimizer,
+                        q_net2_optimizer=global_q_net2_optimizer,
+                        log_alpha=log_alpha,
+                        log_alpha_optimizer=log_alpha_optimizer,
+                        entropy_target=entropy_target,
+                        observation=observation,
+                        action=action,
+                        reward=reward,
+                        done=done,
+                        next_observation=next_observation,
+                        current_history=current_history,
+                        next_history=next_history,
+                    )
 
-                    # SAC
-                    with torch.no_grad():
-                        q_values1 = dp_q_net1(*observation)
-                        q_values2 = dp_q_net2(*observation)
-                        q_values = torch.min(q_values1, q_values2)
-
-                    logp = dp_policy(*observation)
-                    policy_loss = torch.sum(
-                        (logp.exp().unsqueeze(2) * (log_alpha.exp().detach() * logp.unsqueeze(2) - q_values.detach())),
-                        dim=1).mean()
-
-                    global_policy_optimizer.zero_grad()
-                    policy_loss.backward()
-                    policy_grad_norm = torch.nn.utils.clip_grad_norm_(global_policy_net.parameters(), max_norm=100,
-                                                                      norm_type=2)
-                    global_policy_optimizer.step()
-
-                    with torch.no_grad():
-                        next_logp = dp_policy(*next_observation)
-                        next_q_values1 = dp_target_q_net1(*next_observation)
-                        next_q_values2 = dp_target_q_net2(*next_observation)
-                        next_q_values = torch.min(next_q_values1, next_q_values2)
-                        value_prime = torch.sum(
-                            next_logp.unsqueeze(2).exp() * (next_q_values - log_alpha.exp() * next_logp.unsqueeze(2)),
-                            dim=1).unsqueeze(1)
-                        target_q_batch = reward + GAMMA * (1 - done) * value_prime
-
-                    mse_loss = nn.MSELoss()
-
-                    q_values1 = dp_q_net1(*observation)
-                    q1 = torch.gather(q_values1, 1, action)
-                    q1_loss = mse_loss(q1, target_q_batch.detach()).mean()
-
-                    global_q_net1_optimizer.zero_grad()
-                    q1_loss.backward()
-                    q_grad_norm = torch.nn.utils.clip_grad_norm_(global_q_net1.parameters(), max_norm=20000,
-                                                                 norm_type=2)
-                    global_q_net1_optimizer.step()
-
-                    q_values2 = dp_q_net2(*observation)
-                    q2 = torch.gather(q_values2, 1, action)
-                    q2_loss = mse_loss(q2, target_q_batch.detach()).mean()
-
-                    global_q_net2_optimizer.zero_grad()
-                    q2_loss.backward()
-                    q_grad_norm = torch.nn.utils.clip_grad_norm_(global_q_net2.parameters(), max_norm=20000,
-                                                                 norm_type=2)
-                    global_q_net2_optimizer.step()
-
-                    entropy = (logp * logp.exp()).sum(dim=-1)
-                    alpha_loss = -(log_alpha * (entropy.detach() + entropy_target)).mean()
-
-                    log_alpha_optimizer.zero_grad()
-                    alpha_loss.backward()
-                    log_alpha_optimizer.step()
+                    policy_loss = update_result["policy_loss"]
+                    q1_loss = update_result["q1_loss"]
+                    q2_loss = update_result["q2_loss"]
+                    alpha_loss = update_result["alpha_loss"]
+                    entropy = update_result["entropy"]
+                    value_prime = update_result["value_prime"]
+                    policy_grad_norm = update_result[
+                        "policy_grad_norm"
+                    ]
+                    q_grad_norm = update_result["q2_grad_norm"]
 
                     target_q_update_counter += 1
                     # print("target q update counter", target_q_update_counter % 1024)
@@ -253,11 +550,11 @@ def main():
 
             # get the updated global weights
             weights_set = []
-            if device != local_device:
-                policy_weights = global_policy_net.to(local_device).state_dict()
-                global_policy_net.to(device)
-            else:
-                policy_weights = global_policy_net.to(local_device).state_dict()
+            policy_weights = policy_weights_for_workers(
+                global_policy_net,
+                device,
+                local_device,
+            )
             weights_set.append(policy_weights)
 
             # update the target q net
@@ -272,16 +569,20 @@ def main():
             # save the model
             if curr_episode % 32 == 0:
                 print('Saving model', end='\n')
-                checkpoint = {"policy_model": global_policy_net.state_dict(),
-                              "q_net1_model": global_q_net1.state_dict(),
-                              "q_net2_model": global_q_net2.state_dict(),
-                              "log_alpha": log_alpha,
-                              "policy_optimizer": global_policy_optimizer.state_dict(),
-                              "q_net1_optimizer": global_q_net1_optimizer.state_dict(),
-                              "q_net2_optimizer": global_q_net2_optimizer.state_dict(),
-                              "log_alpha_optimizer": log_alpha_optimizer.state_dict(),
-                              "episode": curr_episode,
-                              }
+                checkpoint = build_checkpoint(
+                    policy_net=global_policy_net,
+                    q_net1=global_q_net1,
+                    q_net2=global_q_net2,
+                    target_q_net1=global_target_q_net1,
+                    target_q_net2=global_target_q_net2,
+                    log_alpha=log_alpha,
+                    policy_optimizer=global_policy_optimizer,
+                    q_net1_optimizer=global_q_net1_optimizer,
+                    q_net2_optimizer=global_q_net2_optimizer,
+                    log_alpha_optimizer=log_alpha_optimizer,
+                    episode=curr_episode,
+                    target_q_update_counter=target_q_update_counter,
+                )
                 path_checkpoint = "./" + model_path + "/checkpoint.pth"
                 torch.save(checkpoint, path_checkpoint)
                 print('Saved model', end='\n')
@@ -290,6 +591,9 @@ def main():
         print("CTRL_C pressed. Killing remote workers")
         for a in meta_agents:
             ray.kill(a)
+    finally:
+        writer.close()
+        ray.shutdown()
 
 
 def write_to_tensor_board(writer, tensorboard_data, curr_episode):

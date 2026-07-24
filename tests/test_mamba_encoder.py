@@ -84,8 +84,53 @@ class MambaTemporalEncoderTest(unittest.TestCase):
             },
         )
 
+    def test_left_padding_mask_uses_only_valid_history(self):
+        temporal_tokens = torch.randn(
+            3,
+            TEMPORAL_SEQUENCE_LENGTH,
+            TEMPORAL_TOKEN_DIM,
+            device=self.device,
+            requires_grad=True,
+        )
+        padding_mask = torch.tensor(
+            [
+                [True, True, True, True, True, False, False, False],
+                [False, False, False, False, False, False, False, False],
+                [True, True, True, True, True, True, True, True],
+            ],
+            device=self.device,
+        )
+        encoder = MambaTemporalEncoder(
+            d_model=TEMPORAL_TOKEN_DIM,
+        ).to(self.device)
+
+        masked_output = encoder(
+            temporal_tokens,
+            padding_mask=padding_mask,
+        )
+        first_reference = encoder(temporal_tokens[0:1, -3:, :])
+        second_reference = encoder(temporal_tokens[1:2])
+
+        torch.testing.assert_close(
+            masked_output[0:1],
+            first_reference,
+        )
+        torch.testing.assert_close(
+            masked_output[1:2],
+            second_reference,
+        )
+        torch.testing.assert_close(
+            masked_output[2],
+            torch.zeros_like(masked_output[2]),
+        )
+
+        masked_output.square().mean().backward()
+        self.assertTrue(torch.isfinite(temporal_tokens.grad).all())
+        self.assertTrue(torch.all(temporal_tokens.grad[0, :5] == 0))
+        self.assertTrue(torch.all(temporal_tokens.grad[2] == 0))
+
     def test_real_episode_temporal_tokens_forward_and_backward(self):
-        runner = Runner(meta_agent_id=0)
+        runner = Runner(meta_agent_id=0, use_mamba=False)
         _, _, trajectory = runner.do_job(episode_number=77)
 
         replay = TrajectoryReplayBuffer(capacity_steps=10000)

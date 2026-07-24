@@ -126,6 +126,86 @@ class TemporalReplayBufferTest(unittest.TestCase):
         self.assertEqual(tokens.shape, (2, 3, 8))
         self.assertTrue(torch.isfinite(tokens).all())
 
+    def test_current_and_next_histories_are_shifted_one_step(self):
+        batch = self.replay.sample_aligned_transitions(
+            batch_size=10,
+            sequence_length=3,
+            seed=9,
+        )
+
+        self.assertEqual(batch.current_history.padding_mask.shape, (10, 3))
+        self.assertEqual(batch.next_history.padding_mask.shape, (10, 3))
+        torch.testing.assert_close(
+            batch.current_history.decision_steps,
+            batch.step_indices,
+        )
+        torch.testing.assert_close(
+            batch.next_history.decision_steps,
+            batch.step_indices + 1,
+        )
+        torch.testing.assert_close(
+            batch.current_history.episode_ids,
+            batch.episode_ids,
+        )
+        torch.testing.assert_close(
+            batch.next_history.episode_ids,
+            batch.episode_ids,
+        )
+
+        for row in range(batch.batch_size):
+            episode_id = int(batch.episode_ids[row])
+            step_index = int(batch.step_indices[row])
+            offset = 100 if episode_id == 10 else 200
+
+            current_valid = (
+                ~batch.current_history.padding_mask[row]
+            )
+            next_valid = ~batch.next_history.padding_mask[row]
+            current_values = batch.current_history.observations[0][
+                row,
+                current_valid,
+                0,
+                0,
+            ]
+            next_values = batch.next_history.observations[0][
+                row,
+                next_valid,
+                0,
+                0,
+            ]
+
+            expected_current_start = max(0, step_index - 3)
+            expected_next_start = max(0, step_index + 1 - 3)
+            expected_current = torch.arange(
+                offset + expected_current_start,
+                offset + step_index,
+                dtype=torch.float32,
+            )
+            expected_next = torch.arange(
+                offset + expected_next_start,
+                offset + step_index + 1,
+                dtype=torch.float32,
+            )
+            torch.testing.assert_close(current_values, expected_current)
+            torch.testing.assert_close(next_values, expected_next)
+
+            self.assertEqual(
+                int(current_valid.sum()),
+                min(step_index, 3),
+            )
+            self.assertEqual(
+                int(next_valid.sum()),
+                min(step_index + 1, 3),
+            )
+            self.assertEqual(
+                float(batch.observations[0][row, 0, 0]),
+                float(offset + step_index),
+            )
+            self.assertEqual(
+                float(batch.next_observations[0][row, 0, 0]),
+                float(offset + step_index + 1),
+            )
+
     def test_graph_pooling_ignores_padded_nodes(self):
         node_features = torch.tensor(
             [[[1.0, 1.0], [3.0, 3.0], [100.0, 100.0]]]

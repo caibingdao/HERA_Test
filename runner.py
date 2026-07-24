@@ -6,10 +6,29 @@ from parameter import *
 
 
 class Runner(object):
-    def __init__(self, meta_agent_id):
+    def __init__(self, meta_agent_id, use_mamba=None):
         self.meta_agent_id = meta_agent_id
-        self.device = torch.device('cuda') if USE_GPU else torch.device('cpu')
-        self.local_network = PolicyNet(NODE_INPUT_DIM, EMBEDDING_DIM)
+        self.use_mamba = USE_MAMBA if use_mamba is None else use_mamba
+        requires_cuda = USE_GPU or self.use_mamba
+        if requires_cuda and not torch.cuda.is_available():
+            raise RuntimeError(
+                "GPU rollout is required when USE_GPU or USE_MAMBA is enabled"
+            )
+        self.device = (
+            torch.device('cuda') if requires_cuda else torch.device('cpu')
+        )
+        self.local_network = PolicyNet(
+            NODE_INPUT_DIM,
+            EMBEDDING_DIM,
+            use_mamba=self.use_mamba,
+            mamba_seq_len=MAMBA_SEQ_LEN,
+            mamba_d_model=MAMBA_D_MODEL,
+            mamba_d_state=MAMBA_D_STATE,
+            mamba_d_conv=MAMBA_D_CONV,
+            mamba_expand=MAMBA_EXPAND,
+            fusion_hidden_dim=FUSION_HIDDEN_DIM,
+            action_embedding_dim=ACTION_EMBEDDING_DIM,
+        )
         self.local_network.to(self.device)
 
     def get_weights(self):
@@ -41,10 +60,15 @@ class Runner(object):
         return job_results, metrics, trajectory, info
 
 
-@ray.remote(num_cpus=1, num_gpus=NUM_GPU / NUM_META_AGENT)
+RUNNER_GPU_FRACTION = (
+    1 / NUM_META_AGENT if USE_MAMBA else NUM_GPU / NUM_META_AGENT
+)
+
+
+@ray.remote(num_cpus=1, num_gpus=RUNNER_GPU_FRACTION)
 class RLRunner(Runner):
-    def __init__(self, meta_agent_id):
-        super().__init__(meta_agent_id)
+    def __init__(self, meta_agent_id, use_mamba=None):
+        super().__init__(meta_agent_id, use_mamba=use_mamba)
 
 
 if __name__ == '__main__':

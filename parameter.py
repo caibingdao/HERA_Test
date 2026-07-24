@@ -1,8 +1,12 @@
 # saving path
+USE_MAMBA = True
 FOLDER_NAME = 'ariadne1'
-model_path = f'model/{FOLDER_NAME}'
-train_path = f'train/{FOLDER_NAME}'
-gifs_path = f'gifs/{FOLDER_NAME}'
+RUN_FOLDER_NAME = (
+    f'{FOLDER_NAME}_mamba' if USE_MAMBA else FOLDER_NAME
+)
+model_path = f'model/{RUN_FOLDER_NAME}'
+train_path = f'train/{RUN_FOLDER_NAME}'
+gifs_path = f'gifs/{RUN_FOLDER_NAME}'
 
 # save training data
 SUMMARY_WINDOW = 32  # how many training steps before writing data to tensorboard
@@ -29,12 +33,13 @@ UPDATING_MAP_SIZE = 4 * SENSOR_RANGE + 4 * NODE_RESOLUTION  # nodes outside this
 
 # training parameters
 MAX_EPISODE_STEP = 128
-REPLAY_SIZE = 10000
+REPLAY_SIZE = 3000
 MINIMUM_BUFFER_SIZE = 2000
-BATCH_SIZE = 128
+BATCH_SIZE = 8
 LR = 1e-5
 GAMMA = 1
-NUM_META_AGENT = 16  # how many threads does your CPU have
+NUM_META_AGENT = 4  # safe parallelism for this 32 GiB RAM / 8 GiB GPU laptop
+RAY_OBJECT_STORE_MEMORY = 3 * 1024 ** 3
 
 # temporal sequence data collection
 COLLECT_TRAJECTORY = True
@@ -46,6 +51,14 @@ ACTION_EMBEDDING_DIM = 16
 NODE_INPUT_DIM = 4
 EMBEDDING_DIM = 128
 
+# Mamba temporal branch and concat-MLP fusion
+MAMBA_SEQ_LEN = TEMPORAL_SEQUENCE_LENGTH
+MAMBA_D_MODEL = TEMPORAL_TOKEN_DIM
+MAMBA_D_STATE = 16
+MAMBA_D_CONV = 4
+MAMBA_EXPAND = 2
+FUSION_HIDDEN_DIM = EMBEDDING_DIM
+
 # Graph parameters
 K_SIZE = 25  # the number of neighboring nodes, fixed
 NODE_PADDING_SIZE = 360  # the number of nodes will be padded to this value, need it for batch training
@@ -53,5 +66,4 @@ NODE_PADDING_SIZE = 360  # the number of nodes will be padded to this value, nee
 # GPU usage
 USE_GPU = False  # do you want to collect training data using GPUs (better not)
 USE_GPU_GLOBAL = True  # do you want to train the network using GPUs
-NUM_GPU = 0  # 0 unless you want to collect data using GPUs
-
+NUM_GPU = 0  # baseline rollout GPUs; Mamba reserves one shared GPU automatically

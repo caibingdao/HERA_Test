@@ -48,7 +48,17 @@ class MambaTemporalEncoder(nn.Module):
             ]
         )
 
-    def forward(self, temporal_tokens: torch.Tensor) -> torch.Tensor:
+    def _forward_blocks(self, temporal_tokens: torch.Tensor) -> torch.Tensor:
+        hidden_states = temporal_tokens
+        for block in self.blocks:
+            hidden_states = block(hidden_states)
+        return hidden_states
+
+    def forward(
+        self,
+        temporal_tokens: torch.Tensor,
+        padding_mask: torch.Tensor = None,
+    ) -> torch.Tensor:
         if temporal_tokens.dim() != 3:
             raise ValueError(
                 "temporal_tokens must have shape [batch, sequence, d_model]"
@@ -61,9 +71,46 @@ class MambaTemporalEncoder(nn.Module):
                 f"got {temporal_tokens.size(-1)}"
             )
 
-        hidden_states = temporal_tokens
-        for block in self.blocks:
-            hidden_states = block(hidden_states)
+        if padding_mask is None:
+            return self._forward_blocks(temporal_tokens)[:, -1, :]
 
-        # Mamba is causal, so the final hidden state summarizes z_1 ... z_t.
-        return hidden_states[:, -1, :]
+        if padding_mask.shape != temporal_tokens.shape[:2]:
+            raise ValueError(
+                "padding_mask must have shape [batch, sequence]"
+            )
+        padding_mask = padding_mask.bool()
+        padding_counts = padding_mask.sum(dim=1)
+        expected_padding = (
+            torch.arange(
+                temporal_tokens.size(1),
+                device=temporal_tokens.device,
+            ).unsqueeze(0)
+            < padding_counts.unsqueeze(1)
+        )
+        if not torch.equal(padding_mask, expected_padding):
+            raise ValueError("Only left-aligned temporal padding is supported")
+
+        valid_lengths = temporal_tokens.size(1) - padding_counts
+        pooled_rows = [None] * temporal_tokens.size(0)
+        for valid_length in torch.unique(valid_lengths).tolist():
+            row_indices = torch.nonzero(
+                valid_lengths == valid_length,
+                as_tuple=False,
+            ).squeeze(1)
+            if valid_length == 0:
+                for row_index in row_indices.tolist():
+                    pooled_rows[row_index] = temporal_tokens.new_zeros(
+                        self.d_model
+                    )
+                continue
+
+            valid_tokens = temporal_tokens.index_select(
+                0,
+                row_indices,
+            )[:, -valid_length:, :]
+            pooled = self._forward_blocks(valid_tokens)[:, -1, :]
+            for output_index, row_index in enumerate(row_indices.tolist()):
+                pooled_rows[row_index] = pooled[output_index]
+
+        # Mamba is causal, so each final valid hidden state summarizes history.
+        return torch.stack(pooled_rows, dim=0)

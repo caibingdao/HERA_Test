@@ -184,7 +184,7 @@ class Agent:
         k_size = current_edge.size()[-1]
         padding = torch.nn.ConstantPad1d((0, K_SIZE - k_size), 0)
         current_edge = padding(current_edge)
-        current_edge = current_edge.unsqueeze(-1)
+        current_edge = current_edge.unsqueeze(-1).to(self.device)
 
         edge_padding_mask = torch.zeros((1, 1, k_size), dtype=torch.int16).to(self.device)
         edge_padding_mask[0, 0, current_in_edge] = 1
@@ -193,10 +193,13 @@ class Agent:
 
         return [node_inputs, node_padding_mask, edge_mask, current_index, current_edge, edge_padding_mask]
 
-    def select_next_waypoint(self, observation):
+    def select_next_waypoint(self, observation, history_batch=None):
         _, _, _, _, current_edge, _ = observation
         with torch.no_grad():
-            logp = self.policy_net(*observation)
+            logp = self.policy_net(
+                *observation,
+                history_batch=history_batch,
+            )
 
         action_index = torch.multinomial(logp.exp(), 1).long().squeeze(1)
         next_node_index = current_edge[0, action_index.item(), 0].item()
@@ -232,4 +235,3 @@ class Agent:
         plt.axis('off')
         plt.scatter(nodes[:, 0], nodes[:, 1], c=self.guidepost, zorder=2)
         plt.plot(robot[0], robot[1], 'mo', markersize=16, zorder=5)
-

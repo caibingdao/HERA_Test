@@ -7,6 +7,7 @@ from model import PolicyNet
 from replay_buffer import (
     EpisodeTrajectory,
     TrajectoryStep,
+    build_history_sequence,
     detach_observation,
 )
 
@@ -29,9 +30,10 @@ class Worker:
         for i in range(15):
             self.episode_buffer.append([])
 
+        self.use_mamba = getattr(policy_net, "use_mamba", False)
         self.trajectory = (
             EpisodeTrajectory(episode_id=global_step)
-            if COLLECT_TRAJECTORY
+            if COLLECT_TRAJECTORY or self.use_mamba
             else None
         )
         self.robot_heading = 0.0
@@ -48,7 +50,8 @@ class Worker:
         for i in range(MAX_EPISODE_STEP):
 
             current_observation = observation
-            self.save_observation(current_observation)
+            if not self.use_mamba:
+                self.save_observation(current_observation)
 
             coverage_before = self.env.get_exploration_rate()
             frontier_before = len(get_frontier_in_map(self.env.belief_info))
@@ -61,8 +64,21 @@ class Worker:
                 dtype=torch.float32,
             )
 
-            next_location, action_index = self.robot.select_next_waypoint(observation)
-            self.save_action(action_index)
+            history_batch = None
+            if self.use_mamba:
+                history_batch = build_history_sequence(
+                    self.trajectory,
+                    sequence_length=MAMBA_SEQ_LEN,
+                )
+                if history_batch is not None:
+                    history_batch = history_batch.to(self.device)
+
+            next_location, action_index = self.robot.select_next_waypoint(
+                observation,
+                history_batch=history_batch,
+            )
+            if not self.use_mamba:
+                self.save_action(action_index)
 
             node = self.robot.node_manager.nodes_dict.find((self.robot.location[0], self.robot.location[1]))
             check = np.array(list(node.data.neighbor_set)).reshape(-1, 2)
@@ -77,10 +93,12 @@ class Worker:
             if self.robot.utility.sum() == 0:
                 done = True
                 reward += 20
-            self.save_reward_done(reward, done)
+            if not self.use_mamba:
+                self.save_reward_done(reward, done)
 
             observation = self.robot.get_observation()
-            self.save_next_observations(observation)
+            if not self.use_mamba:
+                self.save_next_observations(observation)
             delta_coverage = self.env.explored_rate - coverage_before
             frontier_after = len(get_frontier_in_map(self.env.belief_info))
             delta_frontier = frontier_after - frontier_before
