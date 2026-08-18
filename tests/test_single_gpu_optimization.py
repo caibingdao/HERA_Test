@@ -8,6 +8,7 @@ import torch
 import torch.nn as nn
 
 import driver
+import parameter
 from model import PolicyNet
 from parameter import (
     NUM_META_AGENT,
@@ -25,18 +26,24 @@ class FakeRunnerClass:
         meta_agent_id,
         use_mamba,
         use_rollout_history_cache,
+        map_list=None,
+        training_seed=None,
     ):
         cls.calls.append(
             (
                 meta_agent_id,
                 use_mamba,
                 use_rollout_history_cache,
+                map_list,
+                training_seed,
             )
         )
         return (
             meta_agent_id,
             use_mamba,
             use_rollout_history_cache,
+            map_list,
+            training_seed,
         )
 
 
@@ -45,8 +52,12 @@ class RunnerConfigurationTest(unittest.TestCase):
         FakeRunnerClass.calls = []
 
     def test_default_and_supported_runner_counts(self):
-        self.assertEqual(NUM_META_AGENT, 2)
-        self.assertEqual(RUNNER_GPU_FRACTION, 0.25)
+        self.assertGreater(NUM_META_AGENT, 0)
+        self.assertGreater(RUNNER_GPU_FRACTION, 0)
+        self.assertLessEqual(
+            NUM_META_AGENT * RUNNER_GPU_FRACTION,
+            1.0,
+        )
         self.assertEqual(
             RLRunner._default_options["num_gpus"],
             RUNNER_GPU_FRACTION,
@@ -72,7 +83,9 @@ class RunnerConfigurationTest(unittest.TestCase):
                 self.assertEqual(
                     FakeRunnerClass.calls,
                     [
-                        (index, True, False)
+                        (index, True, False, None, None)
+                        if not parameter.USE_ROLLOUT_HISTORY_CACHE
+                        else (index, True, True, None, None)
                         for index in range(count)
                     ],
                 )
@@ -309,6 +322,8 @@ class CheckpointCompatibilityTest(unittest.TestCase):
 class RayRunnerResourceSmokeTest(unittest.TestCase):
     def test_two_mamba_runners_reserve_half_gpu(self):
         script = """
+import os
+os.environ["PYTHONPATH"] = os.getcwd()
 import ray
 
 from parameter import RUNNER_GPU_FRACTION

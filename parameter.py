@@ -1,8 +1,11 @@
 # saving path
-USE_MAMBA = True
-FOLDER_NAME = 'ariadne1'
+MODEL_SOURCE_REF = 'ariadne_mamba_1.1_trained'
+MODEL_SOURCE_COMMIT = '1e8316b9739e2b46b8aaaa4d2be69f175206f207'
+
+USE_MAMBA = False
+FOLDER_NAME = 'ariadne_no_mamba'
 RUN_FOLDER_NAME = (
-    f'{FOLDER_NAME}_mamba' if USE_MAMBA else FOLDER_NAME
+    f'{FOLDER_NAME}_mamba_1.1' if USE_MAMBA else FOLDER_NAME
 )
 model_path = f'model/{RUN_FOLDER_NAME}'
 train_path = f'train/{RUN_FOLDER_NAME}'
@@ -10,7 +13,7 @@ gifs_path = f'gifs/{RUN_FOLDER_NAME}'
 
 # save training data
 SUMMARY_WINDOW = 32  # how many training steps before writing data to tensorboard
-LOAD_MODEL =True  # do you want to load the model trained before
+LOAD_MODEL = False  # resume only through an explicit checkpoint argument
 SAVE_IMG_GAP = 100  # how many episodes before saving a gif
 # map and planning resolution
 CELL_SIZE = 0.4  # meter, your map resolution
@@ -34,7 +37,7 @@ UPDATING_MAP_SIZE = 4 * SENSOR_RANGE + 4 * NODE_RESOLUTION  # nodes outside this
 MAX_EPISODE_STEP = 128
 REPLAY_SIZE = 3000
 MINIMUM_BUFFER_SIZE = 2000
-BATCH_SIZE = 8
+BATCH_SIZE = 32
 LR = 1e-5
 GAMMA = 1
 NUM_META_AGENT = 4  # configurable Ray rollout worker count
@@ -42,13 +45,13 @@ RUNNER_GPU_FRACTION = 0.25  # fixed reservation per CUDA rollout worker
 RAY_OBJECT_STORE_MEMORY = 3 * 1024 ** 3
 
 # temporal sequence data collection
-COLLECT_TRAJECTORY = True
-TEMPORAL_SEQUENCE_LENGTH = 8
+COLLECT_TRAJECTORY = False
+TEMPORAL_SEQUENCE_LENGTH = 16
 TEMPORAL_TOKEN_DIM = 128
 ACTION_EMBEDDING_DIM = 16
 
 # reversible phase-two history optimizations
-USE_ROLLOUT_HISTORY_CACHE = True
+USE_ROLLOUT_HISTORY_CACHE = False
 USE_LEARNER_HISTORY_DEDUP = False
 
 # network parameters
@@ -68,6 +71,22 @@ K_SIZE = 25  # the number of neighboring nodes, fixed
 NODE_PADDING_SIZE = 360  # the number of nodes will be padded to this value, need it for batch training
 
 # GPU usage
-USE_GPU = False  # do you want to collect training data using GPUs (better not)
+USE_GPU = True  # do you want to collect training data using GPUs (better not)
 USE_GPU_GLOBAL = True  # do you want to train the network using GPUs
 ENABLE_MULTI_GPU_DATA_PARALLEL = False
+
+# learner performance experiments (all disabled by default)
+ENABLE_TRAIN_PROFILING = False
+PROFILE_WARMUP_UPDATES = 10
+PROFILE_ACTIVE_UPDATES = 50
+PROFILE_LOG_INTERVAL = 10
+
+USE_BF16 = True
+CHECK_TRAIN_FINITE = False
+USE_HISTORY_CHECKPOINT = False
+HISTORY_GRAPH_BATCH_SIZE = 32
+SKIP_PADDED_HISTORY_GRAPHS = True
+TRIM_HISTORY_GRAPH_NODES = True
+REUSE_CURRENT_Q_FORWARD = False
+USE_NON_BLOCKING_TRANSFER = False
+USE_UNION_HISTORY_COLLATE = True

@@ -5,6 +5,8 @@ from typing import Deque, List, NamedTuple, Optional, Sequence, Tuple
 
 import torch
 
+from training_profiler import profile_section
+
 
 Observation = Tuple[torch.Tensor, ...]
 
@@ -124,19 +126,112 @@ class HistorySequenceBatch(NamedTuple):
     def sequence_length(self):
         return self.actions.size(1)
 
-    def to(self, device):
+    def to(self, device, non_blocking=False):
         return HistorySequenceBatch(
             observations=tuple(
-                tensor.to(device) for tensor in self.observations
+                tensor.to(device, non_blocking=non_blocking)
+                for tensor in self.observations
             ),
-            actions=self.actions.to(device),
-            rewards=self.rewards.to(device),
-            robot_pose=self.robot_pose.to(device),
-            delta_coverage=self.delta_coverage.to(device),
-            delta_frontier=self.delta_frontier.to(device),
-            padding_mask=self.padding_mask.to(device),
-            episode_ids=self.episode_ids.to(device),
-            decision_steps=self.decision_steps.to(device),
+            actions=self.actions.to(device, non_blocking=non_blocking),
+            rewards=self.rewards.to(device, non_blocking=non_blocking),
+            robot_pose=self.robot_pose.to(device, non_blocking=non_blocking),
+            delta_coverage=self.delta_coverage.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            delta_frontier=self.delta_frontier.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            padding_mask=self.padding_mask.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            episode_ids=self.episode_ids.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            decision_steps=self.decision_steps.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+        )
+
+
+class UnionHistoryBatch(NamedTuple):
+    """One L+1 window whose adjacent views form current and next history."""
+
+    observations: Observation
+    actions: torch.Tensor
+    rewards: torch.Tensor
+    robot_pose: torch.Tensor
+    delta_coverage: torch.Tensor
+    delta_frontier: torch.Tensor
+    padding_mask: torch.Tensor
+    episode_ids: torch.Tensor
+    transition_steps: torch.Tensor
+
+    def split(self):
+        common_current = {
+            "observations": tuple(
+                tensor[:, :-1] for tensor in self.observations
+            ),
+            "actions": self.actions[:, :-1],
+            "rewards": self.rewards[:, :-1],
+            "robot_pose": self.robot_pose[:, :-1],
+            "delta_coverage": self.delta_coverage[:, :-1],
+            "delta_frontier": self.delta_frontier[:, :-1],
+            "padding_mask": self.padding_mask[:, :-1],
+            "episode_ids": self.episode_ids,
+            "decision_steps": self.transition_steps,
+        }
+        common_next = {
+            "observations": tuple(
+                tensor[:, 1:] for tensor in self.observations
+            ),
+            "actions": self.actions[:, 1:],
+            "rewards": self.rewards[:, 1:],
+            "robot_pose": self.robot_pose[:, 1:],
+            "delta_coverage": self.delta_coverage[:, 1:],
+            "delta_frontier": self.delta_frontier[:, 1:],
+            "padding_mask": self.padding_mask[:, 1:],
+            "episode_ids": self.episode_ids,
+            "decision_steps": self.transition_steps + 1,
+        }
+        return (
+            HistorySequenceBatch(**common_current),
+            HistorySequenceBatch(**common_next),
+        )
+
+    def to(self, device, non_blocking=False):
+        return UnionHistoryBatch(
+            observations=tuple(
+                tensor.to(device, non_blocking=non_blocking)
+                for tensor in self.observations
+            ),
+            actions=self.actions.to(device, non_blocking=non_blocking),
+            rewards=self.rewards.to(device, non_blocking=non_blocking),
+            robot_pose=self.robot_pose.to(device, non_blocking=non_blocking),
+            delta_coverage=self.delta_coverage.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            delta_frontier=self.delta_frontier.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            padding_mask=self.padding_mask.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            episode_ids=self.episode_ids.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            transition_steps=self.transition_steps.to(
+                device,
+                non_blocking=non_blocking,
+            ),
         )
 
 
@@ -152,36 +247,67 @@ class AlignedTransitionBatch(NamedTuple):
     next_history: HistorySequenceBatch
     episode_ids: torch.Tensor
     step_indices: torch.Tensor
+    union_history: Optional[UnionHistoryBatch] = None
 
     @property
     def batch_size(self):
         return self.actions.size(0)
 
-    def to(self, device):
+    def to(self, device, non_blocking=False):
+        union_history = None
+        if self.union_history is not None:
+            union_history = self.union_history.to(
+                device,
+                non_blocking=non_blocking,
+            )
+            current_history, next_history = union_history.split()
+        else:
+            current_history = self.current_history.to(
+                device,
+                non_blocking=non_blocking,
+            )
+            next_history = self.next_history.to(
+                device,
+                non_blocking=non_blocking,
+            )
         return AlignedTransitionBatch(
             observations=tuple(
-                tensor.to(device) for tensor in self.observations
+                tensor.to(device, non_blocking=non_blocking)
+                for tensor in self.observations
             ),
-            actions=self.actions.to(device),
-            rewards=self.rewards.to(device),
-            dones=self.dones.to(device),
+            actions=self.actions.to(device, non_blocking=non_blocking),
+            rewards=self.rewards.to(device, non_blocking=non_blocking),
+            dones=self.dones.to(device, non_blocking=non_blocking),
             next_observations=tuple(
-                tensor.to(device) for tensor in self.next_observations
+                tensor.to(device, non_blocking=non_blocking)
+                for tensor in self.next_observations
             ),
-            current_history=self.current_history.to(device),
-            next_history=self.next_history.to(device),
-            episode_ids=self.episode_ids.to(device),
-            step_indices=self.step_indices.to(device),
+            current_history=current_history,
+            next_history=next_history,
+            episode_ids=self.episode_ids.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            step_indices=self.step_indices.to(
+                device,
+                non_blocking=non_blocking,
+            ),
+            union_history=union_history,
         )
 
 
 class TrajectoryReplayBuffer:
     """Episode-aware replay storage for contiguous temporal sequences."""
 
-    def __init__(self, capacity_steps: int):
+    def __init__(
+        self,
+        capacity_steps: int,
+        use_union_history_collate: bool = False,
+    ):
         if capacity_steps <= 0:
             raise ValueError("capacity_steps must be positive")
         self.capacity_steps = capacity_steps
+        self.use_union_history_collate = bool(use_union_history_collate)
         self.episodes: Deque[EpisodeTrajectory] = deque()
         self.num_steps = 0
 
@@ -257,24 +383,27 @@ class TrajectoryReplayBuffer:
             raise ValueError("batch_size must be positive")
         self._validate_sequence_length(sequence_length)
 
-        transitions = [
-            (episode, step_index)
-            for episode in self.episodes
-            for step_index in range(len(episode))
-        ]
-        if not transitions:
-            raise ValueError("No transitions are available")
+        with profile_section("replay_sample_ms", cuda=False):
+            transitions = [
+                (episode, step_index)
+                for episode in self.episodes
+                for step_index in range(len(episode))
+            ]
+            if not transitions:
+                raise ValueError("No transitions are available")
 
-        rng = random.Random(seed)
-        if batch_size <= len(transitions):
-            selected = rng.sample(transitions, batch_size)
-        else:
-            selected = rng.choices(transitions, k=batch_size)
+            rng = random.Random(seed)
+            if batch_size <= len(transitions):
+                selected = rng.sample(transitions, batch_size)
+            else:
+                selected = rng.choices(transitions, k=batch_size)
 
-        return self._collate_aligned_transitions(
-            selected,
-            sequence_length,
-        )
+        with profile_section("replay_collate_ms", cuda=False):
+            return self._collate_aligned_transitions(
+                selected,
+                sequence_length,
+                use_union_history_collate=self.use_union_history_collate,
+            )
 
     @staticmethod
     def _validate_sequence_length(sequence_length: int):
@@ -431,22 +560,48 @@ class TrajectoryReplayBuffer:
         cls,
         selected: Sequence[Tuple[EpisodeTrajectory, int]],
         sequence_length: int,
+        use_union_history_collate: bool = False,
     ) -> AlignedTransitionBatch:
         steps = [
             episode.steps[step_index]
             for episode, step_index in selected
         ]
-        current_history = cls._collate_histories(
-            selected,
-            sequence_length,
-        )
-        next_history = cls._collate_histories(
-            [
-                (episode, step_index + 1)
-                for episode, step_index in selected
-            ],
-            sequence_length,
-        )
+        union_history = None
+        if use_union_history_collate:
+            union_source = cls._collate_histories(
+                [
+                    (episode, step_index + 1)
+                    for episode, step_index in selected
+                ],
+                sequence_length + 1,
+            )
+            union_history = UnionHistoryBatch(
+                observations=union_source.observations,
+                actions=union_source.actions,
+                rewards=union_source.rewards,
+                robot_pose=union_source.robot_pose,
+                delta_coverage=union_source.delta_coverage,
+                delta_frontier=union_source.delta_frontier,
+                padding_mask=union_source.padding_mask,
+                episode_ids=union_source.episode_ids,
+                transition_steps=torch.tensor(
+                    [step_index for _, step_index in selected],
+                    dtype=torch.long,
+                ),
+            )
+            current_history, next_history = union_history.split()
+        else:
+            current_history = cls._collate_histories(
+                selected,
+                sequence_length,
+            )
+            next_history = cls._collate_histories(
+                [
+                    (episode, step_index + 1)
+                    for episode, step_index in selected
+                ],
+                sequence_length,
+            )
 
         return AlignedTransitionBatch(
             observations=cls._stack_transition_observations(
@@ -479,6 +634,7 @@ class TrajectoryReplayBuffer:
                 [step_index for _, step_index in selected],
                 dtype=torch.long,
             ),
+            union_history=union_history,
         )
 
     @classmethod

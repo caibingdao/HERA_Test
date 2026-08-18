@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
 
+from training_profiler import profile_section
+
 
 try:
     from mamba_ssm import Mamba as OfficialMamba
@@ -71,6 +73,14 @@ class MambaTemporalEncoder(nn.Module):
                 f"got {temporal_tokens.size(-1)}"
             )
 
+        with profile_section("mamba_forward_ms"):
+            return self._forward_with_padding(temporal_tokens, padding_mask)
+
+    def _forward_with_padding(
+        self,
+        temporal_tokens: torch.Tensor,
+        padding_mask: torch.Tensor = None,
+    ) -> torch.Tensor:
         if padding_mask is None:
             return self._forward_blocks(temporal_tokens)[:, -1, :]
 
@@ -91,17 +101,17 @@ class MambaTemporalEncoder(nn.Module):
             raise ValueError("Only left-aligned temporal padding is supported")
 
         valid_lengths = temporal_tokens.size(1) - padding_counts
-        pooled_rows = [None] * temporal_tokens.size(0)
-        for valid_length in torch.unique(valid_lengths).tolist():
+        output = temporal_tokens.new_zeros(
+            temporal_tokens.size(0),
+            self.d_model,
+        )
+        unique_lengths = torch.unique(valid_lengths).cpu().tolist()
+        for valid_length in unique_lengths:
             row_indices = torch.nonzero(
                 valid_lengths == valid_length,
                 as_tuple=False,
             ).squeeze(1)
             if valid_length == 0:
-                for row_index in row_indices.tolist():
-                    pooled_rows[row_index] = temporal_tokens.new_zeros(
-                        self.d_model
-                    )
                 continue
 
             valid_tokens = temporal_tokens.index_select(
@@ -109,8 +119,11 @@ class MambaTemporalEncoder(nn.Module):
                 row_indices,
             )[:, -valid_length:, :]
             pooled = self._forward_blocks(valid_tokens)[:, -1, :]
-            for output_index, row_index in enumerate(row_indices.tolist()):
-                pooled_rows[row_index] = pooled[output_index]
+            output = output.index_copy(
+                0,
+                row_indices,
+                pooled.to(output.dtype),
+            )
 
         # Mamba is causal, so each final valid hidden state summarizes history.
-        return torch.stack(pooled_rows, dim=0)
+        return output

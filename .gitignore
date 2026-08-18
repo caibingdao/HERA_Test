@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Reproducible experiment products (the fixed split manifest remains tracked).
+experiment/checkpoints/
+experiment/results/
+experiment/summary/
+
+# Training state and generated run artifacts.  The tracked gifs/demo_*.gif
+# files are README assets; generated per-run GIF subdirectories stay ignored.
+/model/
+/train/
+/gifs/*/
+/runs/
+/wandb/
+*.pth
+*.pt
+*.ckpt
+events.out.tfevents*
+/benchmarks/results/*.csv
+/benchmarks/results/*.trace.json*

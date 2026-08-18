@@ -56,14 +56,18 @@ class Runner(object):
         meta_agent_id,
         use_mamba=None,
         use_rollout_history_cache=None,
+        map_list=None,
+        training_seed=None,
     ):
         self.meta_agent_id = meta_agent_id
         self.use_mamba = USE_MAMBA if use_mamba is None else use_mamba
         self.use_rollout_history_cache = (
-            USE_ROLLOUT_HISTORY_CACHE
+            USE_ROLLOUT_HISTORY_CACHE and self.use_mamba
             if use_rollout_history_cache is None
             else use_rollout_history_cache
         )
+        self.map_list = None if map_list is None else list(map_list)
+        self.training_seed = training_seed
         if self.use_rollout_history_cache and not self.use_mamba:
             raise ValueError(
                 "USE_ROLLOUT_HISTORY_CACHE=True requires USE_MAMBA=True"
@@ -87,6 +91,10 @@ class Runner(object):
             mamba_expand=MAMBA_EXPAND,
             fusion_hidden_dim=FUSION_HIDDEN_DIM,
             action_embedding_dim=ACTION_EMBEDDING_DIM,
+            history_graph_batch_size=HISTORY_GRAPH_BATCH_SIZE,
+            skip_padded_history_graphs=SKIP_PADDED_HISTORY_GRAPHS,
+            trim_history_graph_nodes=TRIM_HISTORY_GRAPH_NODES,
+            use_history_checkpoint=USE_HISTORY_CHECKPOINT,
         )
         self.local_network.to(self.device)
         self.policy_version = 0
@@ -120,7 +128,7 @@ class Runner(object):
                 self.policy_version
             )
 
-    def do_job(self, episode_number):
+    def do_job(self, episode_number, max_episode_steps=None):
         save_img = True if episode_number % SAVE_IMG_GAP == 0 else False
         # save_img = True
         worker = Worker(
@@ -131,6 +139,9 @@ class Runner(object):
             save_image=save_img,
             rollout_history_cache=self.rollout_history_cache,
             policy_version=self.policy_version,
+            map_list=self.map_list,
+            training_seed=self.training_seed,
+            max_episode_steps=max_episode_steps,
         )
         worker.run_episode()
 
@@ -139,12 +150,15 @@ class Runner(object):
         trajectory = worker.trajectory
         return job_results, perf_metrics, trajectory
 
-    def job(self, weights_set, episode_number):
+    def job(self, weights_set, episode_number, max_episode_steps=None):
         print("starting episode {} on metaAgent {}".format(episode_number, self.meta_agent_id))
         # set the local weights to the global weight values from the master network
         self.set_policy_net_weights(weights_set[0])
 
-        job_results, metrics, trajectory = self.do_job(episode_number)
+        job_results, metrics, trajectory = self.do_job(
+            episode_number,
+            max_episode_steps=max_episode_steps,
+        )
 
         info = {"id": self.meta_agent_id, "episode_number": episode_number}
 
@@ -163,11 +177,15 @@ class RLRunner(Runner):
         meta_agent_id,
         use_mamba=None,
         use_rollout_history_cache=None,
+        map_list=None,
+        training_seed=None,
     ):
         super().__init__(
             meta_agent_id,
             use_mamba=use_mamba,
             use_rollout_history_cache=use_rollout_history_cache,
+            map_list=map_list,
+            training_seed=training_seed,
         )
 
 

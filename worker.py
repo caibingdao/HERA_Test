@@ -2,6 +2,7 @@ import torch
 
 from env import Env
 from agent import Agent
+from experiment_utils import seed_everything, stable_seed
 from utils import *
 from model import PolicyNet
 from replay_buffer import (
@@ -25,6 +26,9 @@ class Worker:
         save_image=False,
         rollout_history_cache=None,
         policy_version=0,
+        map_list=None,
+        training_seed=None,
+        max_episode_steps=None,
     ):
         self.meta_agent_id = meta_agent_id
         self.global_step = global_step
@@ -32,8 +36,34 @@ class Worker:
         self.device = device
         self.rollout_history_cache = rollout_history_cache
         self.policy_version = policy_version
+        self.map_list = None if map_list is None else list(map_list)
+        self.training_seed = training_seed
+        if max_episode_steps is not None:
+            if (
+                isinstance(max_episode_steps, bool)
+                or not isinstance(max_episode_steps, int)
+                or max_episode_steps <= 0
+            ):
+                raise ValueError(
+                    "max_episode_steps must be a positive integer or None"
+                )
+        self.max_episode_steps = max_episode_steps
 
-        self.env = Env(global_step, plot=self.save_image)
+        episode_seed = None
+        if training_seed is not None:
+            episode_seed = stable_seed(
+                "training_episode",
+                training_seed,
+                global_step,
+            )
+            seed_everything(episode_seed, deterministic=True)
+
+        self.env = Env(
+            global_step,
+            plot=self.save_image,
+            map_list=self.map_list,
+            start_seed=episode_seed,
+        )
         self.robot = Agent(policy_net, self.device, self.save_image)
 
         self.episode_buffer = []
@@ -84,6 +114,7 @@ class Worker:
 
     def _run_episode(self):
         done = False
+        completed_steps = 0
         self.robot.update_planning_state(self.env.belief_info, self.env.robot_location)
         observation = self.robot.get_observation()
 
@@ -91,7 +122,12 @@ class Worker:
             self.robot.plot_env()
             self.env.plot_env(0)
 
-        for i in range(MAX_EPISODE_STEP):
+        episode_step_limit = (
+            MAX_EPISODE_STEP
+            if self.max_episode_steps is None
+            else min(MAX_EPISODE_STEP, self.max_episode_steps)
+        )
+        for i in range(episode_step_limit):
 
             current_observation = observation
             if not self.use_mamba:
@@ -146,6 +182,7 @@ class Worker:
             movement = next_location - self.env.robot_location
             next_heading = np.arctan2(movement[1], movement[0])
             reward = self.env.step(next_location)
+            completed_steps = i + 1
 
             self.robot.update_planning_state(self.env.belief_info, self.env.robot_location)
             if self.robot.utility.sum() == 0:
@@ -211,6 +248,9 @@ class Worker:
         self.perf_metrics['travel_dist'] = self.env.travel_dist
         self.perf_metrics['explored_rate'] = self.env.explored_rate
         self.perf_metrics['success_rate'] = done
+        self.perf_metrics['environment_success'] = done
+        self.perf_metrics['steps'] = completed_steps
+        self.perf_metrics['map_id'] = self.env.map_id
 
         # save gif
         if self.save_image:

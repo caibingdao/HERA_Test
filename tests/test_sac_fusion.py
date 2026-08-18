@@ -480,8 +480,10 @@ class MambaFusionSACIntegrationTest(unittest.TestCase):
 
     def test_ray_training_entry_initializes_mamba_runner(self):
         script = """
+import os
 import parameter
 parameter.USE_MAMBA = True
+os.environ["PYTHONPATH"] = os.getcwd()
 
 import ray
 from runner import RLRunner
