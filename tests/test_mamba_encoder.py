@@ -94,9 +94,10 @@ class MambaTemporalEncoderTest(unittest.TestCase):
         )
         padding_mask = torch.tensor(
             [
-                [True, True, True, True, True, False, False, False],
-                [False, False, False, False, False, False, False, False],
-                [True, True, True, True, True, True, True, True],
+                [True] * (TEMPORAL_SEQUENCE_LENGTH - 3)
+                + [False] * 3,
+                [False] * TEMPORAL_SEQUENCE_LENGTH,
+                [True] * TEMPORAL_SEQUENCE_LENGTH,
             ],
             device=self.device,
         )
@@ -126,7 +127,15 @@ class MambaTemporalEncoderTest(unittest.TestCase):
 
         masked_output.square().mean().backward()
         self.assertTrue(torch.isfinite(temporal_tokens.grad).all())
-        self.assertTrue(torch.all(temporal_tokens.grad[0, :5] == 0))
+        self.assertTrue(
+            torch.all(
+                temporal_tokens.grad[
+                    0,
+                    : TEMPORAL_SEQUENCE_LENGTH - 3,
+                ]
+                == 0
+            )
+        )
         self.assertTrue(torch.all(temporal_tokens.grad[2] == 0))
 
     def test_real_episode_temporal_tokens_forward_and_backward(self):
@@ -139,13 +148,13 @@ class MambaTemporalEncoderTest(unittest.TestCase):
             batch_size=1,
             sequence_length=TEMPORAL_SEQUENCE_LENGTH,
             seed=11,
-        )
+        ).to(next(runner.local_network.parameters()).device)
 
         history_encoder = HistoryStateEncoder(
             graph_embedding_dim=EMBEDDING_DIM,
             action_embedding_dim=ACTION_EMBEDDING_DIM,
             token_dim=TEMPORAL_TOKEN_DIM,
-        )
+        ).to(next(runner.local_network.parameters()).device)
         with torch.no_grad():
             temporal_tokens = history_encoder.encode_sequence(
                 runner.local_network,

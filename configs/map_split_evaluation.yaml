@@ -1,0 +1,31 @@
+# Reproducible ARIADNE/Mamba map-split experiment example.
+# The shell runner exposes the same values near the top of its file.
+maps:
+  root: maps
+  split_file: experiment/map_splits/map_split_seed_42.json
+  train_ratio: 0.8
+  split_seed: 42
+  group_by_base_map: true
+  stratify: true
+
+training:
+  seeds: [0, 1, 2]
+  total_env_steps: 1000000
+  output_root: experiment/checkpoints
+  # The model variant remains controlled by USE_MAMBA in parameter.py.
+
+evaluation:
+  adapter: evaluation_adapters.ariadne:create_adapter
+  # Exactly one episode is run per seed; keep these lengths equal.
+  seeds: [100, 101, 102, 103, 104]
+  episodes_per_map: 5
+  target_coverage: 0.99
+  max_steps: 128
+  max_path_length: null
+  deterministic: true
+  output_root: experiment/results
+
+aggregation:
+  bootstrap_seed: 42
+  bootstrap_samples: 10000
+  output_dir: experiment/summary

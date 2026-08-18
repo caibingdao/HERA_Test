@@ -10,6 +10,10 @@ from parameter import *
 from node_manager import NodeManager
 
 
+class NoValidActionError(RuntimeError):
+    """Raised when the current graph exposes no unmasked neighbor action."""
+
+
 class Agent:
     def __init__(self, policy_net, device='cpu', plot=False):
         self.device = device
@@ -126,7 +130,7 @@ class Agent:
         guidepost = []
 
         n_nodes = all_node_coords.shape[0]
-        adjacent_matrix = np.ones((n_nodes, n_nodes)).astype(int)
+        adjacent_matrix = np.ones((n_nodes, n_nodes), dtype=bool)
         node_coords_to_check = all_node_coords[:, 0] + all_node_coords[:, 1] * 1j
         for i, coords in enumerate(all_node_coords):
             node = self.node_manager.nodes_dict.find((coords[0], coords[1])).data
@@ -166,42 +170,84 @@ class Agent:
         padding = torch.nn.ZeroPad2d((0, 0, 0, NODE_PADDING_SIZE - n_node))
         node_inputs = padding(node_inputs)
 
-        node_padding_mask = torch.zeros((1, 1, n_node), dtype=torch.int16).to(self.device)
-        node_padding = torch.ones((1, 1, NODE_PADDING_SIZE - n_node), dtype=torch.int16).to(
-            self.device)
+        node_padding_mask = torch.zeros(
+            (1, 1, n_node),
+            dtype=torch.bool,
+            device=self.device,
+        )
+        node_padding = torch.ones(
+            (1, 1, NODE_PADDING_SIZE - n_node),
+            dtype=torch.bool,
+            device=self.device,
+        )
         node_padding_mask = torch.cat((node_padding_mask, node_padding), dim=-1)
 
-        current_index = torch.tensor([current_index]).reshape(1, 1, 1).to(self.device)
+        current_index = torch.tensor(
+            [current_index],
+            dtype=torch.long,
+            device=self.device,
+        ).reshape(1, 1, 1)
 
-        edge_mask = torch.tensor(edge_mask).unsqueeze(0).to(self.device)
+        edge_mask = torch.as_tensor(
+            edge_mask,
+            dtype=torch.bool,
+            device=self.device,
+        ).unsqueeze(0)
 
         padding = torch.nn.ConstantPad2d(
             (0, NODE_PADDING_SIZE - n_node, 0, NODE_PADDING_SIZE - n_node), 1)
         edge_mask = padding(edge_mask)
 
         current_in_edge = np.argwhere(current_edge == self.current_index)[0][0]
-        current_edge = torch.tensor(current_edge).unsqueeze(0)
+        current_edge = torch.as_tensor(
+            current_edge,
+            dtype=torch.long,
+        ).unsqueeze(0)
         k_size = current_edge.size()[-1]
         padding = torch.nn.ConstantPad1d((0, K_SIZE - k_size), 0)
         current_edge = padding(current_edge)
         current_edge = current_edge.unsqueeze(-1).to(self.device)
 
-        edge_padding_mask = torch.zeros((1, 1, k_size), dtype=torch.int16).to(self.device)
+        edge_padding_mask = torch.zeros(
+            (1, 1, k_size),
+            dtype=torch.bool,
+            device=self.device,
+        )
         edge_padding_mask[0, 0, current_in_edge] = 1
         padding = torch.nn.ConstantPad1d((0, K_SIZE - k_size), 1)
         edge_padding_mask = padding(edge_padding_mask)
 
         return [node_inputs, node_padding_mask, edge_mask, current_index, current_edge, edge_padding_mask]
 
-    def select_next_waypoint(self, observation, history_batch=None):
-        _, _, _, _, current_edge, _ = observation
+    @staticmethod
+    def _select_action(logp, edge_padding_mask, deterministic):
+        valid_actions = edge_padding_mask == 0
+        if not bool(valid_actions.any().item()):
+            raise NoValidActionError(
+                "the current graph contains no valid unmasked action"
+            )
+        if deterministic:
+            return torch.argmax(logp, dim=-1).long()
+        return torch.multinomial(logp.exp(), 1).long().squeeze(1)
+
+    def select_next_waypoint(
+        self,
+        observation,
+        history_batch=None,
+        deterministic=False,
+    ):
+        _, _, _, _, current_edge, edge_padding_mask = observation
         with torch.no_grad():
             logp = self.policy_net(
                 *observation,
                 history_batch=history_batch,
             )
 
-        action_index = torch.multinomial(logp.exp(), 1).long().squeeze(1)
+        action_index = self._select_action(
+            logp,
+            edge_padding_mask,
+            deterministic,
+        )
         next_node_index = current_edge[0, action_index.item(), 0].item()
         next_position = self.node_coords[next_node_index]
 
@@ -214,11 +260,12 @@ class Agent:
         episode_id,
         policy_version,
         decision_step,
+        deterministic=False,
     ):
         if history_cache is None:
             raise ValueError("history_cache is required for the cached path")
 
-        _, _, _, _, current_edge, _ = observation
+        _, _, _, _, current_edge, edge_padding_mask = observation
         parameter = next(self.policy_net.parameters())
         cached_history = history_cache.get_sequence(
             episode_id=episode_id,
@@ -235,10 +282,11 @@ class Agent:
                 return_rollout_context=True,
             )
 
-        action_index = torch.multinomial(
-            logp.exp(),
-            1,
-        ).long().squeeze(1)
+        action_index = self._select_action(
+            logp,
+            edge_padding_mask,
+            deterministic,
+        )
         next_node_index = current_edge[0, action_index.item(), 0].item()
         next_position = self.node_coords[next_node_index]
 

@@ -5,6 +5,8 @@ import torch
 import torch.nn as nn
 from torch.utils.checkpoint import checkpoint
 
+from training_profiler import profile_section
+
 
 class HistoryStateEncoder(nn.Module):
     """Build a fixed-width temporal token from one exploration transition."""
@@ -18,6 +20,9 @@ class HistoryStateEncoder(nn.Module):
         reward_scale: float = 20.0,
         delta_frontier_scale: float = 360.0,
         graph_batch_size: int = 16,
+        skip_padded_history_graphs: bool = False,
+        trim_history_graph_nodes: bool = False,
+        use_history_checkpoint: bool = True,
     ):
         super().__init__()
         if graph_embedding_dim <= 0:
@@ -39,6 +44,11 @@ class HistoryStateEncoder(nn.Module):
         self.reward_scale = reward_scale
         self.delta_frontier_log_scale = math.log1p(delta_frontier_scale)
         self.graph_batch_size = graph_batch_size
+        self.skip_padded_history_graphs = bool(
+            skip_padded_history_graphs
+        )
+        self.trim_history_graph_nodes = bool(trim_history_graph_nodes)
+        self.use_history_checkpoint = bool(use_history_checkpoint)
 
         self.action_projection = nn.Linear(
             graph_embedding_dim,
@@ -127,6 +137,7 @@ class HistoryStateEncoder(nn.Module):
         graph_model: nn.Module,
         observations: Sequence[torch.Tensor],
         actions: torch.Tensor,
+        padding_mask: torch.Tensor = None,
     ):
         """Encode global graph states and selected neighboring action nodes."""
         if len(observations) != 6:
@@ -141,6 +152,13 @@ class HistoryStateEncoder(nn.Module):
             )
 
         batch_size, sequence_length, node_count, node_dim = node_inputs.shape
+        if (
+            padding_mask is not None
+            and padding_mask.shape != (batch_size, sequence_length)
+        ):
+            raise ValueError(
+                "padding_mask must have shape [batch, sequence]"
+            )
         flat_node_inputs = node_inputs.reshape(
             batch_size * sequence_length, node_count, node_dim
         )
@@ -166,11 +184,43 @@ class HistoryStateEncoder(nn.Module):
         ):
             raise ValueError("Action index is outside the current neighbor list")
 
+        flat_batch_size = flat_node_inputs.size(0)
+        valid_indices = None
+        if self.skip_padded_history_graphs and padding_mask is not None:
+            valid_indices = torch.nonzero(
+                ~padding_mask.bool().reshape(-1),
+                as_tuple=False,
+            ).squeeze(1)
+            if valid_indices.numel() == 0:
+                empty_shape = (
+                    batch_size,
+                    sequence_length,
+                    self.graph_embedding_dim,
+                )
+                return (
+                    flat_node_inputs.new_zeros(empty_shape),
+                    flat_node_inputs.new_zeros(empty_shape),
+                )
+            flat_node_inputs = flat_node_inputs.index_select(
+                0,
+                valid_indices,
+            )
+            flat_node_padding_mask = flat_node_padding_mask.index_select(
+                0,
+                valid_indices,
+            )
+            flat_edge_mask = flat_edge_mask.index_select(0, valid_indices)
+            flat_current_edge = flat_current_edge.index_select(
+                0,
+                valid_indices,
+            )
+            flat_actions = flat_actions.index_select(0, valid_indices)
+
         graph_chunks = []
         action_chunks = []
-        flat_batch_size = flat_node_inputs.size(0)
-        for start in range(0, flat_batch_size, self.graph_batch_size):
-            end = min(start + self.graph_batch_size, flat_batch_size)
+        encoded_batch_size = flat_node_inputs.size(0)
+        for start in range(0, encoded_batch_size, self.graph_batch_size):
+            end = min(start + self.graph_batch_size, encoded_batch_size)
 
             def encode_chunk(
                 chunk_node_inputs,
@@ -195,7 +245,47 @@ class HistoryStateEncoder(nn.Module):
                 flat_current_edge[start:end],
                 flat_actions[start:end],
             )
-            if torch.is_grad_enabled() and graph_model.training:
+            if self.trim_history_graph_nodes:
+                (
+                    chunk_node_inputs,
+                    chunk_node_padding_mask,
+                    chunk_edge_mask,
+                    chunk_current_edge,
+                    chunk_actions,
+                ) = chunk_inputs
+                valid_node_count = (
+                    ~chunk_node_padding_mask.squeeze(1).bool()
+                ).sum(dim=1)
+                chunk_max_nodes = max(
+                    int(valid_node_count.max().item()),
+                    1,
+                )
+                selected_node_index = torch.gather(
+                    chunk_current_edge,
+                    dim=1,
+                    index=chunk_actions,
+                )
+                if torch.any(selected_node_index >= chunk_max_nodes):
+                    raise ValueError(
+                        "Selected action node lies outside the dynamically "
+                        "trimmed history graph"
+                    )
+                chunk_inputs = (
+                    chunk_node_inputs[:, :chunk_max_nodes],
+                    chunk_node_padding_mask[:, :, :chunk_max_nodes],
+                    chunk_edge_mask[
+                        :,
+                        :chunk_max_nodes,
+                        :chunk_max_nodes,
+                    ],
+                    chunk_current_edge,
+                    chunk_actions,
+                )
+            if (
+                self.use_history_checkpoint
+                and torch.is_grad_enabled()
+                and graph_model.training
+            ):
                 graph_chunk, action_chunk = checkpoint(
                     encode_chunk,
                     *chunk_inputs,
@@ -208,6 +298,20 @@ class HistoryStateEncoder(nn.Module):
 
         graph_embedding = torch.cat(graph_chunks, dim=0)
         selected_action_feature = torch.cat(action_chunks, dim=0)
+
+        if valid_indices is not None:
+            graph_embedding = graph_embedding.new_zeros(
+                flat_batch_size,
+                graph_embedding.size(-1),
+            ).index_copy(0, valid_indices, graph_embedding)
+            selected_action_feature = selected_action_feature.new_zeros(
+                flat_batch_size,
+                selected_action_feature.size(-1),
+            ).index_copy(
+                0,
+                valid_indices,
+                selected_action_feature,
+            )
 
         graph_embedding = graph_embedding.reshape(
             batch_size,
@@ -283,19 +387,28 @@ class HistoryStateEncoder(nn.Module):
         return self.output_norm(token)
 
     def encode_sequence(self, graph_model: nn.Module, sequence_batch):
-        graph_embedding, action_feature = self.graph_features_from_observations(
-            graph_model,
-            sequence_batch.observations,
-            sequence_batch.actions,
-        )
-        temporal_tokens = self(
-            graph_embedding=graph_embedding,
-            robot_pose=sequence_batch.robot_pose,
-            action_feature=action_feature,
-            reward=sequence_batch.rewards,
-            delta_coverage=sequence_batch.delta_coverage,
-            delta_frontier=sequence_batch.delta_frontier,
-        )
+        with profile_section("history_graph_encode_ms"):
+            graph_embedding, action_feature = (
+                self.graph_features_from_observations(
+                    graph_model,
+                    sequence_batch.observations,
+                    sequence_batch.actions,
+                    padding_mask=getattr(
+                        sequence_batch,
+                        "padding_mask",
+                        None,
+                    ),
+                )
+            )
+        with profile_section("history_token_projection_ms"):
+            temporal_tokens = self(
+                graph_embedding=graph_embedding,
+                robot_pose=sequence_batch.robot_pose,
+                action_feature=action_feature,
+                reward=sequence_batch.rewards,
+                delta_coverage=sequence_batch.delta_coverage,
+                delta_frontier=sequence_batch.delta_frontier,
+            )
         padding_mask = getattr(sequence_batch, "padding_mask", None)
         if padding_mask is not None:
             if padding_mask.shape != temporal_tokens.shape[:2]:
