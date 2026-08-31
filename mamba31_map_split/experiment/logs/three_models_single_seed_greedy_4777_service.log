@@ -1,0 +1,13 @@
+Launched ARiADNE-original: pid=2247980, GPU=0
+Launched ARiADNE-Mamba: pid=2247981, GPU=1
+Launched ARiADNE-Mamba-3.1+Recovery-V4: pid=2247982, GPU=2
+Model job succeeded: ARiADNE-original
+Model job succeeded: ARiADNE-Mamba
+Model job succeeded: ARiADNE-Mamba-3.1+Recovery-V4
+Creating combined three-model comparison
+Note: sample variance was written as NaN for 16995 group/metric combinations with fewer than two valid samples. Examples: model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='110.png': final_coverage; model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='110.png': path_length_all; model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='110.png': path_length_success; model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='110.png': steps; model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='110.png': steps_success
+Aggregated 3399 episodes from 3 episodes.csv files (3 model runs, 1 unique model seeds, 1133 maps).
+Results written to: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/greedy_1_seed_4777/cross_model_comparison
+Three-model single-seed greedy evaluation complete.
+Results: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_greedy_4777
+Visualizations: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/greedy_1_seed_4777

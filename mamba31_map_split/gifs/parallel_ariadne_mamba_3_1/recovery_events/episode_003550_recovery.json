@@ -1,0 +1,110 @@
+[
+  {
+    "episode_id": 3550,
+    "trigger_index": 1,
+    "step": 42,
+    "step_index": 42,
+    "x": 4.0,
+    "y": 0.0,
+    "robot_x": 4.0,
+    "robot_y": 0.0,
+    "trigger_step": 42,
+    "trigger_position": [
+      4.0,
+      0.0
+    ],
+    "revisit_count": 7,
+    "revisit_score": 0.7,
+    "trigger_source": "point_repeat",
+    "regional_repeat_detected": true,
+    "point_repeat_detected": true,
+    "low_progress_detected": true,
+    "point_repeat_max_count": 4,
+    "point_repeat_top_k_count": 9,
+    "point_repeat_unique_count": 4,
+    "revisit_trigger_counter": 1,
+    "point_repeat_trigger_counter": 3,
+    "recent_mean_coverage_gain": 0.0,
+    "coverage_gain": 0.0,
+    "recovery_start_step": 42,
+    "escape_target": [
+      28.0,
+      -56.0
+    ],
+    "candidate_num": 3,
+    "selected_group_id": 1,
+    "frontier_count": 5,
+    "navigation_distance": 73.88,
+    "loop_distance": 73.88854381999832,
+    "utility": 0.06677350427350427,
+    "target_node": [
+      28.0,
+      -56.0
+    ],
+    "target_type": "frontier",
+    "escape_target_type": "frontier",
+    "candidates": [
+      {
+        "group_id": 0,
+        "frontier_count": 2,
+        "centroid": [
+          25.4,
+          -60.599999999999994
+        ],
+        "D": 76.94,
+        "L": 76.94427190999916,
+        "utility": 0.025660764690787787,
+        "target_node": [
+          24.0,
+          -60.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 1,
+        "frontier_count": 5,
+        "centroid": [
+          28.080000000000002,
+          -59.120000000000005
+        ],
+        "D": 73.88,
+        "L": 73.88854381999832,
+        "utility": 0.06677350427350427,
+        "target_node": [
+          28.0,
+          -56.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 2,
+        "frontier_count": 4,
+        "centroid": [
+          31.6,
+          -57.7
+        ],
+        "D": 74.82,
+        "L": 74.83281572999748,
+        "utility": 0.052756528620416784,
+        "target_node": [
+          32.0,
+          -56.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      }
+    ],
+    "recovery_end_step": 49,
+    "recovery_steps": 8,
+    "exit_reason": "episode_end",
+    "target_reached": false,
+    "coverage_at_trigger": 0.9940059267241379,
+    "coverage_at_recovery_end": 1.0,
+    "post_recovery_coverage_gain": 0.0059940732758621,
+    "steps_since_last_recovery_end": null,
+    "retrigger_within_20_steps": false,
+    "retrigger_within_30_steps": false
+  }
+]

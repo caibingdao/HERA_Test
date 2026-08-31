@@ -1,0 +1,22 @@
+nohup: 忽略输入
+Started worker pid=1300436: episode=0, eval_seed=100, log=experiment/results/.mamba31_fresh_seed_0_v5_step539525.parallel_workers/episode_0_seed_100.log
+Started worker pid=1300437: episode=1, eval_seed=101, log=experiment/results/.mamba31_fresh_seed_0_v5_step539525.parallel_workers/episode_1_seed_101.log
+Started worker pid=1300438: episode=2, eval_seed=102, log=experiment/results/.mamba31_fresh_seed_0_v5_step539525.parallel_workers/episode_2_seed_102.log
+Started worker pid=1300439: episode=3, eval_seed=103, log=experiment/results/.mamba31_fresh_seed_0_v5_step539525.parallel_workers/episode_3_seed_103.log
+Started worker pid=1300440: episode=4, eval_seed=104, log=experiment/results/.mamba31_fresh_seed_0_v5_step539525.parallel_workers/episode_4_seed_104.log
+Completed worker: episode=4, eval_seed=104
+Completed worker: episode=1, eval_seed=101
+Completed worker: episode=0, eval_seed=100
+Completed worker: episode=2, eval_seed=102
+Completed worker: episode=3, eval_seed=103
+Parallel evaluation complete: 1133 maps
+episodes: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_fresh_seed_0_v5_step539525/episodes.csv
+coverage_curve: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_fresh_seed_0_v5_step539525/coverage_curve.csv
+metadata: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_fresh_seed_0_v5_step539525/evaluation_metadata.json
+Created 6 PNG charts in /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts/01_overview_dashboard.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts/02_coverage_thresholds.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts/03_efficiency_distributions.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts/04_exploration_progress.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts/05_map_reliability.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_fresh_seed_0_v5_step539525_charts/06_failure_analysis.png

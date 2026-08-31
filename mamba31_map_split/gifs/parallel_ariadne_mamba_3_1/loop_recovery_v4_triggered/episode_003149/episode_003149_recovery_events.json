@@ -1,0 +1,93 @@
+[
+  {
+    "episode_id": 3149,
+    "trigger_index": 1,
+    "step": 43,
+    "step_index": 43,
+    "x": 8.0,
+    "y": 16.0,
+    "robot_x": 8.0,
+    "robot_y": 16.0,
+    "trigger_step": 43,
+    "trigger_position": [
+      8.0,
+      16.0
+    ],
+    "revisit_count": 5,
+    "revisit_score": 0.5,
+    "trigger_source": "point_repeat",
+    "regional_repeat_detected": false,
+    "point_repeat_detected": true,
+    "low_progress_detected": true,
+    "point_repeat_max_count": 5,
+    "point_repeat_top_k_count": 10,
+    "point_repeat_unique_count": 3,
+    "revisit_trigger_counter": 0,
+    "point_repeat_trigger_counter": 3,
+    "recent_mean_coverage_gain": 0.0,
+    "coverage_gain": 0.0,
+    "recovery_start_step": 43,
+    "escape_target": [
+      20.0,
+      20.0
+    ],
+    "candidate_num": 2,
+    "selected_group_id": 1,
+    "frontier_count": 3,
+    "navigation_distance": 12.94,
+    "loop_distance": 12.94427190999916,
+    "utility": 0.2152080344332855,
+    "target_node": [
+      20.0,
+      20.0
+    ],
+    "target_type": "frontier",
+    "escape_target_type": "frontier",
+    "candidates": [
+      {
+        "group_id": 0,
+        "frontier_count": 2,
+        "centroid": [
+          -70.6,
+          -23.8
+        ],
+        "D": 90.41,
+        "L": 79.11708697745938,
+        "utility": 0.021879444262115744,
+        "target_node": [
+          -68.0,
+          -24.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 1,
+        "frontier_count": 3,
+        "centroid": [
+          20.933333333333334,
+          18.0
+        ],
+        "D": 12.94,
+        "L": 12.94427190999916,
+        "utility": 0.2152080344332855,
+        "target_node": [
+          20.0,
+          20.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      }
+    ],
+    "recovery_end_step": 44,
+    "recovery_steps": 2,
+    "exit_reason": "target_reached",
+    "target_reached": true,
+    "coverage_at_trigger": 0.9996543141592921,
+    "coverage_at_recovery_end": 0.9999308628318584,
+    "post_recovery_coverage_gain": 0.00027654867256632354,
+    "steps_since_last_recovery_end": null,
+    "retrigger_within_20_steps": false,
+    "retrigger_within_30_steps": false
+  }
+]

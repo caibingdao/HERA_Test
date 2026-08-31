@@ -1,0 +1,14 @@
+Launched ARiADNE-original: pid=2321266, GPU=0
+Launched ARiADNE-Mamba: pid=2321267, GPU=1
+Launched ARiADNE-Mamba-3.1+Recovery-V4: pid=2321268, GPU=2
+Model job succeeded: ARiADNE-original
+Model job succeeded: ARiADNE-Mamba
+Model job succeeded: ARiADNE-Mamba-3.1+Recovery-V4
+Creating combined three-model comparison
+Note: sample variance was written as NaN for 20 group/metric combinations with fewer than two valid samples. Examples: model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='303.png': path_length_success; model_name='ARiADNE-Mamba', model_seed='0', checkpoint_identity='5aaedb25811ffb589959d42dd7a7a3fd44e7b8fe518f5b234dacc1ccb1f3c12a', map_id='303.png': steps_success; model_name='ARiADNE-original', model_seed='0', checkpoint_identity='6ac1827a3dbdd816febd074817fb3116466002f3deb70474d0da643957db8b19', map_id='437.png': path_length_success; model_name='ARiADNE-original', model_seed='0', checkpoint_identity='6ac1827a3dbdd816febd074817fb3116466002f3deb70474d0da643957db8b19', map_id='437.png': steps_success; model_name='ARiADNE-original', model_seed='0', checkpoint_identity='6ac1827a3dbdd816febd074817fb3116466002f3deb70474d0da643957db8b19', map_id='img_1175.png': path_length_success
+Aggregated 16995 episodes from 3 episodes.csv files (3 model runs, 1 unique model seeds, 1133 maps).
+Results written to: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/.greedy_5_seeds_100_104_rebuild/cross_model_comparison
+Three-model five-seed greedy rerun complete.
+Results: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_greedy_100_104_recovery_v4
+Visualizations replaced at: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/greedy_5_seeds_100_104
+Previous visualizations archived at: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization_archive/greedy_5_seeds_100_104_before_20260822_160521

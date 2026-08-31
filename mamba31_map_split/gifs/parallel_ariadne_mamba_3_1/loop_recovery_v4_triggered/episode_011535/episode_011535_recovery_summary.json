@@ -1,0 +1,39 @@
+{
+  "episode_id": 11535,
+  "trigger_count": 1,
+  "target_type_counts": {
+    "frontier": 1
+  },
+  "trigger_source_counts": {
+    "regional": 1
+  },
+  "exit_reason_counts": {
+    "target_reached": 1
+  },
+  "target_reached_count": 1,
+  "retrigger_within_20_count": 0,
+  "retrigger_within_30_count": 0,
+  "mean_candidate_num": 6.0,
+  "mean_frontier_count": 16.0,
+  "mean_navigation_distance": 71.53999999999999,
+  "mean_loop_distance": 71.5453980694907,
+  "mean_utility": 0.2205679625034464,
+  "success": true,
+  "explored_rate": 1.0,
+  "travel_dist": 404.8090092759322,
+  "episode_steps": 58,
+  "recovery_steps": 9,
+  "frame_count": 59,
+  "recovery_action_count": 9,
+  "action_source_counts": {
+    "recovery": 9,
+    "sac": 49
+  },
+  "files": {
+    "gif": "episode_011535_recovery.gif",
+    "final_png": "episode_011535_recovery_final.png",
+    "events": "episode_011535_recovery_events.json",
+    "diagnostics": "episode_011535_recovery_steps.json",
+    "summary": "episode_011535_recovery_summary.json"
+  }
+}

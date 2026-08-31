@@ -1,0 +1,43 @@
+{
+  "action_selection": "torch.multinomial(policy_probabilities)",
+  "adapter": "evaluation_adapters.ariadne:create_adapter",
+  "adapter_args": {
+    "model_name": "ARiADNE-Mamba-3.1",
+    "model_seed": 0
+  },
+  "adapter_metadata": {
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth",
+    "deterministic": false,
+    "device": "cuda",
+    "model_name": "ARiADNE-Mamba-3.1",
+    "model_seed": 0,
+    "use_mamba": true
+  },
+  "base_evaluator": "scripts/evaluate_parallel.py",
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth",
+  "checkpoint_sha256": "c9c07d8ee39015c4965365189dfa2c2b8717772b90e35e82444f9b6771ecea2f",
+  "deterministic": false,
+  "episode_id_offset": 0,
+  "episodes_per_map": 5,
+  "eval_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104
+  ],
+  "evaluation_mode": "five_seed_stochastic_probability_sampling",
+  "max_path_length": null,
+  "max_steps": 128,
+  "num_episodes": 5665,
+  "num_exception_episodes": 0,
+  "num_maps": 1133,
+  "parallel_unit": "evaluation_seed",
+  "parallel_workers": 5,
+  "seed_reset_scope": "each_map_episode",
+  "single_variable_change_from_greedy_baseline": "action_selection",
+  "split_manifest": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_manifest_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "split_name": "test",
+  "target_coverage": 0.99
+}

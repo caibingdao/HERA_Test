@@ -9,6 +9,7 @@ from parameter import *
 def validate_runner_resource_config(
     num_meta_agents=NUM_META_AGENT,
     runner_gpu_fraction=RUNNER_GPU_FRACTION,
+    gpu_count=GPU_COUNT,
 ):
     if isinstance(num_meta_agents, bool) or not isinstance(
         num_meta_agents,
@@ -36,13 +37,18 @@ def validate_runner_resource_config(
             f"got {runner_gpu_fraction}"
         )
 
+    if isinstance(gpu_count, bool) or not isinstance(gpu_count, int):
+        raise ValueError(f"GPU_COUNT must be a positive integer, got {gpu_count!r}")
+    if gpu_count <= 0:
+        raise ValueError(f"GPU_COUNT must be > 0, got {gpu_count}")
+
     total_runner_gpu = num_meta_agents * runner_gpu_fraction
-    if total_runner_gpu > 1.0:
+    if total_runner_gpu > gpu_count:
         raise ValueError(
             "Invalid Ray GPU allocation: NUM_META_AGENT "
             f"({num_meta_agents}) * RUNNER_GPU_FRACTION "
             f"({runner_gpu_fraction}) = {total_runner_gpu}, "
-            "which must be <= 1.0"
+            f"which must be <= GPU_COUNT ({gpu_count})"
         )
     return total_runner_gpu
 

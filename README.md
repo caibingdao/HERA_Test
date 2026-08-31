@@ -28,6 +28,20 @@ Launch your conda environment if any and run:
 
 ```python driver.py```
 
+The checked-in configuration uses a **single RTX 4090**. Ray starts four
+rollout actors sharing that GPU with the batch-32 learner. Multi-GPU
+`DataParallel` is disabled because its scatter/gather overhead is slower for
+this workload. Start it with one card visible:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python driver.py
+```
+
+At startup the program validates that one CUDA device is visible and prints the
+active GPU profile. The 3 GiB Ray object store holds the in-flight replay data,
+and actor policy weights share one immutable object-store copy. TF32 remains
+enabled while model and optimizer states stay in float32.
+
 The default training code requires around 8GB VRAM and 20G RAM. 
 You can modify the hyperparameters in `parameter.py`.
 

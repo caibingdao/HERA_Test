@@ -1,0 +1,263 @@
+[
+  {
+    "episode_id": 12857,
+    "trigger_index": 1,
+    "step": 50,
+    "step_index": 50,
+    "x": 64.0,
+    "y": 4.0,
+    "robot_x": 64.0,
+    "robot_y": 4.0,
+    "trigger_step": 50,
+    "trigger_position": [
+      64.0,
+      4.0
+    ],
+    "revisit_count": 1,
+    "revisit_score": 0.1,
+    "trigger_source": "point_repeat",
+    "regional_repeat_detected": false,
+    "point_repeat_detected": true,
+    "low_progress_detected": true,
+    "point_repeat_max_count": 4,
+    "point_repeat_top_k_count": 8,
+    "point_repeat_unique_count": 5,
+    "revisit_trigger_counter": 0,
+    "point_repeat_trigger_counter": 3,
+    "recent_mean_coverage_gain": 0.0,
+    "coverage_gain": 0.0,
+    "recovery_start_step": 50,
+    "escape_target": [
+      -12.0,
+      -8.0
+    ],
+    "candidate_num": 12,
+    "selected_group_id": 7,
+    "frontier_count": 20,
+    "navigation_distance": 123.1,
+    "loop_distance": 123.11708697745938,
+    "utility": 0.16116035455278002,
+    "target_node": [
+      -12.0,
+      -8.0
+    ],
+    "target_type": "frontier",
+    "escape_target_type": "frontier",
+    "candidates": [
+      {
+        "group_id": 0,
+        "frontier_count": 4,
+        "centroid": [
+          -19.400000000000002,
+          0.6000000000000001
+        ],
+        "D": 119.1,
+        "L": 119.11708697745938,
+        "utility": 0.03330557868442964,
+        "target_node": [
+          -16.0,
+          0.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 1,
+        "frontier_count": 3,
+        "centroid": [
+          -19.2,
+          3.3333333333333335
+        ],
+        "D": 118.16,
+        "L": 118.17281506746022,
+        "utility": 0.025176233635448138,
+        "target_node": [
+          -16.0,
+          4.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 2,
+        "frontier_count": 1,
+        "centroid": [
+          -18.8,
+          5.2
+        ],
+        "D": 118.16,
+        "L": 118.17281506746022,
+        "utility": 0.008392077878482713,
+        "target_node": [
+          -16.0,
+          4.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 3,
+        "frontier_count": 2,
+        "centroid": [
+          -18.0,
+          6.2
+        ],
+        "D": 118.16,
+        "L": 118.17281506746022,
+        "utility": 0.016784155756965426,
+        "target_node": [
+          -16.0,
+          4.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 4,
+        "frontier_count": 4,
+        "centroid": [
+          -16.5,
+          0.0
+        ],
+        "D": 119.1,
+        "L": 119.11708697745938,
+        "utility": 0.03330557868442964,
+        "target_node": [
+          -16.0,
+          0.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 5,
+        "frontier_count": 2,
+        "centroid": [
+          -15.6,
+          -10.2
+        ],
+        "D": 123.1,
+        "L": 123.11708697745938,
+        "utility": 0.016116035455278004,
+        "target_node": [
+          -12.0,
+          -8.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 6,
+        "frontier_count": 5,
+        "centroid": [
+          -15.6,
+          -7.279999999999999
+        ],
+        "D": 123.1,
+        "L": 123.11708697745938,
+        "utility": 0.040290088638195005,
+        "target_node": [
+          -12.0,
+          -8.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 7,
+        "frontier_count": 20,
+        "centroid": [
+          -10.9,
+          -12.320000000000002
+        ],
+        "D": 123.1,
+        "L": 123.11708697745938,
+        "utility": 0.16116035455278002,
+        "target_node": [
+          -12.0,
+          -8.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 8,
+        "frontier_count": 6,
+        "centroid": [
+          -12.6,
+          -6.333333333333333
+        ],
+        "D": 123.1,
+        "L": 123.11708697745938,
+        "utility": 0.048348106365834004,
+        "target_node": [
+          -12.0,
+          -8.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 9,
+        "frontier_count": 6,
+        "centroid": [
+          -2.4,
+          -17.133333333333333
+        ],
+        "D": 125.22,
+        "L": 125.22854315746106,
+        "utility": 0.04753604816986214,
+        "target_node": [
+          0.0,
+          -16.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 10,
+        "frontier_count": 2,
+        "centroid": [
+          -1.6,
+          -14.0
+        ],
+        "D": 121.22,
+        "L": 121.22854315746106,
+        "utility": 0.016363933889707086,
+        "target_node": [
+          0.0,
+          -12.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      },
+      {
+        "group_id": 11,
+        "frontier_count": 1,
+        "centroid": [
+          18.0,
+          -3.6
+        ],
+        "D": 74.82,
+        "L": 45.88854381999832,
+        "utility": 0.013189132155104196,
+        "target_node": [
+          20.0,
+          -4.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      }
+    ],
+    "recovery_end_step": 65,
+    "recovery_steps": 15,
+    "exit_reason": "target_reached",
+    "target_reached": true,
+    "coverage_at_trigger": 0.8342043515358362,
+    "coverage_at_recovery_end": 0.9447525597269625,
+    "post_recovery_coverage_gain": 0.11054820819112632,
+    "steps_since_last_recovery_end": null,
+    "retrigger_within_20_steps": false,
+    "retrigger_within_30_steps": false
+  }
+]

@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+
+# Regenerable aggregate copies exceed GitHub's 100 MiB per-file limit.
+mamba31_map_split/experiment/visualization/greedy_5_seeds_100_104/cross_model_comparison/coverage_curve.csv
+mamba31_map_split/experiment/visualization/stochastic_5_seeds_100_104/cross_model_comparison_pure_policy/coverage_curve.csv
+mamba31_map_split/experiment/visualization/greedy_5_seeds_100_104/ariadne_mamba_3_1/comparison_pure_vs_recovery_v4/coverage_curve.csv

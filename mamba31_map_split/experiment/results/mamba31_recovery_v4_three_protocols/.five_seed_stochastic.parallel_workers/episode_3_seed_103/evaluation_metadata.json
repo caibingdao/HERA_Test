@@ -1,0 +1,58 @@
+{
+  "adapter": "evaluation_adapters.ariadne:create_adapter",
+  "adapter_args": {
+    "enable_recovery": true,
+    "model_name": "ARiADNE-Mamba-3.1+Recovery-V4",
+    "model_seed": 0
+  },
+  "adapter_metadata": {
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth",
+    "deterministic": false,
+    "device": "cuda",
+    "model_name": "ARiADNE-Mamba-3.1+Recovery-V4",
+    "model_seed": 0,
+    "recovery_configuration": {
+      "coverage_threshold": 0.001,
+      "escape_distance_eps": 1.0,
+      "escape_min_distance": 12.0,
+      "escape_min_loop_distance": 8.0,
+      "exit_threshold": 0.5,
+      "frontier_cell_size": 0.8,
+      "goal_tolerance": 2.0,
+      "graph_radius": 8.0,
+      "history_length": 10,
+      "max_recovery_steps": 32,
+      "min_count": 7,
+      "path_failure_limit": 3,
+      "point_repeat_enabled": true,
+      "point_repeat_max_count": 3,
+      "point_repeat_top_k": 3,
+      "point_repeat_top_k_count": 8,
+      "point_repeat_trigger_steps": 3,
+      "progress_window": 8,
+      "score_threshold": 0.7,
+      "trigger_steps": 3,
+      "use_frontier_escape": true
+    },
+    "recovery_controller": "local_revisit_recovery_v4",
+    "recovery_enabled": true,
+    "use_mamba": true
+  },
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth",
+  "checkpoint_sha256": "c9c07d8ee39015c4965365189dfa2c2b8717772b90e35e82444f9b6771ecea2f",
+  "deterministic": false,
+  "episode_id_offset": 3,
+  "episodes_per_map": 1,
+  "eval_seeds": [
+    103
+  ],
+  "max_path_length": null,
+  "max_steps": 128,
+  "num_episodes": 1133,
+  "num_exception_episodes": 0,
+  "num_maps": 1133,
+  "split_manifest": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_manifest_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "split_name": "test",
+  "target_coverage": 0.99
+}

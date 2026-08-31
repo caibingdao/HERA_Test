@@ -1,0 +1,9 @@
+Launched five_seed_greedy: pid=1831581, GPU=0
+Launched single_seed_stochastic_4777: pid=1831582, GPU=1
+Launched five_seed_stochastic: pid=1831583, GPU=2
+Protocol succeeded: five_seed_greedy
+Protocol succeeded: single_seed_stochastic_4777
+Protocol succeeded: five_seed_stochastic
+All three Mamba 3.1 + Recovery V4 evaluations completed.
+Results: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_recovery_v4_three_protocols
+Visualizations: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/mamba31_recovery_v4_three_protocols

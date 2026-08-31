@@ -1,0 +1,76 @@
+[
+  {
+    "episode_id": 74,
+    "trigger_index": 1,
+    "step": 88,
+    "step_index": 88,
+    "x": -4.0,
+    "y": 0.0,
+    "robot_x": -4.0,
+    "robot_y": 0.0,
+    "trigger_step": 88,
+    "trigger_position": [
+      -4.0,
+      0.0
+    ],
+    "revisit_count": 8,
+    "revisit_score": 0.8,
+    "trigger_source": "regional",
+    "regional_repeat_detected": true,
+    "point_repeat_detected": false,
+    "low_progress_detected": true,
+    "point_repeat_max_count": 2,
+    "point_repeat_top_k_count": 6,
+    "point_repeat_unique_count": 6,
+    "revisit_trigger_counter": 3,
+    "point_repeat_trigger_counter": 0,
+    "recent_mean_coverage_gain": 0.0,
+    "coverage_gain": 0.0,
+    "recovery_start_step": 88,
+    "escape_target": [
+      0.0,
+      60.0
+    ],
+    "candidate_num": 1,
+    "selected_group_id": 0,
+    "frontier_count": 4,
+    "navigation_distance": 128.7,
+    "loop_distance": 123.77708763999664,
+    "utility": 0.03084040092521203,
+    "target_node": [
+      0.0,
+      60.0
+    ],
+    "target_type": "frontier",
+    "escape_target_type": "frontier",
+    "candidates": [
+      {
+        "group_id": 0,
+        "frontier_count": 4,
+        "centroid": [
+          1.8,
+          58.2
+        ],
+        "D": 128.7,
+        "L": 123.77708763999664,
+        "utility": 0.03084040092521203,
+        "target_node": [
+          0.0,
+          60.0
+        ],
+        "passed_min_distance": true,
+        "passed_min_loop_distance": true
+      }
+    ],
+    "recovery_end_step": 103,
+    "recovery_steps": 16,
+    "exit_reason": "episode_end",
+    "target_reached": false,
+    "coverage_at_trigger": 0.9990079365079365,
+    "coverage_at_recovery_end": 1.0,
+    "post_recovery_coverage_gain": 0.0009920634920634885,
+    "steps_since_last_recovery_end": null,
+    "retrigger_within_20_steps": false,
+    "retrigger_within_30_steps": false
+  }
+]

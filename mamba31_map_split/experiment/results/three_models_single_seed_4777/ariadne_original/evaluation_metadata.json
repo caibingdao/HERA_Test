@@ -1,0 +1,43 @@
+{
+  "action_selection": "stochastic_categorical_torch_multinomial",
+  "adapter": "evaluation_adapters.ariadne:create_adapter",
+  "adapter_args": {
+    "model_name": "ARiADNE-original",
+    "model_seed": 0
+  },
+  "adapter_metadata": {
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_ORIGINAL_PARALLEL/model/parallel_ariadne_original/checkpoint.pth",
+    "deterministic": false,
+    "device": "cuda",
+    "model_name": "ARiADNE-original",
+    "model_seed": 0,
+    "use_mamba": false
+  },
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_ORIGINAL_PARALLEL/model/parallel_ariadne_original/checkpoint.pth",
+  "checkpoint_sha256": "6ac1827a3dbdd816febd074817fb3116466002f3deb70474d0da643957db8b19",
+  "deterministic": false,
+  "deterministic_policy": false,
+  "diagnostic_map_limit": null,
+  "elapsed_time_seconds": 2394.3145542144775,
+  "episodes_per_map": 1,
+  "eval_seeds": [
+    4777
+  ],
+  "evaluation_mode": "single_global_seed_stochastic",
+  "global_seed": 4777,
+  "ignored_adapter_reseed_calls": 1133,
+  "map_order": "split_manifest_test_order",
+  "max_path_length": null,
+  "max_steps": 128,
+  "num_episodes": 1133,
+  "num_maps": 1133,
+  "reseed_between_maps": false,
+  "seed_initialized_once_after_model_load": true,
+  "single_process": true,
+  "single_worker": true,
+  "split_manifest": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_manifest_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "split_name": "test",
+  "start_position_seed": 4777,
+  "target_coverage": 0.99
+}

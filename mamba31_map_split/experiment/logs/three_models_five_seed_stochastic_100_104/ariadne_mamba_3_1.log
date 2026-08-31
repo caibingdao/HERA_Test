@@ -1,0 +1,25 @@
+Starting ARiADNE-Mamba-3.1 on physical GPU 2
+Started worker pid=1726195: episode=0, eval_seed=100, log=/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/.ariadne_mamba_3_1.parallel_workers/episode_0_seed_100.log
+Started worker pid=1726196: episode=1, eval_seed=101, log=/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/.ariadne_mamba_3_1.parallel_workers/episode_1_seed_101.log
+Started worker pid=1726201: episode=2, eval_seed=102, log=/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/.ariadne_mamba_3_1.parallel_workers/episode_2_seed_102.log
+Started worker pid=1726202: episode=3, eval_seed=103, log=/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/.ariadne_mamba_3_1.parallel_workers/episode_3_seed_103.log
+Started worker pid=1726203: episode=4, eval_seed=104, log=/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/.ariadne_mamba_3_1.parallel_workers/episode_4_seed_104.log
+Completed worker: episode=0, eval_seed=100
+Completed worker: episode=4, eval_seed=104
+Completed worker: episode=2, eval_seed=102
+Completed worker: episode=3, eval_seed=103
+Completed worker: episode=1, eval_seed=101
+Parallel evaluation complete: 1133 maps
+episodes: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/episodes.csv
+coverage_curve: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/coverage_curve.csv
+metadata: /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/evaluation_metadata.json
+Stochastic action selection: torch.multinomial
+Seed reset scope: each map episode (same as greedy baseline)
+Created 6 PNG charts in /data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/01_overview_dashboard.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/02_coverage_thresholds.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/03_efficiency_distributions.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/04_exploration_progress.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/05_map_reliability.png
+/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/visualization/three_models_five_seed_stochastic_100_104/ariadne_mamba_3_1/06_failure_analysis.png
+Completed ARiADNE-Mamba-3.1 on physical GPU 2

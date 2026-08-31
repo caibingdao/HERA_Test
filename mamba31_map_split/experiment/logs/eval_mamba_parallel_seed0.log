@@ -1,0 +1,14 @@
+Started worker pid=1689252: episode=0, eval_seed=100, log=experiment/results/.seed_0.parallel_workers/episode_0_seed_100.log
+Started worker pid=1689253: episode=1, eval_seed=101, log=experiment/results/.seed_0.parallel_workers/episode_1_seed_101.log
+Started worker pid=1689254: episode=2, eval_seed=102, log=experiment/results/.seed_0.parallel_workers/episode_2_seed_102.log
+Started worker pid=1689255: episode=3, eval_seed=103, log=experiment/results/.seed_0.parallel_workers/episode_3_seed_103.log
+Started worker pid=1689256: episode=4, eval_seed=104, log=experiment/results/.seed_0.parallel_workers/episode_4_seed_104.log
+Completed worker: episode=2, eval_seed=102
+Completed worker: episode=4, eval_seed=104
+Completed worker: episode=0, eval_seed=100
+Completed worker: episode=3, eval_seed=103
+Completed worker: episode=1, eval_seed=101
+Parallel evaluation complete: 1133 maps
+episodes: /users/cbd/code/ARiADNE_MAMBA_Test/experiment/results/seed_0/episodes.csv
+coverage_curve: /users/cbd/code/ARiADNE_MAMBA_Test/experiment/results/seed_0/coverage_curve.csv
+metadata: /users/cbd/code/ARiADNE_MAMBA_Test/experiment/results/seed_0/evaluation_metadata.json

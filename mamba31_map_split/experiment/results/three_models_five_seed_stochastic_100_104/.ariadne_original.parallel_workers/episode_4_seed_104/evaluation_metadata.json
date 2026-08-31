@@ -1,0 +1,32 @@
+{
+  "adapter": "evaluation_adapters.ariadne:create_adapter",
+  "adapter_args": {
+    "model_name": "ARiADNE-original",
+    "model_seed": 0
+  },
+  "adapter_metadata": {
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_ORIGINAL_PARALLEL/model/parallel_ariadne_original/checkpoint.pth",
+    "deterministic": false,
+    "device": "cuda",
+    "model_name": "ARiADNE-original",
+    "model_seed": 0,
+    "use_mamba": false
+  },
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_ORIGINAL_PARALLEL/model/parallel_ariadne_original/checkpoint.pth",
+  "checkpoint_sha256": "6ac1827a3dbdd816febd074817fb3116466002f3deb70474d0da643957db8b19",
+  "deterministic": false,
+  "episode_id_offset": 4,
+  "episodes_per_map": 1,
+  "eval_seeds": [
+    104
+  ],
+  "max_path_length": null,
+  "max_steps": 128,
+  "num_episodes": 1133,
+  "num_exception_episodes": 0,
+  "num_maps": 1133,
+  "split_manifest": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_manifest_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "split_name": "test",
+  "target_coverage": 0.99
+}

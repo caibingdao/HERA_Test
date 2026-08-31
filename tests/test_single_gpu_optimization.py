@@ -45,22 +45,22 @@ class RunnerConfigurationTest(unittest.TestCase):
         FakeRunnerClass.calls = []
 
     def test_default_and_supported_runner_counts(self):
-        self.assertEqual(NUM_META_AGENT, 2)
+        self.assertEqual(NUM_META_AGENT, 4)
         self.assertEqual(RUNNER_GPU_FRACTION, 0.25)
         self.assertEqual(
             RLRunner._default_options["num_gpus"],
             RUNNER_GPU_FRACTION,
         )
 
-        for count in (1, 2, 4):
-            with self.subTest(count=count):
+        for count, fraction in ((1, 0.25), (2, 0.25), (4, 0.25)):
+            with self.subTest(count=count, fraction=fraction):
                 total_gpu = validate_runner_resource_config(
                     count,
-                    RUNNER_GPU_FRACTION,
+                    fraction,
                 )
                 self.assertEqual(
                     total_gpu,
-                    count * RUNNER_GPU_FRACTION,
+                    count * fraction,
                 )
                 FakeRunnerClass.calls = []
                 actors = driver.create_meta_agents(
@@ -72,17 +72,27 @@ class RunnerConfigurationTest(unittest.TestCase):
                 self.assertEqual(
                     FakeRunnerClass.calls,
                     [
-                        (index, True, False)
+                        (index, True, True)
                         for index in range(count)
                     ],
                 )
 
+    def test_single_gpu_server_configuration_is_valid(self):
+        total_gpu = validate_runner_resource_config(4, 0.25)
+        self.assertEqual(total_gpu, 1.0)
+        self.assertFalse(driver.ENABLE_MULTI_GPU_DATA_PARALLEL)
+
     def test_invalid_runner_gpu_total_is_explicit(self):
         with self.assertRaisesRegex(
             ValueError,
-            r"4.*0\.3.*1\.2.*<= 1\.0",
+            r"5.*0\.25.*1\.25.*GPU_COUNT \(1\)",
         ):
-            validate_runner_resource_config(4, 0.30)
+            validate_runner_resource_config(5, 0.25)
+
+        for count, fraction in ((0, 1.0), (4, 0), (True, 1.0)):
+            with self.subTest(count=count, fraction=fraction):
+                with self.assertRaises(ValueError):
+                    validate_runner_resource_config(count, fraction)
 
         for count, fraction in ((0, 0.25), (2, 0), (True, 0.25)):
             with self.subTest(count=count, fraction=fraction):
@@ -99,7 +109,11 @@ from runner import ACTIVE_RUNNER_GPU_FRACTION, RLRunner, Runner
 
 assert ACTIVE_RUNNER_GPU_FRACTION == 0.0
 assert RLRunner._default_options["num_gpus"] == 0.0
-runner = Runner(meta_agent_id=0, use_mamba=False)
+runner = Runner(
+    meta_agent_id=0,
+    use_mamba=False,
+    use_rollout_history_cache=False,
+)
 assert runner.device.type == "cpu"
 """
         completed = subprocess.run(

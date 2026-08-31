@@ -1,6 +1,8 @@
+import os
+
 # saving path
 USE_MAMBA = True
-FOLDER_NAME = 'ariadne1'
+FOLDER_NAME = 'parallel_ariadne_mamba_optimized'
 RUN_FOLDER_NAME = (
     f'{FOLDER_NAME}_mamba' if USE_MAMBA else FOLDER_NAME
 )
@@ -10,7 +12,7 @@ gifs_path = f'gifs/{RUN_FOLDER_NAME}'
 
 # save training data
 SUMMARY_WINDOW = 32  # how many training steps before writing data to tensorboard
-LOAD_MODEL =True  # do you want to load the model trained before
+LOAD_MODEL = os.environ.get('ARIADNE_LOAD_MODEL', '0') == '1'
 SAVE_IMG_GAP = 100  # how many episodes before saving a gif
 # map and planning resolution
 CELL_SIZE = 0.4  # meter, your map resolution
@@ -37,13 +39,17 @@ MINIMUM_BUFFER_SIZE = 2000
 BATCH_SIZE = 8
 LR = 1e-5
 GAMMA = 1
-NUM_META_AGENT = 4  # configurable Ray rollout worker count
-RUNNER_GPU_FRACTION = 0.25  # fixed reservation per CUDA rollout worker
+# Single-GPU profile: four CPU-heavy rollout actors share one CUDA device with
+# the learner, matching the efficient small-batch execution path.
+GPU_COUNT = 1
+NUM_META_AGENT = 4
+RUNNER_GPU_FRACTION = 0.25
+# Enough shared memory for four in-flight trajectories without disk spilling.
 RAY_OBJECT_STORE_MEMORY = 3 * 1024 ** 3
 
 # temporal sequence data collection
 COLLECT_TRAJECTORY = True
-TEMPORAL_SEQUENCE_LENGTH = 8
+TEMPORAL_SEQUENCE_LENGTH = 16
 TEMPORAL_TOKEN_DIM = 128
 ACTION_EMBEDDING_DIM = 16
 
@@ -70,4 +76,9 @@ NODE_PADDING_SIZE = 360  # the number of nodes will be padded to this value, nee
 # GPU usage
 USE_GPU = False  # do you want to collect training data using GPUs (better not)
 USE_GPU_GLOBAL = True  # do you want to train the network using GPUs
+# Batch 32 runs directly on the single visible GPU.
 ENABLE_MULTI_GPU_DATA_PARALLEL = False
+
+# Ada Lovelace GPUs accelerate float32 matrix multiplications with TF32 while
+# retaining float32 storage and the existing SAC numerical behaviour.
+ENABLE_TF32 = True

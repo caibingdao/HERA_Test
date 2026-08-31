@@ -5,11 +5,28 @@ import ray
 import os
 import numpy as np
 import random
+import time
 
 from model import PolicyNet, QNet
 from replay_buffer import TrajectoryReplayBuffer
 from runner import RLRunner, validate_runner_resource_config
 from parameter import *
+
+
+def save_checkpoint_atomic(checkpoint, path):
+    """Write a checkpoint atomically and retain the last complete version."""
+    temporary_path = path + ".tmp"
+    previous_path = path + ".previous"
+    previous_temporary_path = previous_path + ".tmp"
+    torch.save(checkpoint, temporary_path)
+    with open(temporary_path, "rb") as checkpoint_file:
+        os.fsync(checkpoint_file.fileno())
+    if os.path.exists(path):
+        if os.path.exists(previous_temporary_path):
+            os.unlink(previous_temporary_path)
+        os.link(path, previous_temporary_path)
+        os.replace(previous_temporary_path, previous_path)
+    os.replace(temporary_path, path)
 
 
 def network_kwargs():
@@ -149,6 +166,25 @@ def prepare_training_networks(
     if use_data_parallel:
         return tuple(nn.DataParallel(network) for network in networks)
     return tuple(networks)
+
+
+def warm_up_cuda_devices(device_count):
+    """Eagerly create CUDA/cuBLAS contexts before DataParallel threads run."""
+    if device_count <= 0:
+        return
+    original_device = torch.cuda.current_device()
+    try:
+        for device_index in range(device_count):
+            with torch.cuda.device(device_index):
+                operand = torch.ones(
+                    (8, 8),
+                    device=f"cuda:{device_index}",
+                    dtype=torch.float32,
+                )
+                torch.mm(operand, operand)
+        torch.cuda.synchronize()
+    finally:
+        torch.cuda.set_device(original_device)
 
 
 def create_meta_agents(
@@ -383,10 +419,25 @@ def main():
         raise RuntimeError(
             "USE_MAMBA=True requires USE_GPU_GLOBAL=True"
         )
+    if USE_GPU_GLOBAL and torch.cuda.device_count() < GPU_COUNT:
+        raise RuntimeError(
+            f"The configured GPU profile requires {GPU_COUNT} visible GPUs, "
+            f"but PyTorch sees {torch.cuda.device_count()}. Check "
+            "CUDA_VISIBLE_DEVICES or lower GPU_COUNT and the rollout count."
+        )
+
+    if USE_GPU_GLOBAL and ENABLE_TF32:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
+        torch.set_float32_matmul_precision("high")
+
+    if USE_GPU_GLOBAL:
+        warm_up_cuda_devices(GPU_COUNT)
 
     ray.init(
         num_cpus=NUM_META_AGENT,
         object_store_memory=RAY_OBJECT_STORE_MEMORY,
+        include_dashboard=False,
     )
     print("Welcome to RL autonomous exploration!")
     print(
@@ -394,6 +445,12 @@ def main():
         f"rollout_cache={USE_ROLLOUT_HISTORY_CACHE}, "
         f"learner_dedup={USE_LEARNER_HISTORY_DEDUP}"
     )
+    if USE_GPU_GLOBAL:
+        print(
+            f"GPU profile: {GPU_COUNT} GPUs, {NUM_META_AGENT} rollout actors, "
+            f"learner_data_parallel={ENABLE_MULTI_GPU_DATA_PARALLEL}, "
+            f"tf32={ENABLE_TF32}, batch_size={BATCH_SIZE}"
+        )
 
     writer = SummaryWriter(train_path)
     if not os.path.exists(model_path):
@@ -500,6 +557,9 @@ def main():
     weights_set = []
     policy_weights = policy_weights_for_workers(global_policy_net)
     weights_set.append(policy_weights)
+    # One immutable object-store copy is shared by every rollout actor. Passing
+    # this state dict by value would make Ray serialize a copy for each actor.
+    weights_ref = ray.put(weights_set)
 
     # DataParallel is opt-in and only useful when multiple GPUs are present.
     (
@@ -523,7 +583,7 @@ def main():
     job_list = []
     for i, meta_agent in enumerate(meta_agents):
         curr_episode += 1
-        job_list.append(meta_agent.job.remote(weights_set, curr_episode))
+        job_list.append(meta_agent.job.remote(weights_ref, curr_episode))
 
     # initialize metric collector
     metric_name = ['travel_dist', 'success_rate', 'explored_rate']
@@ -537,10 +597,13 @@ def main():
     for i in range(15):
         experience_buffer.append([])
     trajectory_replay_buffer = TrajectoryReplayBuffer(REPLAY_SIZE)
+    throughput_start_time = time.perf_counter()
+    throughput_start_episode = curr_episode
 
     # collect data from worker and do training
     try:
         while True:
+            policy_updated = False
             # wait for any job to be completed
             done_id, job_list = ray.wait(job_list)
             # get the results
@@ -558,7 +621,12 @@ def main():
 
             # launch new task
             curr_episode += 1
-            job_list.append(meta_agents[info['id']].job.remote(weights_set, curr_episode))
+            job_list.append(
+                meta_agents[info['id']].job.remote(
+                    weights_ref,
+                    curr_episode,
+                )
+            )
 
             # start training
             replay_steps = (
@@ -568,6 +636,7 @@ def main():
             )
             if curr_episode % 1 == 0 and replay_steps >= MINIMUM_BUFFER_SIZE:
                 print("training")
+                training_start_time = time.perf_counter()
 
                 # keep the replay buffer size
                 if not USE_MAMBA and len(experience_buffer[0]) >= REPLAY_SIZE:
@@ -665,6 +734,28 @@ def main():
                         entropy.mean().item(), policy_grad_norm.item(), q_grad_norm.item(), log_alpha.item(),
                         alpha_loss.item(), *perf_data]
                 training_data.append(data)
+                policy_updated = True
+                training_seconds = time.perf_counter() - training_start_time
+                print(
+                    f"training throughput: 8 updates in "
+                    f"{training_seconds:.3f}s "
+                    f"({8 / training_seconds:.2f} updates/s)"
+                )
+
+            if curr_episode - throughput_start_episode >= 32:
+                throughput_seconds = (
+                    time.perf_counter() - throughput_start_time
+                )
+                completed_episodes = (
+                    curr_episode - throughput_start_episode
+                )
+                print(
+                    f"rollout throughput: {completed_episodes} episodes in "
+                    f"{throughput_seconds:.1f}s "
+                    f"({completed_episodes / throughput_seconds:.2f} episodes/s)"
+                )
+                throughput_start_time = time.perf_counter()
+                throughput_start_episode = curr_episode
 
             # write record to tensorboard
             if len(training_data) >= SUMMARY_WINDOW:
@@ -675,9 +766,12 @@ def main():
                     perf_metrics[n] = []
 
             # get the updated global weights
-            weights_set = []
-            policy_weights = policy_weights_for_workers(global_policy_net)
-            weights_set.append(policy_weights)
+            if policy_updated:
+                policy_weights = policy_weights_for_workers(
+                    global_policy_net
+                )
+                weights_set = [policy_weights]
+                weights_ref = ray.put(weights_set)
 
             # update the target q net
             if target_q_update_counter > 64:
@@ -706,7 +800,7 @@ def main():
                     target_q_update_counter=target_q_update_counter,
                 )
                 path_checkpoint = "./" + model_path + "/checkpoint.pth"
-                torch.save(checkpoint, path_checkpoint)
+                save_checkpoint_atomic(checkpoint, path_checkpoint)
                 print('Saved model', end='\n')
 
     except KeyboardInterrupt:
