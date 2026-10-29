@@ -1,0 +1,25 @@
+{
+  "streak": 2,
+  "training_episodes": 7500,
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/ablation_no_motion_7500_seed4777_20261026/model/checkpoint.pth",
+  "checkpoint_sha256": "44dad9dfbe44a4d870a96983cddadc0a3ee585df96b6213d628790de639abe55",
+  "gpu": "GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
+  "gpu_inventory": null,
+  "split": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "maps": 1133,
+  "global_seed": 4777,
+  "action_selection": "greedy_argmax",
+  "target_coverage": 0.99,
+  "max_steps": 128,
+  "recovery": "on",
+  "recovery_config": {
+    "regional_trigger_steps": 2,
+    "point_repeat_trigger_steps": 2,
+    "new_free_cell_threshold": 1.0,
+    "progress_window": 8
+  },
+  "output": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777",
+  "visual": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777",
+  "started_unix": 1793217254.915103
+}

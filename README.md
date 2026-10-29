@@ -69,3 +69,24 @@ Tianxiang Hou\
 [Yizhuo Wang](https://github.com/wyzh98)\
 Xian Yi\
 [Guillaume Sartoretti](https://github.com/gsartoretti)
+## Online exploration feedback (2026-10-23)
+
+Token21 now uses `new_free_cell_count`: the number of belief-map cells that
+change from UNKNOWN to FREE during the latest executed action's sensor update.
+The raw count is used directly, without division by map area or any scale.
+Occupied discoveries and repeated observations of known free cells do not count.
+This replaces the old coverage delta in the 21D token, replay, online cache,
+and recovery detector. Token width remains 21 and `map_delta` still controls
+this feedback component. Ground-truth coverage remains evaluation/logging only.
+
+Recovery compares the mean raw count over the existing 8-step window with
+`LOCAL_REVISIT_NEW_FREE_CELL_THRESHOLD=1.0` (initial threshold, to be calibrated).
+The old 0.001 coverage threshold has no map-independent conversion to cell counts.
+Position repetition and all other recovery conditions remain in place.
+
+New checkpoints carry `exploration_progress_signal=new_free_cell_count_v1` and
+layout `local_motion_target_reward_new_free_cells_v2`. Training resume and the
+Token21 evaluator reject legacy coverage-feedback checkpoints instead of silently
+changing their inputs. Existing historical results/checkpoints are preserved;
+new training and evaluation must use separate output directories. Other model
+repositories keep their existing feedback semantics in the shared evaluator.

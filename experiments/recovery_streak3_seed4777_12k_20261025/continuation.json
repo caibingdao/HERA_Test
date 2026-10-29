@@ -1,0 +1,18 @@
+{
+  "streak": 3,
+  "parent_run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/recovery_streak3_seed4777_10k_20261024",
+  "parent_checkpoint_sha256": "6cf5bfaff06212753c9557c92c478c88c735439c259bc3235156653fbe0c3f1b",
+  "resumed_completed_episodes": 10000,
+  "target_completed_episodes": 12000,
+  "additional_episodes": 2000,
+  "resumed_env_steps": 417123,
+  "resumed_learner_updates": 79880,
+  "gpus": [
+    "GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
+    "GPU-ce02402c-adbd-5898-70d6-37a192be778c"
+  ],
+  "gifs": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/gifs/recovery_streak3_seed4777_12k_20261025",
+  "started_unix": 1792900405.4597495,
+  "restored": "policy, critics, target critics, optimizers, entropy coefficient and counters",
+  "replay_note": "Existing resume implementation rebuilds replay; replay contents and in-flight workers are not stored in checkpoint."
+}

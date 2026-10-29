@@ -67,6 +67,7 @@ class NodeManager:
                 node.update_neighbor_nodes(updating_map_info, self.nodes_dict)
 
     def Dijkstra(self, start, boundary=None):
+        """Shortest paths with Euclidean edge lengths and optional max distance."""
         q = set()
         dist_dict = {}
         prev_dict = {}
@@ -90,6 +91,9 @@ class NodeManager:
                     u = coords
 
             q.remove(u)
+
+            if boundary is not None and dist_dict[u] > boundary:
+                break
 
             # assert self.nodes_dict.find(u) is not None
 

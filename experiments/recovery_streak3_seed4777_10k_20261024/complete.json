@@ -1,0 +1,11 @@
+{
+  "completed_episodes": 10000,
+  "streak": 3,
+  "successes": 9938,
+  "coverage_ge99": 9962,
+  "mean_coverage": 0.9988019997061277,
+  "recovery_triggers": 292,
+  "recovery_steps": 2547,
+  "total_steps": 417123,
+  "finished_unix": 1792887761.5980983
+}

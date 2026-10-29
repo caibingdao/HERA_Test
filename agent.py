@@ -126,7 +126,7 @@ class Agent:
         guidepost = []
 
         n_nodes = all_node_coords.shape[0]
-        adjacent_matrix = np.ones((n_nodes, n_nodes)).astype(int)
+        adjacent_matrix = np.ones((n_nodes, n_nodes), dtype=bool)
         node_coords_to_check = all_node_coords[:, 0] + all_node_coords[:, 1] * 1j
         for i, coords in enumerate(all_node_coords):
             node = self.node_manager.nodes_dict.find((coords[0], coords[1])).data
@@ -166,27 +166,49 @@ class Agent:
         padding = torch.nn.ZeroPad2d((0, 0, 0, NODE_PADDING_SIZE - n_node))
         node_inputs = padding(node_inputs)
 
-        node_padding_mask = torch.zeros((1, 1, n_node), dtype=torch.int16).to(self.device)
-        node_padding = torch.ones((1, 1, NODE_PADDING_SIZE - n_node), dtype=torch.int16).to(
-            self.device)
+        node_padding_mask = torch.zeros(
+            (1, 1, n_node),
+            dtype=torch.bool,
+            device=self.device,
+        )
+        node_padding = torch.ones(
+            (1, 1, NODE_PADDING_SIZE - n_node),
+            dtype=torch.bool,
+            device=self.device,
+        )
         node_padding_mask = torch.cat((node_padding_mask, node_padding), dim=-1)
 
-        current_index = torch.tensor([current_index]).reshape(1, 1, 1).to(self.device)
+        current_index = torch.tensor(
+            [current_index],
+            dtype=torch.long,
+            device=self.device,
+        ).reshape(1, 1, 1)
 
-        edge_mask = torch.tensor(edge_mask).unsqueeze(0).to(self.device)
+        edge_mask = torch.as_tensor(
+            edge_mask,
+            dtype=torch.bool,
+            device=self.device,
+        ).unsqueeze(0)
 
         padding = torch.nn.ConstantPad2d(
             (0, NODE_PADDING_SIZE - n_node, 0, NODE_PADDING_SIZE - n_node), 1)
         edge_mask = padding(edge_mask)
 
         current_in_edge = np.argwhere(current_edge == self.current_index)[0][0]
-        current_edge = torch.tensor(current_edge).unsqueeze(0)
+        current_edge = torch.as_tensor(
+            current_edge,
+            dtype=torch.long,
+        ).unsqueeze(0)
         k_size = current_edge.size()[-1]
         padding = torch.nn.ConstantPad1d((0, K_SIZE - k_size), 0)
         current_edge = padding(current_edge)
         current_edge = current_edge.unsqueeze(-1).to(self.device)
 
-        edge_padding_mask = torch.zeros((1, 1, k_size), dtype=torch.int16).to(self.device)
+        edge_padding_mask = torch.zeros(
+            (1, 1, k_size),
+            dtype=torch.bool,
+            device=self.device,
+        )
         edge_padding_mask[0, 0, current_in_edge] = 1
         padding = torch.nn.ConstantPad1d((0, K_SIZE - k_size), 1)
         edge_padding_mask = padding(edge_padding_mask)
@@ -244,7 +266,52 @@ class Agent:
 
         return next_position, action_index, rollout_context
 
-    def plot_env(self):
+    def get_rollout_context_cached(
+        self,
+        observation,
+        history_cache,
+        episode_id,
+        policy_version,
+        decision_step,
+    ):
+        """Encode a state for history bookkeeping without sampling an action."""
+        parameter = next(self.policy_net.parameters())
+        cached_history = history_cache.get_sequence(
+            episode_id=episode_id,
+            policy_version=policy_version,
+            decision_step=decision_step,
+            device=parameter.device,
+            dtype=parameter.dtype,
+            use_mamba=self.policy_net.use_mamba,
+        )
+        with torch.no_grad():
+            _, rollout_context = self.policy_net(
+                *observation,
+                cached_history=cached_history,
+                return_rollout_context=True,
+            )
+        return rollout_context
+
+    def action_index_for_waypoint(self, observation, waypoint):
+        """Return the policy candidate index for an externally selected neighbor."""
+        _, _, _, _, current_edge, edge_padding_mask = observation
+        waypoint = np.asarray(waypoint, dtype=float).reshape(2)
+        candidate_indices = current_edge[0, :, 0].detach().cpu().numpy()
+        padded = edge_padding_mask[0, 0].detach().cpu().numpy().astype(bool)
+        for action_index, (node_index, is_padded) in enumerate(
+            zip(candidate_indices, padded)
+        ):
+            if is_padded:
+                continue
+            if np.array_equal(self.node_coords[node_index], waypoint):
+                return torch.tensor(
+                    [action_index],
+                    dtype=torch.long,
+                    device=self.device,
+                )
+        raise ValueError(f"Recovery waypoint {waypoint.tolist()} is not a neighbor")
+
+    def plot_env(self, recovery_debug=None):
         plt.switch_backend('agg')
 
         plt.figure(figsize=(18, 5))
@@ -266,6 +333,40 @@ class Agent:
                 end = (np.array(neighbor_coords) - coords) / 2 + coords
                 plt.plot((np.array([coords[0], end[0]]) - self.map_info.map_origin_x) / self.cell_size,
                                (np.array([coords[1], end[1]]) - self.map_info.map_origin_y) / self.cell_size, 'tan', zorder=1)
+        if recovery_debug is not None:
+            neighborhood = recovery_debug.get("neighborhood", [])
+            history = recovery_debug.get("history", [])
+            path = recovery_debug.get("escape_path", [])
+            target = recovery_debug.get("escape_target")
+            if neighborhood:
+                cells = get_cell_position_from_coords(
+                    np.asarray(neighborhood), self.map_info
+                ).reshape(-1, 2)
+                plt.scatter(
+                    cells[:, 0], cells[:, 1],
+                    facecolors='none', edgecolors='c', s=80, zorder=4,
+                )
+            if history:
+                cells = get_cell_position_from_coords(
+                    np.asarray(history), self.map_info
+                ).reshape(-1, 2)
+                plt.scatter(cells[:, 0], cells[:, 1], c='b', marker='x', zorder=4)
+            if path:
+                cells = get_cell_position_from_coords(
+                    np.asarray(path), self.map_info
+                ).reshape(-1, 2)
+                plt.plot(cells[:, 0], cells[:, 1], c='orange', linewidth=3, zorder=4)
+            if target is not None:
+                cell = get_cell_position_from_coords(
+                    np.asarray(target), self.map_info
+                )
+                plt.scatter(cell[0], cell[1], c='orange', marker='*', s=180, zorder=5)
+            plt.title(
+                "revisit={:.2f} recovery={}".format(
+                    recovery_debug.get("revisit_score", 0.0),
+                    recovery_debug.get("recovery_mode", False),
+                )
+            )
 
         plt.subplot(1, 3, 3)
         plt.imshow(self.map_info.map, cmap='gray')

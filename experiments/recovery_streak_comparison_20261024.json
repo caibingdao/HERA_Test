@@ -1,0 +1,25 @@
+{
+  "seed": 4777,
+  "episodes_per_run": 10000,
+  "recovery": true,
+  "regional_and_point_streaks": [
+    3,
+    2
+  ],
+  "train_maps": 4530,
+  "initialization": "from_scratch",
+  "new_free_cell_threshold": 1,
+  "progress_window": 8,
+  "ordinary_gif_interval": 100,
+  "triggered_recovery_gifs": true,
+  "gpu_pairs": {
+    "streak3": {
+      "rollout": 1,
+      "learner": 2
+    },
+    "streak2": {
+      "rollout": 3,
+      "learner": 0
+    }
+  }
+}

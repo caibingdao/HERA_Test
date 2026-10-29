@@ -1,0 +1,13 @@
+{
+  "streak": 3,
+  "maps": 1133,
+  "successes": 1133,
+  "success_rate": 1.0,
+  "mean_coverage": 0.9966479881916007,
+  "mean_path_all": 253.5633088528864,
+  "mean_path_success": 253.5633088528864,
+  "mean_steps": 35.24360105913504,
+  "recovery_triggers": 1,
+  "checkpoint_sha256": "6cf5bfaff06212753c9557c92c478c88c735439c259bc3235156653fbe0c3f1b",
+  "paired_starts_validated": 1133
+}

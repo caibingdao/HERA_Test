@@ -333,6 +333,9 @@ class RolloutHistoryCache:
                 f"{name} must have shape ({expected_dim},), "
                 f"got {tuple(feature.shape)}"
             )
+        if not torch.isfinite(feature).all():
+            self.invalidate()
+            raise FloatingPointError(f"non-finite cached {name}")
         if feature.device != self._device or feature.dtype != self._dtype:
             self.invalidate()
             raise RuntimeError(

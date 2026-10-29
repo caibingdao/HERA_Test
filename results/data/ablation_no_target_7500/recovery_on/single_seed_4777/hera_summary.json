@@ -1,0 +1,15 @@
+{
+  "streak": 2,
+  "recovery": "on",
+  "training_episodes": 7500,
+  "maps": 1133,
+  "successes": 1133,
+  "success_rate": 1.0,
+  "mean_coverage": 0.9961301317307417,
+  "mean_path_all": 251.94652895906287,
+  "mean_path_success": 251.94652895906287,
+  "mean_steps": 39.24536628420124,
+  "recovery_triggers": 2,
+  "checkpoint_sha256": "e72019bfde078c9e8b5afa7bdd4c48d761ff50ac20fad7d6f715285b93fa7bd4",
+  "paired_starts_validated": 1133
+}

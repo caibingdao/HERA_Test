@@ -1,0 +1,30 @@
+{
+  "state": "waiting_for_gpu",
+  "current": "no_recovery",
+  "updated_unix": 1793241900.9244146,
+  "completed_episodes": 182,
+  "gpus": [
+    {
+      "index": 1,
+      "uuid": "GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
+      "free_mib": 11786
+    },
+    {
+      "index": 3,
+      "uuid": "GPU-0f7f3d7f-1936-3612-73a0-f12dc943cd94",
+      "free_mib": 5268
+    },
+    {
+      "index": 2,
+      "uuid": "GPU-ce02402c-adbd-5898-70d6-37a192be778c",
+      "free_mib": 4045
+    },
+    {
+      "index": 0,
+      "uuid": "GPU-daebf6e6-fbc2-0416-95df-24a7f24ae659",
+      "free_mib": 1587
+    }
+  ],
+  "learner_required_mib": 14336,
+  "sampler_required_mib": 5120
+}

@@ -1,0 +1,16 @@
+{
+  "spec": {
+    "name": "no_recovery",
+    "action_features": "on",
+    "motion_delta": "on",
+    "map_delta": "on",
+    "reward": "on",
+    "recovery": "off",
+    "episodes": 10000
+  },
+  "episodes": 10000,
+  "seed": 4777,
+  "initialization": "from_scratch",
+  "test_recovery": "off",
+  "order": 4
+}

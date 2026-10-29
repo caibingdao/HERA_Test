@@ -1,5 +1,7 @@
 import torch
 import ray
+import random
+import numpy as np
 from model import PolicyNet
 from models.rollout_history_cache import RolloutHistoryCache
 from worker import Worker
@@ -9,6 +11,7 @@ from parameter import *
 def validate_runner_resource_config(
     num_meta_agents=NUM_META_AGENT,
     runner_gpu_fraction=RUNNER_GPU_FRACTION,
+    rollout_gpu_capacity=RAY_ROLLOUT_GPUS,
 ):
     if isinstance(num_meta_agents, bool) or not isinstance(
         num_meta_agents,
@@ -35,14 +38,27 @@ def validate_runner_resource_config(
             "RUNNER_GPU_FRACTION must be > 0, "
             f"got {runner_gpu_fraction}"
         )
+    if isinstance(rollout_gpu_capacity, bool) or not isinstance(
+        rollout_gpu_capacity,
+        (int, float),
+    ):
+        raise ValueError(
+            "RAY_ROLLOUT_GPUS must be a positive number, "
+            f"got {rollout_gpu_capacity!r}"
+        )
+    if rollout_gpu_capacity <= 0:
+        raise ValueError(
+            "RAY_ROLLOUT_GPUS must be > 0, "
+            f"got {rollout_gpu_capacity}"
+        )
 
     total_runner_gpu = num_meta_agents * runner_gpu_fraction
-    if total_runner_gpu > 1.0:
+    if total_runner_gpu > rollout_gpu_capacity:
         raise ValueError(
             "Invalid Ray GPU allocation: NUM_META_AGENT "
             f"({num_meta_agents}) * RUNNER_GPU_FRACTION "
             f"({runner_gpu_fraction}) = {total_runner_gpu}, "
-            "which must be <= 1.0"
+            f"which must be <= RAY_ROLLOUT_GPUS ({rollout_gpu_capacity})"
         )
     return total_runner_gpu
 
@@ -58,12 +74,19 @@ class Runner(object):
         use_rollout_history_cache=None,
     ):
         self.meta_agent_id = meta_agent_id
+        actor_seed = RANDOM_SEED + meta_agent_id
+        random.seed(actor_seed)
+        np.random.seed(actor_seed)
+        torch.manual_seed(actor_seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(actor_seed)
         self.use_mamba = USE_MAMBA if use_mamba is None else use_mamba
-        self.use_rollout_history_cache = (
-            USE_ROLLOUT_HISTORY_CACHE
-            if use_rollout_history_cache is None
-            else use_rollout_history_cache
-        )
+        if use_rollout_history_cache is None:
+            self.use_rollout_history_cache = (
+                USE_ROLLOUT_HISTORY_CACHE and self.use_mamba
+            )
+        else:
+            self.use_rollout_history_cache = use_rollout_history_cache
         if self.use_rollout_history_cache and not self.use_mamba:
             raise ValueError(
                 "USE_ROLLOUT_HISTORY_CACHE=True requires USE_MAMBA=True"
@@ -87,6 +110,21 @@ class Runner(object):
             mamba_expand=MAMBA_EXPAND,
             fusion_hidden_dim=FUSION_HIDDEN_DIM,
             action_embedding_dim=ACTION_EMBEDDING_DIM,
+            history_graph_batch_size=HISTORY_GRAPH_BATCH_SIZE,
+            skip_padded_history_graphs=SKIP_PADDED_HISTORY_GRAPHS,
+            trim_history_graph_nodes=TRIM_HISTORY_GRAPH_NODES,
+            use_history_checkpoint=USE_HISTORY_CHECKPOINT,
+            use_action_features_in_token=USE_HISTORY_ACTION_FEATURES_IN_TOKEN,
+            use_features_in_token=USE_HISTORY_FEATURES_IN_TOKEN,
+            use_behavior_reward_in_token=(
+                USE_HISTORY_BEHAVIOR_REWARD_IN_TOKEN
+            ),
+            use_frontier_delta_in_token=USE_HISTORY_FRONTIER_DELTA_IN_TOKEN,
+            use_map_delta_in_token=USE_HISTORY_MAP_DELTA_IN_TOKEN,
+            use_motion_delta_in_token=USE_HISTORY_MOTION_DELTA_IN_TOKEN,
+            use_reward_in_token=USE_HISTORY_REWARD_IN_TOKEN,
+            temporal_pose_encoding=TEMPORAL_POSE_ENCODING,
+            temporal_delta_position_scale=TEMPORAL_DELTA_POSITION_SCALE,
         )
         self.local_network.to(self.device)
         self.policy_version = 0
@@ -121,7 +159,8 @@ class Runner(object):
             )
 
     def do_job(self, episode_number):
-        save_img = True if episode_number % SAVE_IMG_GAP == 0 else False
+        save_img = (episode_number % SAVE_IMG_GAP == 0
+                    and os.environ.get('ARIADNE_DISABLE_GIFS', '0') != '1')
         # save_img = True
         worker = Worker(
             self.meta_agent_id,

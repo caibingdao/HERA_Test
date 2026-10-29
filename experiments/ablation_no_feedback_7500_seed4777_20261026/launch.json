@@ -1,0 +1,66 @@
+{
+  "spec": {
+    "name": "no_feedback",
+    "action_features": "on",
+    "motion_delta": "on",
+    "map_delta": "off",
+    "reward": "off"
+  },
+  "episodes": 7500,
+  "seed": 4777,
+  "recovery": true,
+  "regional_trigger_steps": 2,
+  "point_repeat_trigger_steps": 2,
+  "gpu_inventory": [
+    {
+      "index": 0,
+      "uuid": "GPU-daebf6e6-fbc2-0416-95df-24a7f24ae659",
+      "memory_used": 11878,
+      "memory_total": 24564,
+      "utilization": 0
+    },
+    {
+      "index": 1,
+      "uuid": "GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
+      "memory_used": 10709,
+      "memory_total": 24564,
+      "utilization": 99
+    },
+    {
+      "index": 2,
+      "uuid": "GPU-ce02402c-adbd-5898-70d6-37a192be778c",
+      "memory_used": 13142,
+      "memory_total": 24564,
+      "utilization": 0
+    },
+    {
+      "index": 3,
+      "uuid": "GPU-0f7f3d7f-1936-3612-73a0-f12dc943cd94",
+      "memory_used": 10312,
+      "memory_total": 24564,
+      "utilization": 42
+    }
+  ],
+  "selected_gpus": [
+    {
+      "index": 3,
+      "uuid": "GPU-0f7f3d7f-1936-3612-73a0-f12dc943cd94",
+      "memory_used": 10312,
+      "memory_total": 24564,
+      "utilization": 42
+    },
+    {
+      "index": 1,
+      "uuid": "GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
+      "memory_used": 10709,
+      "memory_total": 24564,
+      "utilization": 99
+    }
+  ],
+  "split_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "baseline_checkpoint_sha256": "8d126a76433fc33b8a61ddc4e9288ea30e141e11257c759b12e99d5c6de568bb",
+  "baseline_checkpoint_used_for_initialization": false,
+  "started_unix": 1793042517.370149,
+  "run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/ablation_no_feedback_7500_seed4777_20261026",
+  "gifs": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/gifs/ablation_no_feedback_7500_seed4777_20261026"
+}

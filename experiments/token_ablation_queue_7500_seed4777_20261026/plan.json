@@ -1,0 +1,89 @@
+{
+  "baseline": {
+    "selection_criterion": "mean_path_all",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/recovery_streak2_seed4777_10k_20261024/model/checkpoint.pth",
+    "checkpoint_sha256": "8d126a76433fc33b8a61ddc4e9288ea30e141e11257c759b12e99d5c6de568bb",
+    "training_episodes": 10000,
+    "recovery": true,
+    "regional_trigger_steps": 2,
+    "point_repeat_trigger_steps": 2,
+    "seed": 4777,
+    "source_test_summary": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/hera_summary.json"
+  },
+  "trial_order": [
+    {
+      "name": "no_target",
+      "action_features": "off",
+      "motion_delta": "on",
+      "map_delta": "on",
+      "reward": "on"
+    },
+    {
+      "name": "no_feedback",
+      "action_features": "on",
+      "motion_delta": "on",
+      "map_delta": "off",
+      "reward": "off"
+    },
+    {
+      "name": "no_motion",
+      "action_features": "on",
+      "motion_delta": "off",
+      "map_delta": "on",
+      "reward": "on"
+    },
+    {
+      "name": "no_recovery",
+      "action_features": "on",
+      "motion_delta": "on",
+      "map_delta": "on",
+      "reward": "on",
+      "recovery": "off",
+      "episodes": 10000
+    }
+  ],
+  "episodes_per_trial": 7500,
+  "source_sha256": {
+    "replay_buffer.py": "1faf45ead4ca6edbb7438cd055ad41e2a74b9aea7a0b88bfff1b47fd3d13ab7d",
+    "utils.py": "ed8b09f8b2880543d221fd9ea810ed15eaf1319182ce095179dc7016df6ce396",
+    "recovery_artifacts.py": "05633c375279daeba74f10b98abe4530ed0b873a45644915fe46bfffd8a61d0c",
+    "local_revisit_recovery.py": "7629354fddd8e70ed0992b92d5b9dbf7aef0c6595b212ff36a66c72c7e208b05",
+    "quads.py": "b6e2efa63d526d89973c271f98cb30231dfd02f79c08bce69c08d57f2217d242",
+    "temporal_pose.py": "c96454bab65ace560cf5dc17867718f97df972b00a42401cc7a02af59e815e91",
+    "driver.py": "22003659011bc000c9b17e9ab265e7ad97199bdd14c9dacb69dbd756282dcd7d",
+    "sensor.py": "72164f63f9285fd9e4aabacb7c5110e66498c6a5007594e9529a8bd1a5517161",
+    "test_checkpoint.py": "daa654c895eec3ba8b724c1f9f420189a9e6c686d7194f37d26310f67a3c708f",
+    "training_profiler.py": "4de7b49567ead88447147178df7bb106899a9d6bcc7ad509c5622c7fb466f10a",
+    "worker.py": "76b9674c1e78b3696643cb9d9a2c4dd93952f4d4d58e839734cffcd1bd0cb856",
+    "parameter.py": "9134657c77f4f69ec41962fc64d3350f23fe28a6499fe8104204bd886b6a9d24",
+    "node_manager.py": "66dd8800592e781c4335c7545ecf7403add972fe80e41d2a494d800a7beedf90",
+    "env.py": "d3c241ffaeab65260815593ea315e82c8a8a2814690af91a04a0b12b5aee98c4",
+    "agent.py": "795a861ff7c2d743fff89ebbe03c9d2318e4b995727bc0f143142804235278a8",
+    "runner.py": "42c41914b8b34422e08cac92216b0f349a6f8e21f6d80315be9b3a3e1b99ac6f",
+    "training_budget.py": "fb2c1ea61bd60dc06e7e796ad3cb6c43819db945c3425c272396a1c4e8fbc07e",
+    "model.py": "b2cd5da144973c1609048f784d72581d5c225f4734067968172d09c4c12259c1",
+    "models/rollout_history_cache.py": "ea1958c4baa6ab2f8706776524419ea750d36eae34d83ff01ec3b6f3e442c268",
+    "models/__init__.py": "3c1160b1fa668e8675b6b5ff48262beaf8ef31df0a4b79c702ec40414866039b",
+    "models/mamba_encoder.py": "d0252d688a3e7f80dbb0b78709607a74376f7483eebf32a1408d97963a4a22a5",
+    "models/history_encoder.py": "6250472b2c79182af7b466d7b9a139073ff9de8427c6a13969ddb33af76c7ed6",
+    "models/fusion.py": "b07a56717899e43efd524db463526a4c97b5e1c0edd197d2275477e2aa7126ac",
+    "scripts/train_pose_original_parallel.py": "081c0885b371af4c09d869c60b82a5bb7c4a1a978ca04f7d9936552da28e1c5f"
+  },
+  "scheduling": "one trial trains and passes full test before next; reselect lowest-memory GPU pair for each trial",
+  "test": {
+    "maps": 1133,
+    "seed": 4777,
+    "greedy": true,
+    "target_coverage": 0.99,
+    "max_steps": 128,
+    "recovery": true
+  },
+  "note": "no_feedback masks token reward/new-free-cell input only; recovery observes the same raw counts as baseline",
+  "additional_trial_scheduling": "Separate follow-up service waits for the existing three-trial service to complete, then trains/tests full Mamba recovery off",
+  "episode_budgets": {
+    "no_target": 7500,
+    "no_feedback": 7500,
+    "no_motion": 7500,
+    "no_recovery": 10000
+  }
+}

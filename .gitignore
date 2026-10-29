@@ -1,0 +1,26 @@
+benchmarks/results/*.trace.json
+benchmarks/results/*.trace.json.gz
+benchmarks/results/*.csv
+
+# Python runtime caches
+__pycache__/
+*.py[cod]
+
+# Generated training artifacts
+train/
+model/
+gifs/ariadne*/
+
+# Local runtime artifacts excluded from the published source snapshot
+__pycache__/
+*.py[cod]
+*.pth
+*.pth.*
+*.gif
+*.jsonl
+*.log
+**/model/
+**/matplotlib/
+**/events.out.tfevents*
+/gifs/
+/logs/

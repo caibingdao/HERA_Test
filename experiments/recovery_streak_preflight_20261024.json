@@ -1,0 +1,24 @@
+{
+  "only_parameter_differences": [
+    "LOCAL_REVISIT_TRIGGER_STEPS",
+    "POINT_REPEAT_TRIGGER_STEPS"
+  ],
+  "matched_historical_hyperparameters": {
+    "NUM_META_AGENT": 5,
+    "RUNNER_GPU_FRACTION": 0.2,
+    "RAY_ROLLOUT_GPUS": 1,
+    "BATCH_SIZE": 32,
+    "LR": 1e-05,
+    "GAMMA": 1,
+    "MINIMUM_BUFFER_SIZE": 2000,
+    "REPLAY_SIZE": 3000,
+    "LEARNER_UPDATES_PER_TRAIN": 8,
+    "MAX_EPISODE_STEP": 128,
+    "TEMPORAL_SEQUENCE_LENGTH": 16,
+    "MAMBA_D_MODEL": 128,
+    "MAMBA_D_STATE": 16,
+    "MAMBA_D_CONV": 4,
+    "MAMBA_EXPAND": 2,
+    "USE_BF16": true
+  }
+}

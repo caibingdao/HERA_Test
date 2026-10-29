@@ -1,0 +1,17 @@
+{
+  "streak": 3,
+  "seed": 4777,
+  "episodes": 10000,
+  "initialization": "from_scratch",
+  "recovery": "on",
+  "physical_gpu_uuids": [
+    "GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
+    "GPU-ce02402c-adbd-5898-70d6-37a192be778c"
+  ],
+  "split": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "training_maps": 4530,
+  "run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/recovery_streak3_seed4777_10k_20261024",
+  "gifs": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/gifs/recovery_streak3_seed4777_10k_20261024",
+  "started_unix": 1792808794.8392398
+}

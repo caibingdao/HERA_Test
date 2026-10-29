@@ -47,8 +47,14 @@ class SingleHeadAttention(nn.Module):
         U = self.tanh_clipping * torch.tanh(U)
 
         if mask is not None:
-            U = U.masked_fill(mask == 1, -1e8)
-        attention = torch.log_softmax(U, dim=-1)  # n_batch*n_query*n_key
+            U = U.masked_fill(
+                mask.bool(),
+                torch.finfo(U.dtype).min,
+            )
+        attention = torch.log_softmax(
+            U.float(),
+            dim=-1,
+        )  # keep policy probabilities in FP32 under autocast
 
         return attention
 
@@ -100,14 +106,27 @@ class MultiHeadAttention(nn.Module):
         U = self.norm_factor * torch.matmul(Q, K.transpose(2, 3))  # n_heads*batch_size*n_query*targets_size
 
         if attn_mask is not None:
-            attn_mask = attn_mask.view(1, n_batch, n_query, n_key).expand_as(U)
+            attn_mask = (
+                attn_mask.bool()
+                .view(1, n_batch, n_query, n_key)
+                .expand_as(U)
+            )
 
         if key_padding_mask is not None:
-            key_padding_mask = key_padding_mask.repeat(1, n_query, 1)
-            key_padding_mask = key_padding_mask.view(1, n_batch, n_query, n_key).expand_as(U)  # copy for n_heads times
+            key_padding_mask = key_padding_mask.bool().repeat(
+                1,
+                n_query,
+                1,
+            )
+            key_padding_mask = key_padding_mask.view(
+                1,
+                n_batch,
+                n_query,
+                n_key,
+            ).expand_as(U)
 
         if attn_mask is not None and key_padding_mask is not None:
-            mask = (attn_mask + key_padding_mask)
+            mask = attn_mask | key_padding_mask
         elif attn_mask is not None:
             mask = attn_mask
         elif key_padding_mask is not None:
@@ -116,7 +135,7 @@ class MultiHeadAttention(nn.Module):
             mask = None
 
         if mask is not None:
-            U = U.masked_fill(mask > 0, -1e8)
+            U = U.masked_fill(mask, torch.finfo(U.dtype).min)
 
         attention = torch.softmax(U, dim=-1)  # n_heads*batch_size*n_query*targets_size
 
@@ -223,6 +242,19 @@ class TemporalFusionNetwork(nn.Module):
         mamba_expand,
         fusion_hidden_dim,
         action_embedding_dim,
+        history_graph_batch_size,
+        skip_padded_history_graphs,
+        trim_history_graph_nodes,
+        use_history_checkpoint,
+        use_action_features_in_token,
+        use_features_in_token,
+        use_behavior_reward_in_token,
+        use_frontier_delta_in_token,
+        use_map_delta_in_token,
+        use_motion_delta_in_token,
+        use_reward_in_token,
+        temporal_pose_encoding,
+        temporal_delta_position_scale,
     ):
         self.use_mamba = bool(use_mamba)
         self.mamba_seq_len = mamba_seq_len
@@ -236,6 +268,19 @@ class TemporalFusionNetwork(nn.Module):
             graph_embedding_dim=embedding_dim,
             action_embedding_dim=action_embedding_dim,
             token_dim=mamba_d_model,
+            graph_batch_size=history_graph_batch_size,
+            skip_padded_history_graphs=skip_padded_history_graphs,
+            trim_history_graph_nodes=trim_history_graph_nodes,
+            use_history_checkpoint=use_history_checkpoint,
+            use_action_features_in_token=use_action_features_in_token,
+            use_features_in_token=use_features_in_token,
+            use_behavior_reward_in_token=use_behavior_reward_in_token,
+            use_frontier_delta_in_token=use_frontier_delta_in_token,
+            use_map_delta_in_token=use_map_delta_in_token,
+            use_motion_delta_in_token=use_motion_delta_in_token,
+            use_reward_in_token=use_reward_in_token,
+            temporal_pose_encoding=temporal_pose_encoding,
+            temporal_delta_position_scale=temporal_delta_position_scale,
         )
         self.mamba_encoder = MambaTemporalEncoder(
             d_model=mamba_d_model,
@@ -356,6 +401,19 @@ class PolicyNet(TemporalFusionNetwork):
         mamba_expand=2,
         fusion_hidden_dim=128,
         action_embedding_dim=16,
+        history_graph_batch_size=16,
+        skip_padded_history_graphs=False,
+        trim_history_graph_nodes=False,
+        use_history_checkpoint=True,
+        use_action_features_in_token=None,
+        use_features_in_token=True,
+        use_behavior_reward_in_token=True,
+        use_frontier_delta_in_token=False,
+        use_map_delta_in_token=True,
+        use_motion_delta_in_token=True,
+        use_reward_in_token=True,
+        temporal_pose_encoding="delta_local",
+        temporal_delta_position_scale=4.0,
     ):
         super(PolicyNet, self).__init__()
 
@@ -380,6 +438,19 @@ class PolicyNet(TemporalFusionNetwork):
             mamba_expand=mamba_expand,
             fusion_hidden_dim=fusion_hidden_dim,
             action_embedding_dim=action_embedding_dim,
+            history_graph_batch_size=history_graph_batch_size,
+            skip_padded_history_graphs=skip_padded_history_graphs,
+            trim_history_graph_nodes=trim_history_graph_nodes,
+            use_history_checkpoint=use_history_checkpoint,
+            use_action_features_in_token=use_action_features_in_token,
+            use_features_in_token=use_features_in_token,
+            use_behavior_reward_in_token=use_behavior_reward_in_token,
+            use_frontier_delta_in_token=use_frontier_delta_in_token,
+            use_map_delta_in_token=use_map_delta_in_token,
+            use_motion_delta_in_token=use_motion_delta_in_token,
+            use_reward_in_token=use_reward_in_token,
+            temporal_pose_encoding=temporal_pose_encoding,
+            temporal_delta_position_scale=temporal_delta_position_scale,
         )
 
     def encode_graph(self, node_inputs, node_padding_mask, edge_mask):
@@ -476,8 +547,9 @@ class PolicyNet(TemporalFusionNetwork):
         action_index,
         robot_pose,
         reward,
-        delta_coverage,
+        new_free_cell_count,
         delta_frontier,
+        post_pose=None,
     ):
         if not self.use_mamba:
             raise RuntimeError(
@@ -499,15 +571,15 @@ class PolicyNet(TemporalFusionNetwork):
         robot_pose = torch.as_tensor(
             robot_pose,
             device=device,
-            dtype=dtype,
+            dtype=torch.float32,
         ).reshape(1, 3)
         reward = torch.as_tensor(
             reward,
             device=device,
             dtype=dtype,
         ).reshape(1, 1)
-        delta_coverage = torch.as_tensor(
-            delta_coverage,
+        new_free_cell_count = torch.as_tensor(
+            new_free_cell_count,
             device=device,
             dtype=dtype,
         ).reshape(1, 1)
@@ -516,13 +588,16 @@ class PolicyNet(TemporalFusionNetwork):
             device=device,
             dtype=dtype,
         ).reshape(1, 1)
+        if post_pose is not None:
+            post_pose = torch.as_tensor(post_pose, device=device, dtype=torch.float32).reshape(1, 3)
         token = self.history_encoder(
             graph_embedding=graph_embedding,
             robot_pose=robot_pose,
             action_feature=action_feature,
             reward=reward,
-            delta_coverage=delta_coverage,
+            new_free_cell_count=new_free_cell_count,
             delta_frontier=delta_frontier,
+            post_pose=post_pose,
         )
         return (
             graph_embedding.detach(),
@@ -544,6 +619,19 @@ class QNet(TemporalFusionNetwork):
         mamba_expand=2,
         fusion_hidden_dim=128,
         action_embedding_dim=16,
+        history_graph_batch_size=16,
+        skip_padded_history_graphs=False,
+        trim_history_graph_nodes=False,
+        use_history_checkpoint=True,
+        use_action_features_in_token=None,
+        use_features_in_token=True,
+        use_behavior_reward_in_token=True,
+        use_frontier_delta_in_token=False,
+        use_map_delta_in_token=True,
+        use_motion_delta_in_token=True,
+        use_reward_in_token=True,
+        temporal_pose_encoding="delta_local",
+        temporal_delta_position_scale=4.0,
     ):
         super(QNet, self).__init__()
 
@@ -567,6 +655,19 @@ class QNet(TemporalFusionNetwork):
             mamba_expand=mamba_expand,
             fusion_hidden_dim=fusion_hidden_dim,
             action_embedding_dim=action_embedding_dim,
+            history_graph_batch_size=history_graph_batch_size,
+            skip_padded_history_graphs=skip_padded_history_graphs,
+            trim_history_graph_nodes=trim_history_graph_nodes,
+            use_history_checkpoint=use_history_checkpoint,
+            use_action_features_in_token=use_action_features_in_token,
+            use_features_in_token=use_features_in_token,
+            use_behavior_reward_in_token=use_behavior_reward_in_token,
+            use_frontier_delta_in_token=use_frontier_delta_in_token,
+            use_map_delta_in_token=use_map_delta_in_token,
+            use_motion_delta_in_token=use_motion_delta_in_token,
+            use_reward_in_token=use_reward_in_token,
+            temporal_pose_encoding=temporal_pose_encoding,
+            temporal_delta_position_scale=temporal_delta_position_scale,
         )
 
     def encode_graph(self, node_inputs, node_padding_mask, edge_mask):

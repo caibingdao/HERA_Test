@@ -1,0 +1,78 @@
+[
+  {
+    "name": "baseline_streak2_10k",
+    "summary": {
+      "streak": 2,
+      "maps": 1133,
+      "successes": 1133,
+      "success_rate": 1.0,
+      "mean_coverage": 0.9958333214879258,
+      "mean_path_all": 251.64295415457846,
+      "mean_path_success": 251.64295415457846,
+      "mean_steps": 45.59135039717564,
+      "recovery_triggers": 16,
+      "checkpoint_sha256": "8d126a76433fc33b8a61ddc4e9288ea30e141e11257c759b12e99d5c6de568bb",
+      "paired_starts_validated": 1133
+    }
+  },
+  {
+    "name": "no_target",
+    "run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/ablation_no_target_7500_seed4777_20261026",
+    "results": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/ablation_no_target_7500/recovery_on/single_seed_4777",
+    "summary": {
+      "streak": 2,
+      "recovery": "on",
+      "training_episodes": 7500,
+      "maps": 1133,
+      "successes": 1133,
+      "success_rate": 1.0,
+      "mean_coverage": 0.9961301317307417,
+      "mean_path_all": 251.94652895906287,
+      "mean_path_success": 251.94652895906287,
+      "mean_steps": 39.24536628420124,
+      "recovery_triggers": 2,
+      "checkpoint_sha256": "e72019bfde078c9e8b5afa7bdd4c48d761ff50ac20fad7d6f715285b93fa7bd4",
+      "paired_starts_validated": 1133
+    }
+  },
+  {
+    "name": "no_feedback",
+    "run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/ablation_no_feedback_7500_seed4777_20261026",
+    "results": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777",
+    "summary": {
+      "streak": 2,
+      "recovery": "on",
+      "training_episodes": 7500,
+      "maps": 1133,
+      "successes": 1133,
+      "success_rate": 1.0,
+      "mean_coverage": 0.9967879937298094,
+      "mean_path_all": 256.89412859924767,
+      "mean_path_success": 256.89412859924767,
+      "mean_steps": 34.264783759929394,
+      "recovery_triggers": 9,
+      "checkpoint_sha256": "c27a1cab75007e3b153c6f543c6fd22fb93d28c4fe3e74c21d7532a51533da3c",
+      "paired_starts_validated": 1133
+    }
+  },
+  {
+    "name": "no_motion",
+    "run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/ablation_no_motion_7500_seed4777_20261026",
+    "results": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777",
+    "summary": {
+      "streak": 2,
+      "recovery": "on",
+      "training_episodes": 7500,
+      "maps": 1133,
+      "successes": 1133,
+      "success_rate": 1.0,
+      "mean_coverage": 0.9958921031720153,
+      "mean_path_all": 253.84418245686518,
+      "mean_path_success": 253.84418245686518,
+      "mean_steps": 43.023830538393646,
+      "recovery_triggers": 2,
+      "checkpoint_sha256": "44dad9dfbe44a4d870a96983cddadc0a3ee585df96b6213d628790de639abe55",
+      "paired_starts_validated": 1133
+    }
+  }
+]
