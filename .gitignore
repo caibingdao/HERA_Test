@@ -5,22 +5,30 @@ benchmarks/results/*.csv
 # Python runtime caches
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.vscode/
 
-# Generated training artifacts
+# Generated training artifacts (not part of the paper artifact)
 train/
 model/
-gifs/ariadne*/
-
-# Local runtime artifacts excluded from the published source snapshot
-__pycache__/
-*.py[cod]
-*.pth
-*.pth.*
-*.gif
-*.jsonl
-*.log
+gifs/
+/logs/
 **/model/
 **/matplotlib/
 **/events.out.tfevents*
-/gifs/
-/logs/
+*.pth
+*.pth.*
+*.jsonl
+experiments/**/train.log
+experiments/*_control/*.log
+experiments/**/plots.log
+experiments/**/episodes.csv.before_resume_*
+experiments/*_control/*.before_restart_*
+
+# Raw evaluation logs are part of the test artifacts
+!results/logs/
+!results/logs/*.log
+
+# Paper artifact pack is tracked
+!paper/
+!paper/**

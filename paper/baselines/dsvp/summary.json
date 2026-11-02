@@ -1,0 +1,12 @@
+{
+  "model": "DSVP planar official-score port",
+  "maps": 1133,
+  "successes": 1133,
+  "success_rate": 1.0,
+  "mean_path_length_all": 270.7497054254388,
+  "mean_path_length_success": 270.7497054254388,
+  "mean_steps": 38.796999117387465,
+  "paired_maps_and_starts_match": true,
+  "implementation": "2D port; not full original ROS DSVP",
+  "specification_sha256": "4556090c58e429f77601649b07e502f57db192153547914da1831f1948bbef91"
+}

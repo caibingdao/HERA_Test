@@ -1,0 +1,2 @@
+model,maps,successes,success_rate,mean_path_all_m,mean_path_success_m,mean_steps,mean_final_coverage,reference_maps_and_starts_match
+CNN matched recovery on,1133,1007,0.8887908208296558,340.1249673929443,307.4058379280787,64.9135039717564,0.9808679355082833,True

@@ -1,0 +1,6 @@
+{
+  "export_python": "3.10.12",
+  "export_platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv": "Command '['nvidia-smi', '--query-gpu=name,driver_version,memory.total', '--format=csv']' returned non-zero exit status 9.",
+  "uname -a": "Linux adminer-Rack-Server 6.8.0-138-generic #138~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  7 13:43:15 UTC  x86_64 x86_64 x86_64 GNU/Linux\n"
+}

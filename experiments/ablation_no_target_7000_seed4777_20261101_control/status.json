@@ -1,0 +1,7 @@
+{
+  "state": "complete",
+  "updated_unix": 1793604166.7704809,
+  "completed_episodes": 7000,
+  "test_maps": 1133,
+  "results": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/ablation_no_target_7000/recovery_on/single_seed_4777"
+}

@@ -1,0 +1,5748 @@
+{
+  "action_selection": "greedy_argmax",
+  "adapter": "evaluation_adapters.cnn:create_adapter",
+  "adapter_args": {},
+  "adapter_metadata": {
+    "action_selection": "greedy_argmax",
+    "anti_loop_filter": false,
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/cnn_matched_mamba_10k_seed4777_20261019/model/checkpoint.pth",
+    "cnn_config": {
+      "CNN_CANDIDATE_FEATURE_DIM": 7,
+      "CNN_EMBEDDING_DIM": 192,
+      "CNN_GLOBAL_STATE_DIM": 6,
+      "CNN_HEAD_DIM": 192,
+      "CNN_LOCAL_MAP_CHANNELS": 6,
+      "CNN_LOCAL_MAP_SIZE": 96,
+      "CNN_MAP_CHANNELS": 6,
+      "CNN_N_ACTIONS": 25,
+      "CNN_N_AUXILIARY": 6
+    },
+    "completed_training_episodes": 10000,
+    "deterministic": true,
+    "device": "cuda",
+    "environment": "shared Mamba split-aware Env",
+    "episode_diagnostics": [
+      {
+        "map_id": "110.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "111.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "123.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "128.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "141.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "150.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "156.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "159.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "160.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "161.png",
+        "recovery_steps": 10,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "167.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "169.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "178.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "179.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "186.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "189.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "19.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "202.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "203.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "214.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "216.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "217.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "232.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "233.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "235.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "237.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "240.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "254.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "257.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "272.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "281.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "291.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "300.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "303.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "304.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "307.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "308.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "312.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "32.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "324.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "330.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "336.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "338.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "344.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "349.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "357.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "361.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "365.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "366.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "37.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "371.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "372.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "375.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "379.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "381.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "39.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "400.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "401.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "407.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "408.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "413.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "423.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "424.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "425.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "437.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "438.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "444.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "448.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "456.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "464.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "469.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "488.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "499.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "55.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "57.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "58.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "602.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "604.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "607.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "611.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "618.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "624.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "626.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "628.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "632.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "635.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "636.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "645.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "651.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "654.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "656.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "663.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "68.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "681.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "682.png",
+        "recovery_steps": 4,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "699.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "7.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "70.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "701.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "704.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "705.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "707.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "710.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "711.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "713.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "716.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "717.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "724.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "729.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "731.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "733.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "734.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "743.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "746.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "748.png",
+        "recovery_steps": 4,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "756.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "758.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "760.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "762.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "763.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "83.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "87.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "90.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "96.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_100.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1007.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1010.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1015.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1016.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1019.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_102.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1023.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1025.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1026.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1029.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_103.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1033.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1034.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1035.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1036.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1044.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1046.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_105.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1050.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1062.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_107.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1080.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1082.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1086.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1089.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_110.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1102.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1104.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1114.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1118.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1119.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1120.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1123.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1136.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1141.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1164.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1167.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1174.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1175.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1177.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1184.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1188.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1190.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1195.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1197.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1198.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1201.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1213.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1214.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1222.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1223.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1228.png",
+        "recovery_steps": 4,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_123.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1230.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1237.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_124.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1243.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1244.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1253.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1254.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1258.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1268.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1269.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1271.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1274.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_128.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1286.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_129.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1291.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1292.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1295.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1299.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1302.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1310.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1318.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1323.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1324.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1326.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1327.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1332.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1339.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1343.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1354.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1360.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1364.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1365.png",
+        "recovery_steps": 4,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1367.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1375.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1376.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1383.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1392.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1395.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1401.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1406.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1413.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1416.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1417.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1419.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1421.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1424.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1426.png",
+        "recovery_steps": 16,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1441.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1442.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1445.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1454.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1458.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_146.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1468.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1470.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1475.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1476.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1479.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1486.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1491.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1492.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1495.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1504.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1505.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1508.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1510.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1514.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1516.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1522.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1527.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1535.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1547.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1549.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1553.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1558.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1564.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1566.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1569.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_157.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1574.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1576.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1584.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1589.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1599.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_16.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_160.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1613.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1615.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1621.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1622.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1623.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1627.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1629.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_163.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1631.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1639.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_164.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1641.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1646.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1648.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1660.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1662.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1673.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_168.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1680.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1681.png",
+        "recovery_steps": 10,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1688.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_17.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_170.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1701.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1702.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1706.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1712.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1713.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1719.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1732.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1741.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1748.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1749.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1752.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1762.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1771.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1774.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1775.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1786.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1789.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1792.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1795.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1818.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1819.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1820.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1822.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1838.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1839.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1845.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1847.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1849.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1853.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1855.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_186.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1869.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1871.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1872.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1876.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1885.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1886.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1891.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1899.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1905.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1909.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1913.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1914.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1916.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1917.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1923.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1927.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1930.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1938.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1939.png",
+        "recovery_steps": 10,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_1943.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1956.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_196.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1963.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1969.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1971.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1972.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1977.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1987.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_1999.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_200.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2005.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2007.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2021.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2023.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2027.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2028.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2040.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2042.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2049.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2051.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2054.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2060.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2064.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2066.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2069.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2087.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_209.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2090.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2094.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2097.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2099.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2102.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2117.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_212.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2123.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2130.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2131.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2135.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2139.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_214.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2142.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2148.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2150.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2151.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2163.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2170.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2180.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2181.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2184.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2189.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2190.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2200.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2202.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2207.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2212.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2219.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2224.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2225.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2228.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2229.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_223.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2231.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2233.png",
+        "recovery_steps": 15,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2239.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2240.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2252.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2255.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2260.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2261.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2265.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2270.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2272.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2273.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2277.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2282.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2286.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2288.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2290.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2291.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2292.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2298.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2311.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2316.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2317.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2327.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2328.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2331.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2332.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2338.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_234.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2346.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2348.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2351.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2355.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2362.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2368.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_237.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2370.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2381.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2383.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2388.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2394.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2396.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2397.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2399.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_24.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_240.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2403.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2405.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2408.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2409.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2414.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2429.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_243.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2431.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2436.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2437.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2438.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2442.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2456.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2463.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2464.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_248.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2483.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2498.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2507.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2508.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2511.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2512.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2513.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2518.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2526.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2528.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2531.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2536.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2538.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2539.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2541.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2542.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2554.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2561.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2562.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2572.png",
+        "recovery_steps": 10,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2573.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2574.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2584.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2609.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_261.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2613.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2618.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2619.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_262.png",
+        "recovery_steps": 10,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2621.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2628.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_263.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2643.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2646.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2649.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2650.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2652.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2654.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_266.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2670.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2674.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2675.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2686.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2687.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2693.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2695.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2697.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2700.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2706.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2715.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2721.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2727.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_273.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2732.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2737.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2739.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2748.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2753.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2754.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2757.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_276.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2764.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2767.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2771.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2772.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2774.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2776.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_278.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2780.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2781.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2782.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2784.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2791.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2793.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2795.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2799.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_280.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2805.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2807.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2808.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_281.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2813.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2819.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_282.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2820.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2840.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2842.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2846.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2855.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2862.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2865.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2867.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2868.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2869.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2872.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2875.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2879.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2882.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_289.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2896.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2899.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_290.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2907.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2909.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2923.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2926.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2928.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2929.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_2932.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2939.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2944.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2949.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2950.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2952.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2959.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2960.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2962.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2964.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2967.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_297.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2978.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2980.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2981.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2985.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2991.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2993.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_2997.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3008.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3015.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3018.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3023.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_303.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3030.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3037.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3043.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3059.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3065.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3069.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3070.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3074.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3075.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3078.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3079.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3087.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_309.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3094.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3098.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_310.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3102.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3104.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3105.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3113.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3115.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3119.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3125.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3132.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3134.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_314.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3141.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3150.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3157.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3162.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3163.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3164.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3165.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3167.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3175.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3203.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3206.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_321.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3210.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3211.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3212.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3213.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3216.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3219.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3226.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3227.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3229.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3240.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3248.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3256.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3258.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_326.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3266.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3267.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3272.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3279.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3294.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3296.png",
+        "recovery_steps": 12,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_331.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3320.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3324.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3327.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_333.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3330.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3333.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3347.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3348.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3349.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3354.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3355.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3357.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3360.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3361.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3363.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3365.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3372.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3373.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3380.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3381.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3386.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_339.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3396.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3401.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3416.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3424.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3431.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3437.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3440.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3442.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3448.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3450.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3461.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3466.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3472.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3478.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_348.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3483.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3485.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_349.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3490.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3492.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3499.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_350.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3503.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3507.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3512.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3516.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3522.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3525.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3526.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_353.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3530.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3536.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3541.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_355.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3560.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3571.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3577.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3581.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3584.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3587.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3591.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3598.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3607.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3610.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3611.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3620.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3633.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3638.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3646.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3647.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_365.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3652.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3655.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3657.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3662.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3680.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3683.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3689.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_369.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3690.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3696.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3698.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_37.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3703.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3705.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_371.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3711.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3713.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3720.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3725.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3740.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3749.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3762.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3770.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3775.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3787.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3788.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3791.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3792.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3793.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3794.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3800.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3820.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3821.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3828.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3832.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3833.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3838.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3870.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3873.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3876.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3878.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3885.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3889.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3891.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3894.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3898.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3903.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3918.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3923.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3926.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_3927.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3928.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3929.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_393.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3936.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3947.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3950.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3951.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3955.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3965.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_397.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_398.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3986.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3987.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_399.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_3996.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4007.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_401.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4016.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_402.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4023.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4026.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4027.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_403.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4030.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4035.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4037.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4040.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4044.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4058.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4060.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4061.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4062.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4065.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4072.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4073.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4074.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4075.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4077.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4079.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4080.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4086.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4087.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4089.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4091.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4097.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4101.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4106.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4107.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4110.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4114.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_412.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4124.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_413.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4131.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4149.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4150.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4153.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4156.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4158.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_417.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4170.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4175.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4177.png",
+        "recovery_steps": 10,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4182.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4190.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4191.png",
+        "recovery_steps": 13,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4197.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_42.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4200.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4207.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4211.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4215.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4221.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4224.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4228.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4229.png",
+        "recovery_steps": 12,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4230.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4232.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4236.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4245.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4246.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4247.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_425.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4254.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4266.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4277.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4281.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4286.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4311.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4313.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4317.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4326.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4330.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4338.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4341.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4346.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4347.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4350.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4359.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4361.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4364.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4366.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4367.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4376.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_438.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4382.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4392.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4398.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4401.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_441.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4418.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4422.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4439.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4441.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4444.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4452.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4454.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4458.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4473.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4482.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4486.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_449.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4493.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4495.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4510.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4526.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_453.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4530.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4537.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4538.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_454.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4540.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4544.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4548.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_457.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4571.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4579.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4583.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4585.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4588.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4589.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_459.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4590.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4601.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4602.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4608.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_461.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4615.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4618.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_462.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4621.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4625.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4626.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4631.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4636.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4646.png",
+        "recovery_steps": 9,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4649.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4650.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4656.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4657.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4658.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4659.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_466.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4660.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4662.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4666.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4672.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4678.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_468.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4680.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4687.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4689.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4690.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4691.png",
+        "recovery_steps": 21,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4692.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_47.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_470.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4700.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4716.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_472.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4721.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4724.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4729.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4730.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4733.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4736.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4737.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_474.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4740.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4743.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4748.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4754.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4758.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4765.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4768.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4770.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4772.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4777.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4778.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_478.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4780.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4783.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4787.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4790.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4792.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4798.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4799.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4806.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4816.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4817.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4822.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4823.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4824.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4826.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4828.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4840.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4841.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_485.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4853.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4862.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4863.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4877.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4880.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4886.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4889.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4891.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4897.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4898.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4901.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4913.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4915.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4916.png",
+        "recovery_steps": 13,
+        "recovery_triggers": 2
+      },
+      {
+        "map_id": "img_4928.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4934.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4940.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4950.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4951.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4955.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4962.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4963.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4966.png",
+        "recovery_steps": 16,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_4969.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_497.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4974.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4988.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4993.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_4999.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_5.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_50.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_512.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_515.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_52.png",
+        "recovery_steps": 3,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_523.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_527.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_528.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_532.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_534.png",
+        "recovery_steps": 5,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_538.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_558.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_563.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_565.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_57.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_572.png",
+        "recovery_steps": 15,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_573.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_574.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_579.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_584.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_59.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_591.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_60.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_601.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_604.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_606.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_612.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_619.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_629.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_630.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_633.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_64.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_640.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_654.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_657.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_661.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_662.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_666.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_668.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_672.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_673.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_683.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_686.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_691.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_695.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_697.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_702.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_707.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_708.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_71.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_718.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_719.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_728.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_731.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_732.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_736.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_737.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_74.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_745.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_747.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_751.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_756.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_76.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_761.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_762.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_766.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_770.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_776.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_777.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_798.png",
+        "recovery_steps": 7,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_803.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_804.png",
+        "recovery_steps": 6,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_807.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_817.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_834.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_838.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_842.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_853.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_854.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_857.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_863.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_866.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_868.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_893.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_898.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_899.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_907.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_911.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_913.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_914.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_917.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_922.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_925.png",
+        "recovery_steps": 8,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_93.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_94.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_948.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_950.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_955.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_962.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_964.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_975.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_977.png",
+        "recovery_steps": 2,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_981.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_985.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_988.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_992.png",
+        "recovery_steps": 11,
+        "recovery_triggers": 1
+      },
+      {
+        "map_id": "img_993.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_996.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      },
+      {
+        "map_id": "img_998.png",
+        "recovery_steps": 0,
+        "recovery_triggers": 0
+      }
+    ],
+    "evaluation_adapter_sha256": "87da413cb147bd2f0dcd133e285289f356c2e8a3f15edd3d3a8514cb72816f46",
+    "model_name": "ARiADNE CNN matched recovery on",
+    "model_seed": 4777,
+    "model_type": "CNN",
+    "movement_validation": "maintained graph adjacency and shared Env.step, matching CNN training and Mamba evaluation",
+    "recovery_controller": "local_revisit_recovery_v4",
+    "recovery_enabled": true,
+    "source_sha256": {
+      "agent.py": "7363b06a0bc3c3794b8591c692889d0b3f1111e044f114116ade4a60b66f1eee",
+      "cnn_observation.py": "76a6ed89170d2cd872507b75ef283031af769cef3c689d8679ec0c55b7f312e9",
+      "driver.py": "e54c5a8f58f5280bb7ca466336e78122db93dbf11721a8790dd5aea7adcacbe2",
+      "env.py": "5a5644bd6db88ddc1d77445116794578477698da62832035a104bb0cd010cf34",
+      "matched_training.py": "a07d9319160d92e9e3a2bf4b92ec75c03c238cc9720c494571e4b8e599170ec4",
+      "model.py": "cf7c8add0e4abc9914396b5fd32c102c345a50d17d3520457c37d83c4396be1a",
+      "model_cnn.py": "c90a31406d01ed233c409ff95a198b0942d1b91020d8910826e52c745c5f55bf",
+      "model_factory.py": "1dd3e833acc88162068d8b9a7ad1c3769e6b3488649ecc8491ad0e9189fccabd",
+      "node_manager.py": "64c4dd33cee83ab9e38b4f48c78fb439e7729f32fd7369787fb816000ce67e60",
+      "parameter.py": "b75ead4b52d45239a201551ff5dda56737cb8ca979d3c4e6b09aea57c75d90c4",
+      "quads.py": "b6e2efa63d526d89973c271f98cb30231dfd02f79c08bce69c08d57f2217d242",
+      "runner.py": "7a21bb179d29c113b93df17d156b29dafffa54fab0b9f0d7473362d7f2235fba",
+      "sensor.py": "aa7a2c554279a0b9cb86fd19b249d14979421695427f288f712c04513a065dcd",
+      "utils.py": "3a2ffaaaa2d2b65cbfb6a64c0fb581eecd06623b9f0cc131234e1b8df9d6aade",
+      "worker.py": "29ea622cc394223744d3433521f844cd657e25adcc045ea5247570724db7ced8"
+    },
+    "trained": true,
+    "use_cnn": true,
+    "use_mamba": false
+  },
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/cnn_matched_mamba_10k_seed4777_20261019/model/checkpoint.pth",
+  "checkpoint_sha256": "5eb11b7d0e54913a051e7a7ecff0f49bfebb73703b5a6bcfd6467c96f9e632ce",
+  "dataset_name": "original",
+  "deterministic": true,
+  "deterministic_policy": true,
+  "diagnostic_map_limit": null,
+  "elapsed_time_seconds": 4686.544243812561,
+  "episodes_per_map": 1,
+  "eval_seeds": [
+    4777
+  ],
+  "evaluation_mode": "single_global_seed_greedy",
+  "global_seed": 4777,
+  "ignored_adapter_reseed_calls": 0,
+  "map_difficulty": "all",
+  "map_order": "split_manifest_test_order",
+  "max_path_length": null,
+  "max_steps": 128,
+  "num_episodes": 1133,
+  "num_maps": 1133,
+  "reseed_between_maps": false,
+  "seed_initialized_once_after_model_load": true,
+  "single_process": true,
+  "single_worker": true,
+  "split_manifest": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_manifest_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "split_name": "test",
+  "start_position_seed": 4777,
+  "target_coverage": 0.99
+}

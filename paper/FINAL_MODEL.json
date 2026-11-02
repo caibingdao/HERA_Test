@@ -1,0 +1,43 @@
+{
+  "selected_model": "recovery_streak2_seed4777_10k_20261024",
+  "selection_source": "baseline.json",
+  "selection_criterion": "mean_path_all",
+  "checkpoint_sha256": "8d126a76433fc33b8a61ddc4e9288ea30e141e11257c759b12e99d5c6de568bb",
+  "training_episodes": 10000,
+  "training_seed": 4777,
+  "recovery": {
+    "enabled": true,
+    "regional_trigger_steps": 2,
+    "point_repeat_trigger_steps": 2,
+    "new_free_cell_threshold": 1.0,
+    "progress_window": 8
+  },
+  "test_protocol": {
+    "maps": 1133,
+    "split_file": "paper/maps/map_split_seed_42.json",
+    "split_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+    "global_seed": 4777,
+    "action_selection": "greedy_argmax",
+    "target_coverage": 0.99,
+    "max_steps": 128
+  },
+  "test_result_dir": "results/data/recovery_streak2/recovery_on/single_seed_4777",
+  "test_summary": {
+    "successes": 1133,
+    "success_rate": 1.0,
+    "mean_coverage": 0.9958333214879258,
+    "mean_path_all_m": 251.64295415457846,
+    "mean_steps": 45.59135039717564,
+    "recovery_triggers": 16
+  },
+  "alternative_for_efficiency": {
+    "model": "recovery_streak3_seed4777_10k_20261024",
+    "checkpoint_sha256": "6cf5bfaff06212753c9557c92c478c88c735439c259bc3235156653fbe0c3f1b",
+    "training_episodes": 10000,
+    "recovery_thresholds": "3/3",
+    "mean_path_all_m": 253.5633088528864,
+    "mean_steps": 35.24360105913504,
+    "note": "model_selection_20261026.md recommends this for system efficiency; it is a different trained checkpoint, not a test-time switch."
+  },
+  "note": "Before writing the main results, confirm which checkpoint is the paper's main model. If streak3 is chosen, update selected_model and use results/data/recovery_streak3/recovery_on/single_seed_4777; do not mix streak2 path length with streak3 step count."
+}

@@ -22,8 +22,8 @@
   "train_map_count": 4530,
   "split_file": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
   "split_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
-  "physical_gpus": "GPU-0f7f3d7f-1936-3612-73a0-f12dc943cd94,GPU-0eb2ef71-c7f0-e522-7da3-cbcf02147b35",
-  "ray_temp_dir": "/tmp/ray-pose-off-hkvov256",
+  "physical_gpus": "GPU-ce02402c-adbd-5898-70d6-37a192be778c,GPU-daebf6e6-fbc2-0416-95df-24a7f24ae659",
+  "ray_temp_dir": "/tmp/ray-pose-off-a4t28saf",
   "timing": "CUDA-synchronized action selection including recovery detection/planning; excludes Env.step and graph update",
   "hyperparameters": {
     "USE_MAMBA": true,

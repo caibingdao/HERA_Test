@@ -1,0 +1,62 @@
+[
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/utility_25",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/utility_1",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/utility_10",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./reports/tare_repaired_full_20261020/tare_local",
+    "reason": "逐回合CSV完全相同的副本",
+    "canonical": "reports/tare_repaired_full_20261020/visualizations/tare_local/default/single_seed_4777/data"
+  },
+  {
+    "path": "./reports/tare_official_full_20261020/tare_local",
+    "reason": "逐回合CSV完全相同的副本",
+    "canonical": "reports/tare_official_full_20261020/visualizations/tare_local/default/single_seed_4777/data"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_recovery_v4_three_protocols/single_seed_stochastic_4777",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_4777/ariadne_mamba_3_1",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_4777/ariadne_mamba",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/nbvp/default/single_seed_4777/data",
+    "reason": "逐回合CSV完全相同的副本",
+    "canonical": "reports/classical_baselines_full_restart_20261019/nbvp"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/utility/lambda_1/single_seed_4777/data",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/utility/lambda_10/single_seed_4777/data",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/utility/lambda_25/single_seed_4777/data",
+    "reason": "utility / 非单种子4777贪心协议"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/tare_local/default/single_seed_4777/data",
+    "reason": "逐回合CSV完全相同的副本",
+    "canonical": "reports/tare_repaired_full_20261020/visualizations/tare_local/default/single_seed_4777/data"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/ariadne/single_seed_stochastic_4777",
+    "reason": "utility / 非单种子4777贪心协议"
+  }
+]

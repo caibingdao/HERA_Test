@@ -74,5 +74,25 @@
       "checkpoint_sha256": "44dad9dfbe44a4d870a96983cddadc0a3ee585df96b6213d628790de639abe55",
       "paired_starts_validated": 1133
     }
+  },
+  {
+    "name": "no_recovery",
+    "run": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/ablation_no_recovery_10000_seed4777_20261026",
+    "results": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777",
+    "summary": {
+      "streak": 2,
+      "recovery": "off",
+      "training_episodes": 10000,
+      "maps": 1133,
+      "successes": 1122,
+      "success_rate": 0.9902912621359223,
+      "mean_coverage": 0.9952303744769974,
+      "mean_path_all": 259.2029991938389,
+      "mean_path_success": 252.34312281144423,
+      "mean_steps": 34.060017652250664,
+      "recovery_triggers": 0,
+      "checkpoint_sha256": "5fc5304d54b6eef504fbebbd083d707e210bd9abc838072160f8356423b82076",
+      "paired_starts_validated": 1133
+    }
   }
 ]

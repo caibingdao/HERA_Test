@@ -1,0 +1,386 @@
+[
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/nbvp",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/nbvp.json"
+  },
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/utility_25",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/utility_25.json"
+  },
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/tare_local",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/tare_local.json"
+  },
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/utility_1",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/utility_1.json"
+  },
+  {
+    "path": "./reports/classical_baselines_full_restart_20261019/utility_10",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/utility_10.json"
+  },
+  {
+    "path": "./reports/tare_repaired_full_20261020/visualizations/tare_local/default/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "official_tare_seeded_randomized_coverage_and_tsp",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/tare_repaired_full_20261020/planner_specs/tare_local.json"
+  },
+  {
+    "path": "./reports/tare_repaired_full_20261020/tare_local",
+    "mode": "single_global_seed_greedy",
+    "action": "official_tare_seeded_randomized_coverage_and_tsp",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/tare_repaired_full_20261020/planner_specs/tare_local.json"
+  },
+  {
+    "path": "./reports/tare_official_full_20261020/visualizations/tare_local/default/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "official_tare_seeded_randomized_coverage_and_tsp",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/tare_official_full_20261020/planner_specs/tare_local.json"
+  },
+  {
+    "path": "./reports/tare_official_full_20261020/tare_local",
+    "mode": "single_global_seed_greedy",
+    "action": "official_tare_seeded_randomized_coverage_and_tsp",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/tare_official_full_20261020/planner_specs/tare_local.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_new_token_final_test_20260908/single_seed_greedy_4777/train_recovery_off_test_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/mamba31_new_token_final_test_20260908/train_recovery_off_test_on/recovery_off_episode9568.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_new_token_final_test_20260908/single_seed_greedy_4777/recovery_off",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_3.1/experiments/pose_original_parallel_20260907_1548/recovery_off/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_new_token_final_test_20260908/single_seed_greedy_4777/recovery_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_3.1/experiments/pose_original_parallel_20260907_1548/recovery_on/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_coverage_reward_greedy_pair_20260913/single_seed_greedy_4777/train_recovery_off_test_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_coverage_reward_greedy_pair_20260913/recovery_off_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_coverage_reward_greedy_pair_20260913/single_seed_greedy_4777/recovery_off",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_coverage_reward_greedy_pair_20260913/recovery_off_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_coverage_reward_greedy_pair_20260913/single_seed_greedy_4777/recovery_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_coverage_reward_greedy_pair_20260913/recovery_on_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_token_ablation_greedy/single_seed_greedy_4777/no_features_v2",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/no_features_v2_test_20260910/checkpoint_10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_token_ablation_greedy/single_seed_greedy_4777/no_map_delta_reward",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/no_map_delta_reward_test_20260910/checkpoint_10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_recovery_v4_three_protocols/single_seed_stochastic_4777",
+    "mode": "single_global_seed_stochastic",
+    "action": "stochastic_categorical_torch_multinomial",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/target_motion_coverage_reward_greedy_pair_20260915/single_seed_greedy_4777/train_recovery_off_test_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/target_motion_coverage_reward_greedy_pair_20260915/recovery_off_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/target_motion_coverage_reward_greedy_pair_20260915/single_seed_greedy_4777/recovery_off",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/target_motion_coverage_reward_greedy_pair_20260915/recovery_off_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/target_motion_coverage_reward_greedy_pair_20260915/single_seed_greedy_4777/recovery_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/target_motion_coverage_reward_greedy_pair_20260915/recovery_on_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_4777/ariadne_mamba_3_1",
+    "mode": "single_global_seed_stochastic",
+    "action": "stochastic_categorical_torch_multinomial",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_4777/ariadne_mamba",
+    "mode": "single_global_seed_stochastic",
+    "action": "stochastic_categorical_torch_multinomial",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/model/parallel_ariadne_mamba_optimized_mamba/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_only_greedy_pair_20260911/single_seed_greedy_4777/train_recovery_off_test_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_only_greedy_pair_20260911/recovery_off_ep8347.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_only_greedy_pair_20260911/single_seed_greedy_4777/recovery_off",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_only_greedy_pair_20260911/recovery_off_ep8347.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_only_greedy_pair_20260911/single_seed_greedy_4777/recovery_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_only_greedy_pair_20260911/recovery_on_ep8763.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_greedy_4777/ariadne_mamba_3_1_recovery_v4",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/three_models_single_seed_greedy_4777/ariadne_mamba",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/model/parallel_ariadne_mamba_optimized_mamba/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/mamba31_pure_policy_greedy_ablation/single_seed_greedy_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/checkpoints/mamba31_fresh_seed_0_v5/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_reward_greedy_pair_20260912/single_seed_greedy_4777/train_recovery_off_test_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_reward_greedy_pair_20260912/recovery_off_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_reward_greedy_pair_20260912/single_seed_greedy_4777/recovery_off",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_reward_greedy_pair_20260912/recovery_off_ep10000.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_Test/mamba31_map_split/experiment/results/motion_reward_greedy_pair_20260912/single_seed_greedy_4777/recovery_on",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/logs/motion_reward_greedy_pair_20260912/recovery_on_ep10203.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/nbvp/default/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/nbvp.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/utility/lambda_1/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/utility_1.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/utility/lambda_10/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/utility_10.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/utility/lambda_25/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "deterministic explicit planner",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/classical_baselines_full_restart_20261019/planner_specs/utility_25.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/other_models/tare_local/default/single_seed_4777/data",
+    "mode": "single_global_seed_greedy",
+    "action": "official_tare_seeded_randomized_coverage_and_tsp",
+    "n": 1133,
+    "adapter": "evaluation_adapters.classical:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/reports/tare_repaired_full_20261020/planner_specs/tare_local.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/no_target_7500/original_map_result/recovery_on/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/token21_ablation_no_target_7500_seed4777_20261020/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/no_target/recovery_on/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/token21_ablation_no_target_10k_seed4777_20261017/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/cnn/recovery_on/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.cnn:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/cnn_matched_mamba_10k_seed4777_20261019/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/no_motion/recovery_on/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/token21_ablation_no_motion_10k_seed4777_20261006/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/dsvp/default/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "seeded_dynamic_rrt_official_gain_and_relocation",
+    "n": 1133,
+    "adapter": "evaluation_adapters.dsvp:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_DSVP/planar/specification.json"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/ariadne/single_seed_greedy_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_ORIGINAL_PARALLEL/model/parallel_ariadne_original/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/ariadne/single_seed_stochastic_4777",
+    "mode": "single_global_seed_stochastic",
+    "action": "stochastic_categorical_torch_multinomial",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_ORIGINAL_PARALLEL/model/parallel_ariadne_original/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/no_map_feedback/recovery_on/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/token21_ablation_no_map_feedback_10k_seed4777_20261006/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/full_test/recovery_off/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/token21_local_motion_10k_seed4777_recovery_off_20260928/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1_TOKEN21/results/data/full_test/recovery_on/single_seed_4777",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/training_runs/token21_local_motion_10k_seed4777_20260928/model/checkpoint.pth"
+  },
+  {
+    "path": "./ARiADNE_MAMBA_3.1/experiments/pose_ablation_no_motion_delta_20260908/test_greedy_4777/results",
+    "mode": "single_global_seed_greedy",
+    "action": "greedy_argmax",
+    "n": 1133,
+    "adapter": "evaluation_adapters.ariadne:create_adapter",
+    "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_3.1/experiments/pose_ablation_no_motion_delta_20260908/test_greedy_4777/checkpoint_step420852.pth"
+  }
+]

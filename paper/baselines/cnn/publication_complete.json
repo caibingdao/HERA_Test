@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "summary": {
+    "model": "CNN matched recovery on",
+    "maps": 1133,
+    "successes": 1007,
+    "success_rate": 0.8887908208296558,
+    "mean_path_all_m": 340.1249673929443,
+    "mean_path_success_m": 307.4058379280787,
+    "mean_steps": 64.9135039717564,
+    "mean_final_coverage": 0.9808679355082833,
+    "reference_maps_and_starts_match": true
+  }
+}
