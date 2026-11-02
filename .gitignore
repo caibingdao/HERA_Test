@@ -15,6 +15,7 @@ gifs/
 /logs/
 **/model/
 **/matplotlib/
+**/*.matplotlib/
 **/events.out.tfevents*
 *.pth
 *.pth.*

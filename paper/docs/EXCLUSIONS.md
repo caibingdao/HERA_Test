@@ -13,7 +13,7 @@
 | `HERA/gifs/**` | 约 3.0 GB | 演示动画；论文插图只用静态图或外链视频 |
 | `HERA/logs/**` | 约 0.2 MB | 服务/编排日志；测试评测日志已放在 `results/logs/` |
 | `__pycache__/`、`.pytest_cache/`、`.vscode/` | 小 | 运行时缓存/本地配置 |
-| `experiments/**/matplotlib/` | 小 | Matplotlib 字体缓存 |
+| `experiments/**/matplotlib/`、`results/data/**/*.matplotlib/` | 约 1.5 MB（9 个结果目录缓存） | Matplotlib 字体缓存 |
 | `experiments/**/episodes.csv.before_resume_*` | 小 | 续训前的中间 CSV 备份，不是最终训练回合表 |
 
 ## 2. 地图与数据

@@ -13,7 +13,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = Path("/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA")
+# Set HERA_SOURCE to the original HERA tree to regenerate the excluded-file list.
+SOURCE = Path(os.environ["HERA_SOURCE"]) if os.environ.get("HERA_SOURCE") else None
 SKIP_FILES = {"EXPORT_MANIFEST.json", "CHECKSUMS.sha256"}
 
 
@@ -52,14 +53,14 @@ def exclude_reason(rel: str) -> str | None:
         return "training/control log"
     if ".before_resume_" in name or ".before_restart_" in name:
         return "intermediate pre-resume/restart backup"
-    if "matplotlib" in parts:
+    if "matplotlib" in parts or any(part.endswith(".matplotlib") for part in parts):
         return "Matplotlib font cache"
     return "not selected for the paper artifact"
 
 
 def excluded_hera_files(included_rel: set[str]) -> list[dict]:
     out = []
-    if not SOURCE.exists():
+    if SOURCE is None or not SOURCE.exists():
         return out
     for p in sorted(SOURCE.rglob("*")):
         if not p.is_file():

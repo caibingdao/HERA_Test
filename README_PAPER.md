@@ -61,12 +61,13 @@ sha256sum -c CHECKSUMS.sha256
 - 五 seed、indoors、自生成地图、utility 等不属于本论文 1133 图 / seed 4777 协议的结果。
 - 旧 TOKEN21/full_test 的原始结果文件（其汇总数字保留在 `paper/tables/all_results.csv`，仅作历史对照）。
 
-## 6. 数据与许可
+## 6. 数据、许可与未脱敏说明
 
-- 1133 张测试地图来自原始 ARiADNE 地图集；公开再分发前请确认上游数据许可。
+- 1133 张测试地图来自原始 ARiADNE 地图集；公开再分发前请确认上游数据许可。详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 和 [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md)。
 - NBVP、TARE、DSVP、CNN 的完整上游代码未复制，仅保留评测适配层和原始结果；上游地址与本地 commit 见 [paper/docs/BASELINES.md](paper/docs/BASELINES.md)。
 - 本分支未改动任何原始结果文件；`paper/` 下的 CSV 是由这些原始文件重算/整理的派生表。
-- `run_config.json`、`evaluation_metadata.json` 中保留原始绝对路径和 GPU UUID，用于溯源；公开仓库中如需脱敏，请另建公开快照，不要修改本分支的原始记录。
+- **本分支是未脱敏的溯源归档。** 原始 `episodes.csv`、`evaluation_metadata.json`、`run_config.json`、`baseline.json`、`results/cache/`、`results/logs/`、`paper/audit/` 等文件保留原始绝对路径（`/data/home/lzy/...`）、GPU UUID 和主机名；这是为了可追溯性，不是脱敏发布版。若需要公开脱敏版，请另建分支/快照生成 redacted 副本，不要修改本分支的原始记录。
+- 本分支没有 `LICENSE` 文件；在公开再分发或引用前，作者需要为自己的代码添加许可证，并确认上游 ARiADNE/TARE/DSVP/NBVP/CNN 及地图集的许可。当前状态见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 ## 7. 快照来源
 

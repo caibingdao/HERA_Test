@@ -46,3 +46,5 @@
 - NBVP、TARE、DSVP、CNN 的完整上游代码未复制，仅保留适配层和原始结果；上游地址与 commit 见 `paper/docs/BASELINES.md`。
 - 训练地图 4530 张未纳入本分支；划分定义在 `paper/maps/map_split_seed_42.json`，训练图需要从上游地图集补齐。
 - 训练权重、逐步诊断、TensorBoard、GIF 和训练日志未纳入；需要时从原始工作区获取，不要用本分支缺失文件推断不存在。
+- 本分支是**未脱敏的溯源归档**：原始 CSV/JSON/日志保留 `/data/home/lzy` 绝对路径、GPU UUID 和主机名；若公开需要脱敏，请另建 redacted 分支，不要修改本分支的原始记录。
+- 本分支没有 `LICENSE` 文件；再分发前需要作者添加许可证，并确认 ARiADNE/TARE/DSVP/NBVP/CNN 及地图集的许可。详见根目录 `THIRD_PARTY_NOTICES.md` 与 `DATA_AVAILABILITY.md`。
