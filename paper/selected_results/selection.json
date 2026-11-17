@@ -1,0 +1,107 @@
+{
+  "selected_on": "2026-11-17",
+  "main_model": "recovery_streak2",
+  "test_protocol": {
+    "maps": 1133,
+    "eval_seed": 4777,
+    "action_selection": "greedy_argmax",
+    "target_coverage": 0.99,
+    "max_steps": 128,
+    "max_path_length": null,
+    "split_manifest": "paper/maps/map_split_seed_42.json",
+    "split_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+    "paired_starts": 1133
+  },
+  "experiments": [
+    {
+      "name": "ariadne_original",
+      "training_episodes": null,
+      "data_directory": "paper/baselines/ariadne_original",
+      "visualization_directory": "results/visualizations/ariadne_original/single_seed_greedy_4777",
+      "checkpoint_sha256": "6ac1827a3dbdd816febd074817fb3116466002f3deb70474d0da643957db8b19",
+      "token_config": null,
+      "recovery_enabled": false
+    },
+    {
+      "name": "ablation_no_recovery_10000",
+      "training_episodes": 10000,
+      "data_directory": "results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777",
+      "visualization_directory": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777",
+      "checkpoint_sha256": "5fc5304d54b6eef504fbebbd083d707e210bd9abc838072160f8356423b82076",
+      "token_config": {
+        "behavior_reward": true,
+        "features": true,
+        "frontier_delta": false,
+        "map_delta": true,
+        "motion_delta": true,
+        "reward": true
+      },
+      "recovery_enabled": false
+    },
+    {
+      "name": "ablation_no_feedback_7500",
+      "training_episodes": 7500,
+      "data_directory": "results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777",
+      "visualization_directory": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777",
+      "checkpoint_sha256": "c27a1cab75007e3b153c6f543c6fd22fb93d28c4fe3e74c21d7532a51533da3c",
+      "token_config": {
+        "behavior_reward": true,
+        "features": true,
+        "frontier_delta": false,
+        "map_delta": false,
+        "motion_delta": true,
+        "reward": false
+      },
+      "recovery_enabled": true
+    },
+    {
+      "name": "ablation_no_motion_7500",
+      "training_episodes": 7500,
+      "data_directory": "results/data/ablation_no_motion_7500/recovery_on/single_seed_4777",
+      "visualization_directory": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777",
+      "checkpoint_sha256": "44dad9dfbe44a4d870a96983cddadc0a3ee585df96b6213d628790de639abe55",
+      "token_config": {
+        "behavior_reward": true,
+        "features": true,
+        "frontier_delta": false,
+        "map_delta": true,
+        "motion_delta": false,
+        "reward": true
+      },
+      "recovery_enabled": true
+    },
+    {
+      "name": "ablation_no_target_7000",
+      "training_episodes": 7000,
+      "data_directory": "results/data/ablation_no_target_7000/recovery_on/single_seed_4777",
+      "visualization_directory": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777",
+      "checkpoint_sha256": "45f119ca92fb7e04f97cec0c3c258a6c5dbeab571266606a0893b50840974219",
+      "token_config": {
+        "action_features": false,
+        "behavior_reward": true,
+        "features": true,
+        "frontier_delta": false,
+        "map_delta": true,
+        "motion_delta": true,
+        "reward": true
+      },
+      "recovery_enabled": true
+    },
+    {
+      "name": "recovery_streak2",
+      "training_episodes": 10000,
+      "data_directory": "results/data/recovery_streak2/recovery_on/single_seed_4777",
+      "visualization_directory": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777",
+      "checkpoint_sha256": "8d126a76433fc33b8a61ddc4e9288ea30e141e11257c759b12e99d5c6de568bb",
+      "token_config": {
+        "behavior_reward": true,
+        "features": true,
+        "frontier_delta": false,
+        "map_delta": true,
+        "motion_delta": true,
+        "reward": true
+      },
+      "recovery_enabled": true
+    }
+  ]
+}

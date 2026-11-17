@@ -1,0 +1,653 @@
+{
+  "created_utc": "2026-11-17T03:52:59.334108+00:00",
+  "selection": "paper/selected_results/selection.json",
+  "records": [
+    {
+      "group": "ariadne_original",
+      "kind": "raw_test_data",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/data/ariadne/single_seed_greedy_4777/coverage_curve.csv",
+      "bytes": 5441879,
+      "sha256": "689a4b71f78d43329489c6e8c8b3e98cf95358925d7a60bb652b2c7219309574",
+      "storage": "file",
+      "path": "paper/baselines/ariadne_original/coverage_curve.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "raw_test_data",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/data/ariadne/single_seed_greedy_4777/episodes.csv",
+      "bytes": 528170,
+      "sha256": "0684f583a58324b3c0ba1d5e8934f436142002fbd566e4db6ecec71796f58a5f",
+      "storage": "file",
+      "path": "paper/baselines/ariadne_original/episodes.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "raw_test_data",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/data/ariadne/single_seed_greedy_4777/evaluation_metadata.json",
+      "bytes": 1735,
+      "sha256": "48bbe6488d3eba583fcb4bffbcadc7a59a2cec1e281b8eafe8fed37d95db941b",
+      "storage": "file",
+      "path": "paper/baselines/ariadne_original/evaluation_metadata.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "test_visualization",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/ariadne/single_seed_greedy_4777/01_overview_dashboard.png",
+      "bytes": 262348,
+      "sha256": "f6fcfbbe322b7f32de8703ba2c8cce36cdee9bb24e7035f452b1b533193750e5",
+      "storage": "file",
+      "path": "results/visualizations/ariadne_original/single_seed_greedy_4777/01_overview_dashboard.png",
+      "action": "added"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "test_visualization",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/ariadne/single_seed_greedy_4777/02_coverage_thresholds.png",
+      "bytes": 149540,
+      "sha256": "b1085835591b34fa23886612b6bb423c978a8f0216d25bb3a3c7b22785e4249a",
+      "storage": "file",
+      "path": "results/visualizations/ariadne_original/single_seed_greedy_4777/02_coverage_thresholds.png",
+      "action": "added"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "test_visualization",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/ariadne/single_seed_greedy_4777/03_efficiency_distributions.png",
+      "bytes": 201266,
+      "sha256": "17dfa79219ca506a3325f605d1ec2fa6ebcf6192bde1cb867c01f9f29e1a90cf",
+      "storage": "file",
+      "path": "results/visualizations/ariadne_original/single_seed_greedy_4777/03_efficiency_distributions.png",
+      "action": "added"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "test_visualization",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/ariadne/single_seed_greedy_4777/04_exploration_progress.png",
+      "bytes": 170693,
+      "sha256": "5ca59cd1cec3fe1a2f6236e6d793598e7fd0d82bca2905735a81b01253317035",
+      "storage": "file",
+      "path": "results/visualizations/ariadne_original/single_seed_greedy_4777/04_exploration_progress.png",
+      "action": "added"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "test_visualization",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/ariadne/single_seed_greedy_4777/05_map_reliability.png",
+      "bytes": 296647,
+      "sha256": "89307c865e7075c0089db5f2dad2ad4417dff53e84261a5ee680353c647faaf5",
+      "storage": "file",
+      "path": "results/visualizations/ariadne_original/single_seed_greedy_4777/05_map_reliability.png",
+      "action": "added"
+    },
+    {
+      "group": "ariadne_original",
+      "kind": "test_visualization",
+      "source": "ARiADNE_MAMBA_3.1_TOKEN21/results/visualizations/ariadne/single_seed_greedy_4777/06_failure_analysis.png",
+      "bytes": 166216,
+      "sha256": "f8d5821418e380368ad8dd07b10aee3d4762026707d45c8fe7f95455330b4ab4",
+      "storage": "file",
+      "path": "results/visualizations/ariadne_original/single_seed_greedy_4777/06_failure_analysis.png",
+      "action": "added"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/coverage_curve.csv",
+      "bytes": 6927294,
+      "sha256": "29fda2cf22b428e012bbccf65faca15b66e1eca2ff3af3afcf3dad08783d99e1",
+      "storage": "file",
+      "path": "results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/coverage_curve.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/episodes.csv",
+      "bytes": 578232,
+      "sha256": "e28b5a05b6ebcf55e165c66ca7a2ab84d40c655be9241eff614d406e9343ebe6",
+      "storage": "file",
+      "path": "results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/episodes.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/evaluation_metadata.json",
+      "bytes": 2709,
+      "sha256": "7824284dbb77e7599c46da0c7f0e756df9cfd1ac424b9f597c9324b5fc6048eb",
+      "storage": "file",
+      "path": "results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/evaluation_metadata.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/hera_summary.json",
+      "bytes": 451,
+      "sha256": "78647a732ce4be0b0a436830012f9317bfd0e9dae1a4347b0ea6b1c5238a4cb8",
+      "storage": "file",
+      "path": "results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/hera_summary.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/publication_complete.json",
+      "bytes": 67,
+      "sha256": "31c380377179c0c2cac19fbc0ba4866ae62bd9bc9db85768dc6d553cf4faba1b",
+      "storage": "file",
+      "path": "results/data/ablation_no_recovery_10000/recovery_off/single_seed_4777/publication_complete.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/01_overview_dashboard.png",
+      "bytes": 264597,
+      "sha256": "fa4b835b366c0bdc75ab792d16ca2ea58481921d2d3be387dea68a6b4eaaea4c",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/01_overview_dashboard.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/02_coverage_thresholds.png",
+      "bytes": 147293,
+      "sha256": "5278efd0a0534aa5cd6a593673dad0f8876d43b0d710a163ce3eb0e874aa0b70",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/02_coverage_thresholds.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/03_efficiency_distributions.png",
+      "bytes": 200643,
+      "sha256": "020ad2c1b7e1de636d886c03ea2f696ab6cc57cebfdaca56901f1ebdecd099a5",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/03_efficiency_distributions.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/04_exploration_progress.png",
+      "bytes": 170726,
+      "sha256": "d60a4c35126dbf0d554cce5777766905aa7249ff512cb8f667514328d7c6e1bc",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/04_exploration_progress.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/05_map_reliability.png",
+      "bytes": 297674,
+      "sha256": "090535aa550f1fa2c7a67e5772a05fb14a0f91c607b44bbaa45ce59b5c7b3d03",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/05_map_reliability.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_recovery_10000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/06_failure_analysis.png",
+      "bytes": 144495,
+      "sha256": "0afad9f656430bda24f8babf9d444fffeec38073eecae25c2546fc1303f0968d",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_recovery_10000/recovery_off/single_seed_4777/06_failure_analysis.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/coverage_curve.csv",
+      "bytes": 6882057,
+      "sha256": "e3280d2ed31543942f8b3b36b97f511808b71ec7de0c75806858bd3ee8e28d65",
+      "storage": "file",
+      "path": "results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/coverage_curve.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/episodes.csv",
+      "bytes": 572999,
+      "sha256": "7936dcc0bcdcb35b9e183e8534fb7e877b799d4db1dee8bd3376d14febc84f58",
+      "storage": "file",
+      "path": "results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/episodes.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "bytes": 3400,
+      "sha256": "22584ed1f5f7337e014bdd280f1a28885319d4e52ef219620c455b6ec3a156f1",
+      "storage": "file",
+      "path": "results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/hera_summary.json",
+      "bytes": 435,
+      "sha256": "9877b3ed011a4452671cd9165a73be2e2acdf1392ca733c45f34ecd72c642cde",
+      "storage": "file",
+      "path": "results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/hera_summary.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/publication_complete.json",
+      "bytes": 67,
+      "sha256": "2f27a9984cfa2d8fd7e2da3f04922ea21532361988a96ee387b291e7a2a8f700",
+      "storage": "file",
+      "path": "results/data/ablation_no_feedback_7500/recovery_on/single_seed_4777/publication_complete.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "bytes": 258461,
+      "sha256": "96afe96215b1afc7638892e12e6bb2b3b2e448b0d0ac71084e8d3d223cb51f1e",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "bytes": 145797,
+      "sha256": "abc74aca5ecd3defd3e3868385b69ac33c61e861012d90a3ba87c02a1fbab6f6",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "bytes": 211081,
+      "sha256": "40b8d38845f0d195d5c2cf76ca1118087560643e7e5f7310e61b32e1b7ab7637",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "bytes": 180965,
+      "sha256": "974f746ddbc69523cc9bee1373da0773f16a798c46978c1ab5f8cebcb2728c44",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/05_map_reliability.png",
+      "bytes": 295464,
+      "sha256": "a72b44252292688ca0a8cfc09ac5dc05bc21da308c19504ce692de1a11d8ae73",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/05_map_reliability.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_feedback_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "bytes": 101401,
+      "sha256": "12c72bbd5aafd4cb554dac7bcd66aa5d1f786289649a3f04bd14243de934da57",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_feedback_7500/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/coverage_curve.csv",
+      "bytes": 8498301,
+      "sha256": "2bd2f096cb007ee4c5679fb7cde79321b7c6f7051825d7ceeabc451af6d8b625",
+      "storage": "file",
+      "path": "results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/coverage_curve.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/episodes.csv",
+      "bytes": 571710,
+      "sha256": "97f70deddb32adc83fd5215db5b718d8016c83282f94977e252457dab20d2e67",
+      "storage": "file",
+      "path": "results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/episodes.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "bytes": 3389,
+      "sha256": "6f616e7661d62eb9ab4c39aee4208db8f7bc4116a4128d387baf6a8c7bb47633",
+      "storage": "file",
+      "path": "results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/hera_summary.json",
+      "bytes": 435,
+      "sha256": "1953798192579e8c574f2903800d351c5946eae678af6206336636dd7a4432af",
+      "storage": "file",
+      "path": "results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/hera_summary.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/publication_complete.json",
+      "bytes": 67,
+      "sha256": "51fac8feff5d1b311dd097a1ff570f5fa275dc0859624d500409c03c8865d3f9",
+      "storage": "file",
+      "path": "results/data/ablation_no_motion_7500/recovery_on/single_seed_4777/publication_complete.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "bytes": 254601,
+      "sha256": "05649a680f9a99812a24e5c10a6887b5fdc4dadb54d5bab1466836a51727a461",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "bytes": 144862,
+      "sha256": "631bbbb8536fbc57fcf5d996c54b5604ed4e23efb4c2bbe01efd981415ecb377",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "bytes": 224401,
+      "sha256": "532a18503218e3b5232a4e7979ac25a00469954c379a191c2bdc7d890b9067ff",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "bytes": 182503,
+      "sha256": "5a465388082a1ba5b8f300ba79fb56d9487ee3baf95721763af06770c110be6e",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/05_map_reliability.png",
+      "bytes": 293559,
+      "sha256": "f2b8256b840adcbc80fa2e38fb9f5017c4471c1476e77bd110b79f6eeb03dc61",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/05_map_reliability.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_motion_7500",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "bytes": 101401,
+      "sha256": "12c72bbd5aafd4cb554dac7bcd66aa5d1f786289649a3f04bd14243de934da57",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_motion_7500/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_target_7000/recovery_on/single_seed_4777/coverage_curve.csv",
+      "bytes": 7867385,
+      "sha256": "179ba9eadeaca9c8362aa27bb79dc5c8042a0c6c9b5ab55c3f1ec9d9ba8a23ee",
+      "storage": "file",
+      "path": "results/data/ablation_no_target_7000/recovery_on/single_seed_4777/coverage_curve.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_target_7000/recovery_on/single_seed_4777/episodes.csv",
+      "bytes": 570391,
+      "sha256": "74cb87b4f792683832ed535b5d73fdeadc602391e4e654f8a2f3c459a4d7144d",
+      "storage": "file",
+      "path": "results/data/ablation_no_target_7000/recovery_on/single_seed_4777/episodes.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_target_7000/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "bytes": 3420,
+      "sha256": "71455e17fb677d9d0725d1445b30f5e31a7647f7794c37dbb8ef9dec188b1884",
+      "storage": "file",
+      "path": "results/data/ablation_no_target_7000/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_target_7000/recovery_on/single_seed_4777/hera_summary.json",
+      "bytes": 433,
+      "sha256": "6ce39a18c9455ff4d0cde55c034ea3dc45aef5ef6d82a7d62d50b3e92fe4d851",
+      "storage": "file",
+      "path": "results/data/ablation_no_target_7000/recovery_on/single_seed_4777/hera_summary.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/ablation_no_target_7000/recovery_on/single_seed_4777/publication_complete.json",
+      "bytes": 67,
+      "sha256": "92645297ab19843866685ca5bc3fb0dfbbf49a3411bf70dec1b3b831937420ab",
+      "storage": "file",
+      "path": "results/data/ablation_no_target_7000/recovery_on/single_seed_4777/publication_complete.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "bytes": 255876,
+      "sha256": "d642224e913dd4a20a46bfc15ead77f613a6e675d8b572760d47e7b4c3f7dcad",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "bytes": 145277,
+      "sha256": "fe5d633add951a74099d1264a711bd429a2f4860ac831aa0fb3fe58d13508429",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "bytes": 207815,
+      "sha256": "234930b6751f8dbcb55e4e13ff247201a0b4267e04e4cca9c59c010a5f09078a",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "bytes": 179100,
+      "sha256": "a613a4e6daaba52c116041314313c65e05305171398f7eae4ef187930e86f566",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/05_map_reliability.png",
+      "bytes": 292553,
+      "sha256": "4917ee266059c596c1c926211d8f23487e4637abd6c543d91c54b7a044d5c381",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/05_map_reliability.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "ablation_no_target_7000",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "bytes": 101401,
+      "sha256": "12c72bbd5aafd4cb554dac7bcd66aa5d1f786289649a3f04bd14243de934da57",
+      "storage": "file",
+      "path": "results/visualizations/ablation_no_target_7000/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/coverage_curve.csv",
+      "bytes": 8636870,
+      "sha256": "796ea0adc2b0a45ce1f30a993ee05e1889eb6b9fdb85fc0a30e20f04d7578998",
+      "storage": "file",
+      "path": "results/data/recovery_streak2/recovery_on/single_seed_4777/coverage_curve.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/episodes.csv",
+      "bytes": 561077,
+      "sha256": "e32b33863fd69f523837557026b90b6d710273ab716e5bf6e11b4e9d468848b6",
+      "storage": "file",
+      "path": "results/data/recovery_streak2/recovery_on/single_seed_4777/episodes.csv",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "bytes": 3360,
+      "sha256": "3bd69ff478f1b6a6f39d0c5aa40a4e9ad6cfd7455a4ab7e486f8a93e4e941ee1",
+      "storage": "file",
+      "path": "results/data/recovery_streak2/recovery_on/single_seed_4777/evaluation_metadata.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/hera_summary.json",
+      "bytes": 386,
+      "sha256": "269b964f7b53ba01b960020cb9d90a65a2f0384d198d332fd77cd376d422ea03",
+      "storage": "file",
+      "path": "results/data/recovery_streak2/recovery_on/single_seed_4777/hera_summary.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "raw_test_data",
+      "source": "HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/publication_complete.json",
+      "bytes": 67,
+      "sha256": "5ce8aa30c2ec048ad4812d2c9e0bff160c89f7703d764fc922d02d1e9c128ebc",
+      "storage": "file",
+      "path": "results/data/recovery_streak2/recovery_on/single_seed_4777/publication_complete.json",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/recovery_streak2/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "bytes": 254685,
+      "sha256": "46b8909194416ecc94d240332d0e68f8f95868d0804ae4c47c5b98f862d46913",
+      "storage": "file",
+      "path": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777/01_overview_dashboard.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/recovery_streak2/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "bytes": 147117,
+      "sha256": "25113573b3bc18edf9b70d642a9c705f87d4c1ed1a76516d2aeab498de6f13c6",
+      "storage": "file",
+      "path": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777/02_coverage_thresholds.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/recovery_streak2/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "bytes": 227132,
+      "sha256": "51cb4b3bbc845c15f8162d487df4f308d374ce8fe021112d9f71c6d37f5d9ffa",
+      "storage": "file",
+      "path": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777/03_efficiency_distributions.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/recovery_streak2/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "bytes": 182029,
+      "sha256": "5510a8c6f435da97e96bf6a297dfeb2953f38c96ccc228b8d8500cd293b6dbce",
+      "storage": "file",
+      "path": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777/04_exploration_progress.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/recovery_streak2/recovery_on/single_seed_4777/05_map_reliability.png",
+      "bytes": 295525,
+      "sha256": "47424f621b21a8e027d2b6753475fa987fa3472bc33f62be0d6d576a1eae43bf",
+      "storage": "file",
+      "path": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777/05_map_reliability.png",
+      "action": "reused_existing"
+    },
+    {
+      "group": "recovery_streak2",
+      "kind": "test_visualization",
+      "source": "HERA/results/visualizations/recovery_streak2/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "bytes": 101401,
+      "sha256": "12c72bbd5aafd4cb554dac7bcd66aa5d1f786289649a3f04bd14243de934da57",
+      "storage": "file",
+      "path": "results/visualizations/recovery_streak2/recovery_on/single_seed_4777/06_failure_analysis.png",
+      "action": "reused_existing"
+    }
+  ],
+  "archives": [],
+  "notes": [
+    "Selected test data only: original CSV/JSON and six PNG figures per experiment, preserved byte-for-byte.",
+    "Identical existing repository files are reused; no duplicate test dataset is copied.",
+    "No training logs, training diagnostics, TensorBoard records or new evaluation logs are included in this update.",
+    "Original ARiADNE metadata records model_seed=0; evaluation seed is 4777 for all six experiments."
+  ]
+}

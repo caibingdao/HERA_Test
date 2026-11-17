@@ -1,5 +1,7 @@
 # HERA final version 1 — 论文实验材料与原始测试结果
 
+> **2026-11-17 论文结果索引：** 本次确定使用的六组见 [paper/selected_results/README.md](paper/selected_results/README.md)。原始测试 CSV/JSON 及已有图复用，本次补齐原版 ARiADNE 的 6 张测试图；不新增训练日志或训练过程记录。
+
 本分支（`hera_final_version1`）是 HERA 最终方法源码、全部 HERA 测试原始结果、论文实验材料、基线原始结果和测试地图的冻结快照。分支根目录保持 HERA 源码布局，论文材料集中在 `paper/`。
 
 ## 1. 这个分支包含什么

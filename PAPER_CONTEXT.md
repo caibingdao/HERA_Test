@@ -1,5 +1,7 @@
 # PAPER_CONTEXT — 论文实验部分的阅读索引与写作口径
 
+> **2026-11-17 论文结果索引：** 本次确定使用的六组见 [paper/selected_results/README.md](paper/selected_results/README.md)。原始测试 CSV/JSON 及已有图复用，本次补齐原版 ARiADNE 的 6 张测试图；不新增训练日志或训练过程记录。
+
 本文件给写论文实验部分的 AI/作者使用。原则：**HERA 是唯一最终方法**；旧 TOKEN21/full_test 结果只作历史对照；每个数字必须能追溯到本仓库文件。
 
 ## 1. 建议阅读顺序

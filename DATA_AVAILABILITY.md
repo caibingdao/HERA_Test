@@ -1,5 +1,7 @@
 # Data availability
 
+> **2026-11-17 论文结果索引：** 本次确定使用的六组见 [paper/selected_results/README.md](paper/selected_results/README.md)。原始测试 CSV/JSON 及已有图复用，本次补齐原版 ARiADNE 的 6 张测试图；不新增训练日志或训练过程记录。
+
 ## Included in this branch
 
 - **HERA test results:** `results/data/` contains 9 experiments, each with `episodes.csv` (1133 data rows), `coverage_curve.csv`, `evaluation_metadata.json`, `hera_summary.json`, and `publication_complete.json`.
@@ -16,7 +18,7 @@
 
 ## Protocol
 
-- Test maps: 1133, split seed 42, map split SHA256 `8397d4d1a3b1e6f57fa604b23b59284352a2e6dea6686f55ff62d0f531fcf0c0`.
+- Test maps: 1133, split seed 42, map split SHA256 `8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0`.
 - Evaluation: global seed 4777, greedy argmax, one episode per map, target coverage 0.99, max 128 decisions, seeded map-marker starts.
 - HERA experiments are single test seed 4777 and single training seed 4777; this is not a multi-seed statistical study.
 
