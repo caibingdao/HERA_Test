@@ -1,0 +1,6857 @@
+{
+  "action_selection": "seeded_rh_nbvp_2d",
+  "adapter": "ARiADNE_NBVP_OFFICIAL_2D.adapter:create_adapter",
+  "adapter_args": {},
+  "adapter_metadata": {
+    "action_selection": "seeded_rh_nbvp_2d",
+    "artifact_type": "untrained_planner_specification",
+    "attempts_per_node": 1000,
+    "cutoff_nodes": 200,
+    "deterministic": true,
+    "distance_discount_per_m": 0.5,
+    "extension_m": 4.0,
+    "gain": "visible unknown area, discounted by cumulative root-to-node distance",
+    "initial_nodes": 15,
+    "model_name": "RH-NBVP (ETH ASL planar port)",
+    "model_seed": 0,
+    "native_diagnostics": [
+      {
+        "map_id": "110.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "111.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "123.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "128.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "141.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "150.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "156.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "159.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "160.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "161.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "167.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "169.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "178.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "179.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "186.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "189.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "19.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "202.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "203.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "214.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "216.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "217.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "232.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "233.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "235.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "237.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "240.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "254.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "257.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "272.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "281.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "291.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "300.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "303.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "304.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "307.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "308.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "312.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "32.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "324.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "330.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "336.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "338.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "344.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "349.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "357.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "361.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "365.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "366.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "37.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "371.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "372.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "375.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "379.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "381.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "39.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "400.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "401.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "407.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "408.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "413.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "423.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "424.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "425.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "437.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "438.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "444.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "448.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "456.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "464.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "469.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "488.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "499.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "55.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "57.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "58.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "602.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "604.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "607.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "611.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "618.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "624.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "626.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "628.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "632.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "635.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "636.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "645.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "651.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "654.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "656.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "663.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "68.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "681.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "682.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "699.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "7.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "70.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "701.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "704.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "705.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "707.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "710.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "711.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "713.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "716.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "717.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "724.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "729.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "731.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "733.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "734.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "743.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "746.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "748.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "756.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "758.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "760.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "762.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "763.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "83.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "87.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "90.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "96.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_100.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1007.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1010.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1015.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1016.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1019.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_102.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1023.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_1025.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1026.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1029.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_103.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1033.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1034.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1035.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1036.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1044.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1046.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_105.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1050.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1062.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_107.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1080.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1082.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1086.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1089.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_110.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1102.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1104.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1114.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1118.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1119.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1120.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1123.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1136.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1141.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1164.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1167.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1174.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1175.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1177.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1184.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1188.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1190.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1195.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_1197.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1198.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1201.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1213.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1214.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1222.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1223.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1228.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_123.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1230.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1237.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_124.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1243.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1244.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1253.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1254.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1258.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1268.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1269.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1271.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1274.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_128.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1286.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_129.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1291.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1292.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1295.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1299.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1302.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1310.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1318.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1323.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1324.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1326.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1327.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1332.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1339.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1343.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1354.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1360.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1364.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1365.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1367.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1375.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1376.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_1383.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1392.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1395.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1401.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1406.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1413.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_1416.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1417.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1419.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1421.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1424.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1426.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_1441.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1442.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1445.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1454.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1458.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_146.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1468.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1470.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1475.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1476.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1479.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1486.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1491.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1492.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1495.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1504.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1505.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1508.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1510.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1514.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1516.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1522.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1527.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1535.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1547.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1549.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1553.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1558.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1564.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1566.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_1569.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_157.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1574.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1576.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1584.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1589.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1599.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_16.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_160.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1613.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1615.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1621.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1622.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_1623.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1627.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1629.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_163.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1631.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1639.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_164.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1641.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1646.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1648.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1660.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1662.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1673.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_168.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1680.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1681.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1688.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_17.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_170.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1701.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1702.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1706.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1712.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1713.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1719.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1732.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1741.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1748.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1749.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1752.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1762.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1771.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1774.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1775.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1786.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1789.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1792.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1795.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1818.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1819.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1820.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1822.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1838.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1839.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1845.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1847.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1849.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1853.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1855.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_186.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1869.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1871.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1872.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1876.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1885.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1886.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1891.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_1899.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1905.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1909.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1913.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1914.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1916.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1917.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1923.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1927.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1930.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1938.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1939.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1943.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1956.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_196.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1963.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1969.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_1971.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1972.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1977.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1987.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_1999.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_200.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_2005.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2007.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2021.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2023.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2027.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2028.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2040.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2042.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2049.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2051.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2054.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2060.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2064.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2066.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2069.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2087.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_209.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2090.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2094.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2097.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2099.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2102.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2117.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_212.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2123.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2130.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2131.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2135.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2139.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_214.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2142.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2148.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2150.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2151.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2163.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2170.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2180.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2181.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2184.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2189.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2190.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2200.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2202.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2207.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2212.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2219.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2224.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2225.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2228.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2229.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_223.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2231.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2233.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2239.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2240.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_2252.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2255.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2260.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2261.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2265.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2270.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2272.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2273.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2277.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2282.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2286.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2288.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2290.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2291.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2292.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2298.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2311.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2316.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2317.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2327.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2328.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2331.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2332.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2338.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_234.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2346.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2348.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2351.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2355.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2362.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2368.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_237.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2370.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2381.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2383.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2388.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2394.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2396.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2397.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2399.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_24.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_240.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2403.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2405.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2408.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2409.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2414.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2429.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_243.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2431.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2436.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2437.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2438.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2442.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2456.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2463.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2464.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_248.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2483.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2498.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2507.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2508.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2511.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2512.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2513.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2518.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2526.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2528.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2531.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2536.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2538.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2539.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2541.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2542.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_2554.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2561.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2562.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2572.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2573.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2574.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2584.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2609.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_261.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2613.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2618.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2619.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_262.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2621.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2628.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_263.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2643.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2646.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2649.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2650.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2652.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2654.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_266.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2670.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2674.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2675.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2686.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2687.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2693.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2695.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2697.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2700.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2706.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2715.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2721.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2727.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_273.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2732.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2737.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2739.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2748.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2753.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2754.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2757.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_276.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2764.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2767.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2771.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2772.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2774.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2776.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_278.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2780.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2781.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2782.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2784.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2791.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2793.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2795.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2799.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_280.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2805.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2807.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2808.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_281.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2813.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2819.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_282.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2820.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2840.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2842.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2846.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2855.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2862.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2865.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_2867.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2868.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2869.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2872.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2875.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2879.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2882.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_289.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2896.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2899.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_290.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2907.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2909.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2923.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2926.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2928.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2929.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2932.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2939.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2944.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2949.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2950.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2952.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2959.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2960.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2962.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_2964.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2967.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_297.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2978.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2980.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2981.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2985.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2991.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2993.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_2997.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3008.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3015.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3018.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3023.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_303.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3030.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3037.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3043.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3059.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3065.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3069.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3070.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3074.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3075.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_3078.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3079.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3087.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_309.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3094.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_3098.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_310.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3102.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_3104.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3105.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3113.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3115.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3119.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3125.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3132.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3134.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_314.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3141.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3150.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3157.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3162.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3163.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_3164.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3165.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3167.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3175.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3203.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3206.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_321.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3210.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3211.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3212.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3213.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3216.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3219.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3226.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3227.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3229.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3240.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3248.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3256.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3258.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_326.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3266.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3267.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3272.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3279.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_3294.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3296.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_331.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3320.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3324.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3327.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_333.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3330.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3333.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3347.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3348.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3349.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3354.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3355.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3357.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3360.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3361.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3363.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3365.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3372.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3373.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3380.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3381.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3386.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_339.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3396.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3401.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3416.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3424.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3431.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3437.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3440.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3442.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3448.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3450.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_3461.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3466.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3472.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3478.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_348.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3483.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3485.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_349.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3490.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3492.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3499.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_350.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3503.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3507.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3512.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3516.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3522.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3525.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3526.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_353.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3530.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3536.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3541.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_355.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3560.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3571.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3577.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3581.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3584.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3587.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3591.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3598.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3607.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3610.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3611.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3620.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3633.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3638.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3646.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3647.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_365.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3652.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3655.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3657.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3662.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3680.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3683.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3689.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_369.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3690.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3696.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3698.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_37.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3703.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3705.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_371.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3711.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3713.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3720.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3725.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3740.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3749.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3762.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3770.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3775.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3787.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3788.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3791.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3792.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3793.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3794.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3800.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3820.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3821.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_3828.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3832.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3833.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3838.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3870.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3873.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3876.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3878.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3885.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3889.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3891.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3894.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3898.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3903.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3918.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3923.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3926.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3927.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3928.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3929.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_393.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3936.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3947.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3950.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3951.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3955.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3965.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_397.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_398.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3986.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3987.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_399.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_3996.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4007.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_401.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4016.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_402.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4023.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4026.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4027.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_403.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4030.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4035.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4037.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4040.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4044.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4058.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4060.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4061.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4062.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4065.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4072.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4073.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_4074.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4075.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4077.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4079.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_4080.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4086.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4087.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4089.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4091.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4097.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4101.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4106.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4107.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4110.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4114.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_412.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4124.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_413.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4131.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4149.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4150.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4153.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4156.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4158.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_417.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4170.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_4175.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4177.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4182.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4190.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4191.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4197.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_42.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4200.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4207.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4211.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4215.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4221.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4224.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4228.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4229.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4230.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4232.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4236.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4245.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4246.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4247.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_425.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4254.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4266.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4277.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4281.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4286.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4311.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4313.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4317.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4326.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4330.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4338.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4341.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4346.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4347.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_4350.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4359.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4361.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4364.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_4366.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4367.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4376.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_438.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4382.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4392.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4398.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4401.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_441.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4418.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4422.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4439.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4441.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4444.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4452.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4454.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4458.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4473.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4482.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4486.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_449.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4493.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4495.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4510.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4526.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_453.png",
+        "native_backtracks": 0,
+        "planner_stop": "no_gain",
+        "termination_reason": "no_valid_action"
+      },
+      {
+        "map_id": "img_4530.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4537.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4538.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_454.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4540.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4544.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4548.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_457.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4571.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4579.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4583.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4585.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4588.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4589.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_459.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4590.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4601.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4602.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4608.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_461.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4615.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4618.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_462.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4621.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4625.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4626.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4631.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4636.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4646.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4649.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4650.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4656.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4657.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4658.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4659.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_466.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4660.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4662.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4666.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4672.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4678.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_468.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4680.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4687.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4689.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4690.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4691.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4692.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_47.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_470.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4700.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4716.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_472.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4721.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4724.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4729.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4730.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4733.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4736.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4737.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_474.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4740.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4743.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4748.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4754.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4758.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4765.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4768.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4770.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4772.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4777.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4778.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_478.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4780.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4783.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4787.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4790.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4792.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4798.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4799.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4806.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4816.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4817.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4822.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4823.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4824.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4826.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4828.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4840.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_4841.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_485.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4853.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4862.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4863.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4877.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4880.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4886.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4889.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4891.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4897.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4898.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4901.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4913.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4915.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4916.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4928.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4934.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4940.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4950.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4951.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4955.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4962.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4963.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4966.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4969.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_497.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4974.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4988.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4993.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_4999.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_5.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_50.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_512.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_515.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_52.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_523.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_527.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_528.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_532.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_534.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_538.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_558.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_563.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_565.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_57.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_572.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_573.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_574.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_579.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_584.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_59.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_591.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_60.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_601.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_604.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_606.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_612.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_619.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_629.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_630.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_633.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_64.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_640.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_654.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_657.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_661.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_662.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_666.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_668.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_672.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_673.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_683.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_686.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_691.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_695.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_697.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_702.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_707.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_708.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_71.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_718.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_719.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_728.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_731.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_732.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_736.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_737.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_74.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_745.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_747.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_751.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_756.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_76.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_761.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_762.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_766.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_770.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_776.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_777.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_798.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_803.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_804.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_807.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_817.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_834.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_838.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_842.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_853.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_854.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_857.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_863.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_866.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_868.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_893.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_898.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_899.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_907.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_911.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_913.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_914.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_917.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_922.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_925.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_93.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_94.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_948.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_950.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_955.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_962.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_964.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_975.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_977.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "max_steps"
+      },
+      {
+        "map_id": "img_981.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_985.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_988.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_992.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_993.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_996.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      },
+      {
+        "map_id": "img_998.png",
+        "native_backtracks": 0,
+        "planner_stop": null,
+        "termination_reason": "target_reached"
+      }
+    ],
+    "overshoot_m": 0.5,
+    "planner": "eth_asl_rh_nbvp_2d",
+    "recovery_enabled": false,
+    "source_sha256": {
+      "adapter.py": "a53c2675a74c8e19ef0fa597f094395feb08b2ab8c90568d3868236034215b28",
+      "planner.py": "18b056cbb0d4bdd736bb7ba621906d661ff75cf932b5e9f546c06e2f4ce6f396",
+      "visibility.cpp": "17ec9f78f4f0fbc95c169ada53fdd5a658cd50b243f2ab1ae188e060cb66f41a"
+    },
+    "trained": false,
+    "upstream_commit": "5c07657af18f967d7049d187db0607024746a42c"
+  },
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_NBVP_OFFICIAL_2D/specification.json",
+  "checkpoint_sha256": "7b9b1b58de24c6dd17ab4e6eed2531454590537a1936246023b923a40ce2e4f7",
+  "dataset_name": "original",
+  "deterministic": true,
+  "deterministic_policy": true,
+  "diagnostic_map_limit": null,
+  "elapsed_time_seconds": 2731.538695335388,
+  "episodes_per_map": 1,
+  "eval_seeds": [
+    4777
+  ],
+  "evaluation_mode": "single_global_seed_greedy",
+  "global_seed": 4777,
+  "ignored_adapter_reseed_calls": 0,
+  "map_difficulty": "all",
+  "map_order": "split_manifest_test_order",
+  "max_path_length": null,
+  "max_steps": 128,
+  "num_episodes": 1133,
+  "num_maps": 1133,
+  "reseed_between_maps": false,
+  "seed_initialized_once_after_model_load": true,
+  "single_process": true,
+  "single_worker": true,
+  "split_manifest": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/ARiADNE_MAMBA_Test/mamba31_map_split/experiment/map_splits/map_split_seed_42.json",
+  "split_manifest_sha256": "8397d4d1a3b1e6f57fa604b23f59284352a2e6dea6686f55ff62d0f531fcf0c0",
+  "split_name": "test",
+  "start_position_seed": 4777,
+  "target_coverage": 0.99
+}

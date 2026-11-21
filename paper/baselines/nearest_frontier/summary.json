@@ -1,0 +1,12 @@
+{
+  "model": "Nearest Frontier",
+  "maps": 1133,
+  "successes": 1119,
+  "success_rate": 0.9876434245366285,
+  "mean_path_all_m": 278.6711385701677,
+  "mean_path_success_m": 276.25058087578196,
+  "mean_steps": 76.80052956751986,
+  "mean_final_coverage": 0.9945698170943539,
+  "paired_starts_validated": 1133,
+  "recovery_triggers": 0
+}

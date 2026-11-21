@@ -9,7 +9,7 @@
 | `docs/` | 协议、旧版实验汇总、旧版实验章节草稿、架构对比、基线说明、限制、排除清单 |
 | `tables/` | HERA 汇总表、模型选型表、基线汇总表、checkpoint 清单、旧版总表、配对地图 |
 | `audit/` | 旧 bundle 的协议选择、起点配对、排除/重复清单、发现清单 |
-| `baselines/` | NBVP、TARE、DSVP、CNN、原始 ARiADNE 的原始评测结果（各 1133 回合） |
+| `baselines/` | NBVP、TARE、DSVP、CNN、原始 ARiADNE、新版 RH-NBVP、Nearest Frontier、ARiADNE + Recovery 13k 的评测结果（各 1133 回合） |
 | `maps/` | split seed 42 划分清单、测试地图清单、1133 张测试地图 PNG |
 | `evaluator/` | 共享评测脚本与 `evaluation_adapters/`（不含完整上游仓库） |
 | `scripts/` | 重算表格与校验产物的脚本 |
@@ -26,7 +26,7 @@ python3 paper/scripts/verify_artifacts.py
 `verify_artifacts.py` 会检查：
 
 - 9 个 HERA 实验的 `episodes.csv` 是否为 1133 条数据；
-- 7 个基线目录的 `episodes.csv` 是否为 1133 条数据；
+- 10 个基线结果目录的 `episodes.csv` 是否为 1133 条数据；
 - 1133 张测试地图的 SHA256 是否与 `maps/test_maps.csv` 一致；
 - `hera_final_results.csv`、`baseline_results.csv` 是否能从原始 JSON/CSV 重算一致。
 

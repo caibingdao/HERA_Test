@@ -1,0 +1,7 @@
+{
+  "artifact_type": "untrained_planner_specification",
+  "planner": "nearest_frontier",
+  "model_name": "Nearest Frontier",
+  "connectivity": 4,
+  "max_segment_length_m": 4.0
+}

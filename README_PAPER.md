@@ -10,7 +10,7 @@
 - **HERA 全部测试原始结果**：`results/data/` 下 9 个实验目录，每个包含 `episodes.csv`、`coverage_curve.csv`、`evaluation_metadata.json`、`hera_summary.json`、`publication_complete.json`；另有 `results/comparison/`、`results/runs/`、`results/logs/`、`results/cache/` 和 `results/visualizations/`。
 - **训练过程配置与训练回合表**：`experiments/` 下各实验的 `run_config.json`、`complete.json`、`continuation.json`、`episodes.csv`、`plots/`、控制元数据。不包含训练权重、逐步诊断、TensorBoard 事件和训练日志。
 - **论文材料**：`paper/docs/`、`paper/tables/`、`paper/audit/`。
-- **基线原始结果**：`paper/baselines/` 下 NBVP、TARE（classical / repaired / official）、DSVP、CNN、原始 ARiADNE，每项 1133 回合。
+- **基线原始结果**：`paper/baselines/` 下 NBVP、TARE（classical / repaired / official）、DSVP、CNN、原始 ARiADNE、新版 RH-NBVP、Nearest Frontier 和 ARiADNE + Recovery 13k，每项 1133 回合。
 - **测试地图**：`paper/maps/test_maps/` 下 1133 张测试地图 PNG，SHA256 与 `paper/maps/test_maps.csv` 一致；划分清单为 `paper/maps/map_split_seed_42.json`。
 - **评测器适配层**：`paper/evaluator/` 下共享评测脚本和 `evaluation_adapters/`。
 
@@ -42,7 +42,7 @@
 ## 4. 数据完整性
 
 - 9 个 HERA 测试实验，每个 `episodes.csv` 均为 1133 行数据（加表头 1134 行），`publication_complete.json` 存在。
-- 7 个基线原始目录，每个 `episodes.csv` 均为 1133 行数据。
+- 10 个基线原始目录，每个 `episodes.csv` 均为 1133 行数据。
 - 1133 张测试地图与 `paper/maps/test_maps.csv` 的 SHA256 逐一匹配。
 - 根目录 `CHECKSUMS.sha256` 覆盖本分支所有纳入文件；可用以下命令校验：
 

@@ -6,7 +6,7 @@
 
 - **HERA test results:** `results/data/` contains 9 experiments, each with `episodes.csv` (1133 data rows), `coverage_curve.csv`, `evaluation_metadata.json`, `hera_summary.json`, and `publication_complete.json`.
 - **HERA evaluation provenance:** `results/comparison/`, `results/runs/`, `results/logs/`, `results/cache/`, and `results/visualizations/`.
-- **Baseline raw results:** `paper/baselines/` contains NBVP, TARE (classical/repaired/official), DSVP, CNN, and original ARiADNE, each 1133 episodes.
+- **Baseline raw results:** `paper/baselines/` contains NBVP, TARE (classical/repaired/official), DSVP, CNN, original ARiADNE, RH-NBVP 2D, Nearest Frontier, and ARiADNE + Recovery 13k, each with 1133 evaluation episodes. The three added result sets include their evaluation plots.
 - **Test maps:** `paper/maps/test_maps/` contains 1133 PNGs; `paper/maps/test_maps.csv` lists `map_id` and SHA256; `paper/maps/map_split_seed_42.json` defines the train/test split (4530/1133).
 - **Consolidated tables:** `paper/tables/hera_final_results.csv`, `model_selection.csv`, `baseline_results.csv`, `checkpoint_manifest.csv`.
 - **Paper context and limitations:** `PAPER_CONTEXT.md`, `paper/docs/LIMITATIONS.md`, `paper/docs/BASELINES.md`.
@@ -31,7 +31,7 @@ sha256sum -c CHECKSUMS.sha256
 python3 paper/scripts/verify_artifacts.py
 ```
 
-`verify_artifacts.py` checks the 9 HERA result sets, 7 baseline sets, and 1133 test-map hashes.
+`verify_artifacts.py` checks the 9 HERA result sets, 10 baseline sets, and 1133 test-map hashes.
 
 ## Licensing
 

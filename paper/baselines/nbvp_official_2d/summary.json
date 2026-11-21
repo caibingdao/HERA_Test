@@ -1,0 +1,13 @@
+{
+  "model": "RH-NBVP 2D",
+  "maps": 1133,
+  "successes": 1089,
+  "success_rate": 0.9611650485436893,
+  "mean_path_all_m": 293.49113152419994,
+  "mean_path_success_m": 287.52578461318666,
+  "mean_steps": 77.47396293027361,
+  "mean_final_coverage": 0.9921697712695314,
+  "paired_starts_validated": 1133,
+  "recovery_triggers": 0,
+  "native_backtracks": 0
+}

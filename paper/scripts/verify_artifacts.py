@@ -6,7 +6,7 @@ Run from the repository root:
 
 Checks:
   - 9 HERA result dirs with required files and 1133 episode rows;
-  - 7 baseline dirs with required files and 1133 episode rows;
+  - 10 baseline dirs with required files and 1133 episode rows;
   - 1133 test maps match test_maps.csv SHA256;
   - derived tables have the expected row counts;
   - no excluded weights/diagnostics/TensorBoard/training logs are present.
@@ -59,8 +59,8 @@ def check_hera() -> int:
 def check_baselines() -> int:
     dirs = sorted(p for p in (ROOT / "paper/baselines").iterdir()
                   if p.is_dir() and (p / "episodes.csv").exists())
-    if len(dirs) != 7:
-        fail(f"baseline dirs: expected 7, found {len(dirs)}")
+    if len(dirs) != 10:
+        fail(f"baseline dirs: expected 10, found {len(dirs)}")
     for d in dirs:
         for name in ("episodes.csv", "coverage_curve.csv", "evaluation_metadata.json"):
             if not (d / name).exists():
@@ -130,7 +130,7 @@ def main() -> int:
     check_tables()
     check_exclusions()
     print(f"HERA experiments: {n_hera}/9")
-    print(f"Baselines: {n_base}/7")
+    print(f"Baselines: {n_base}/10")
     print(f"Test maps verified: {n_maps}/1133")
     if ERRORS:
         print("\nFAILURES:")

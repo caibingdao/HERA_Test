@@ -1,0 +1,12 @@
+{
+  "artifact_type": "untrained_planner_specification",
+  "planner": "eth_asl_rh_nbvp_2d",
+  "model_name": "RH-NBVP (ETH ASL planar port)",
+  "upstream_commit": "5c07657af18f967d7049d187db0607024746a42c",
+  "extension_m": 4.0,
+  "overshoot_m": 0.5,
+  "distance_discount_per_m": 0.5,
+  "initial_nodes": 15,
+  "cutoff_nodes": 200,
+  "attempts_per_node": 1000
+}
