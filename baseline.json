@@ -1,0 +1,11 @@
+{
+  "selection_criterion": "mean_path_all",
+  "checkpoint": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/experiments/recovery_streak2_seed4777_10k_20261024/model/checkpoint.pth",
+  "checkpoint_sha256": "8d126a76433fc33b8a61ddc4e9288ea30e141e11257c759b12e99d5c6de568bb",
+  "training_episodes": 10000,
+  "recovery": true,
+  "regional_trigger_steps": 2,
+  "point_repeat_trigger_steps": 2,
+  "seed": 4777,
+  "source_test_summary": "/data/home/lzy/cbd/code/ARiADNE_MAMBA_Test/HERA/results/data/recovery_streak2/recovery_on/single_seed_4777/hera_summary.json"
+}

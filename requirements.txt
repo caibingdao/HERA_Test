@@ -1,0 +1,12 @@
+# Runtime dependencies for HERA_Gazebo_Test.
+# Install in a Linux CUDA environment; mamba-ssm needs a matching CUDA toolchain
+# and will pull causal-conv1d during installation.
+torch
+numpy
+scikit-image
+matplotlib
+imageio
+ray
+tensorboard
+quads
+mamba-ssm

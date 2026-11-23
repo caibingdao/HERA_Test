@@ -1,0 +1,12 @@
+benchmarks/results/*.trace.json
+benchmarks/results/*.trace.json.gz
+benchmarks/results/*.csv
+
+# Python runtime caches
+__pycache__/
+*.py[cod]
+
+# Generated training artifacts
+train/
+model/
+gifs/ariadne*/

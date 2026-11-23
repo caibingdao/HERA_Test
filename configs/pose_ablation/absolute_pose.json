@@ -1,0 +1,11 @@
+{
+  "pose_encoding": "absolute",
+  "seed": 4777,
+  "total_env_steps": 800000,
+  "delta_position_scale": 4.0,
+  "recovery": false,
+  "updates_per_interval": 8,
+  "update_interval_env_steps": 32,
+  "checkpoint_interval_env_steps": 10000,
+  "checkpoint_selection": "final_at_exact_env_step_budget"
+}
